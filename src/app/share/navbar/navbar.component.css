@@ -1,0 +1,17 @@
+nav{
+    width: max-content;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+    background: var(--main-bg-color);
+    border-right: 1px solid var(--shadow-color);
+    position: fixed;
+    height: 100vh;
+}
+nav>.logo{
+    width: 70px;
+    cursor: pointer;
+}
+
+nav>.logo:hover{
+    background: red;
+}
