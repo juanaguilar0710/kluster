@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-basecard',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasecardComponent implements OnInit {
 
+  @Input() data:any;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data)
   }
 
 }

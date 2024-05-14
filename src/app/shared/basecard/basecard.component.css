@@ -1,0 +1,41 @@
+.card{
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 0px 15px 15px 15px;
+    padding: 2rem 0rem;
+    box-sizing: border-box;
+}
+.card > header, footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.card > div{
+
+}
+.card > div > h3, h2, div{
+    margin: auto;
+}
+.card > div>.featuresList>ul>li {
+    list-style: none;
+}
+footer{
+    border-top: 1px solid var(--border-color);
+    background:#f4f4f4;
+}
+footer>h3,p{
+    background:transparent;
+}
+.featureNum{
+    border-right: 1px solid var(--border-color);
+
+}
+.featureNum, .costDiv{
+    box-sizing: border-box;
+    padding: 1rem;
+    background:transparent;
+    width: 100%;
+}
+
+
+

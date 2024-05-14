@@ -1,0 +1,14 @@
+section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+
+}
+app-basecard{
+    box-sizing: border-box;
+    width: 31%;
+    margin: 1rem auto;
+}

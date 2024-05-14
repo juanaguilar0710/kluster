@@ -17,7 +17,8 @@ import { BasecardComponent } from './basecard/basecard.component';
   ],
   exports:[
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    BasecardComponent
   ]
 })
 export class SharedModule { }

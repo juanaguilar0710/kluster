@@ -1,4 +1,4 @@
-section{
+header{
     background-image: url(../../../assets/images/wave.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,13 +9,13 @@ section{
     position: relative;
 
 }
-section > h2 , div ,p{
+header > h2 , div ,p{
     background: transparent;
     color: var(--primary-text-color);
     
     box-sizing: border-box;
 }
-section > h2 {
+header > h2 {
     font-size: 46px;
     letter-spacing: 2.5px;
     background: transparent;
@@ -23,7 +23,7 @@ section > h2 {
     border-radius: 0px 15px 15px 15px;
    
 }
-section> h2 , p{
+header> h2 , p{
     width: max-content;
     box-sizing: border-box;
     padding: 1rem 3rem;
@@ -33,12 +33,12 @@ section> h2 , p{
 
 
 }
-section>div>p{
+header>div>p{
     font-size: 22px;
     margin-top: 1rem;
 }
 
-section >button{
+header >button{
     padding: 1rem 3rem;
     background-color: var(--brand-color);
     color: var(--main-bg-color);
@@ -50,6 +50,6 @@ section >button{
     transition: all 0.3s ease;
     margin-top: 10px;
 }
-section >button:hover{
+header >button:hover{
     transform: scale(1.1, 1.1);
 }

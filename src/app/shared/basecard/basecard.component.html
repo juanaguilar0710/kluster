@@ -1,1 +1,28 @@
-<p>basecard works!</p>
+<div class="card">
+    <header>
+        <img src="" alt="">
+        <div class="btnAdd">+</div>
+
+    </header>
+    <div>
+        <h3>Build an app like</h3>
+        <h2>{{data.title}}</h2>
+
+        <div class="featuresList">
+            <ul>
+                <li *ngFor="let item of data.features">{{item}}</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="featureNum">
+            <h3>Feature</h3>
+            <p>56</p>
+        </div>
+    
+        <div class="costDiv">
+            <h3>per plataform</h3> 
+            <p>000000</p>
+        </div>
+    </footer>
+</div>
