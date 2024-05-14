@@ -1,0 +1,35 @@
+nav{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: var(--main-bg-color);
+    height: 100vh;
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+    border-right: 1px solid var(--border-color);
+}
+nav> .bottom{
+    position: absolute;
+    bottom: 0;
+}
+.top,.middle.bottom{
+    padding: 5px;
+    box-sizing: border-box;
+}
+.btnNav{
+    width: 56px;
+    height: 56px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem auto;
+    cursor: pointer;
+    transition: all 3ms ease;
+}
+.btnNav:hover{
+    border: 1px solid var(--border-color);
+}
