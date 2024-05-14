@@ -1,0 +1,55 @@
+section{
+    background-image: url(../../../assets/images/wave.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 3rem 10rem;
+    box-sizing: border-box;
+    height: 550px;
+    position: relative;
+
+}
+section > h2 , div ,p{
+    background: transparent;
+    color: var(--primary-text-color);
+    
+    box-sizing: border-box;
+}
+section > h2 {
+    font-size: 46px;
+    letter-spacing: 2.5px;
+    background: transparent;
+    color: var(--primary-text-color);
+    border-radius: 0px 15px 15px 15px;
+   
+}
+section> h2 , p{
+    width: max-content;
+    box-sizing: border-box;
+    padding: 1rem 3rem;
+    background-color: var(--main-bg-color);
+    box-shadow: 0px 5px 10px var(--shadow-color);
+    border-radius: 0px 15px 15px 15px;
+
+
+}
+section>div>p{
+    font-size: 22px;
+    margin-top: 1rem;
+}
+
+section >button{
+    padding: 1rem 3rem;
+    background-color: var(--brand-color);
+    color: var(--main-bg-color);
+    border-radius: 5px;
+    border: 2px solid var(--border-color) !important;
+    cursor: pointer;
+    position: absolute;
+    right: 14rem;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+section >button:hover{
+    transform: scale(1.1, 1.1);
+}

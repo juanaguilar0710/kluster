@@ -8,14 +8,6 @@ nav{
     box-sizing: border-box;
     border-right: 1px solid var(--border-color);
 }
-nav> .bottom{
-    position: absolute;
-    bottom: 0;
-}
-.top,.middle.bottom{
-    padding: 5px;
-    box-sizing: border-box;
-}
 .btnNav{
     width: 56px;
     height: 56px;
@@ -31,5 +23,9 @@ nav> .bottom{
     transition: all 3ms ease;
 }
 .btnNav:hover{
-    border: 1px solid var(--border-color);
+    box-shadow: 0px 5px 10px var(--shadow-color);
+}
+nav>.bottom{
+position: fixed;
+bottom: 0;
 }
