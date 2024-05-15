@@ -2,29 +2,89 @@
     width: 100%;
     border: 1px solid var(--border-color);
     border-radius: 0px 15px 15px 15px;
-    padding: 2rem 0rem;
     box-sizing: border-box;
+    padding-top: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+.card:hover{
+    border-color: var(--border-color-second);
+    box-shadow: 0px 5px 10px var(--shadow-color);
 }
 .card > header, footer{
     display: flex;
     flex-direction: row;
-    width: 100%;
-}
-.card > div{
+    
+} 
 
+.card >div{
+    margin: 2rem auto;
 }
 .card > div > h3, h2, div{
     margin: auto;
+    width: 90%;
+    color: var(--primary-text-color);
+}
+.card > div > h2{
+    margin-bottom: 1rem;
+}
+.card > div > h3{
+    font-weight: 500;
 }
 .card > div>.featuresList>ul>li {
     list-style: none;
+    margin-top: 0.3rem;
 }
+
+/* Styles for header of card */
+
+.card > header {
+    padding: 0px 2rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.card > header > img{
+    width: 50px ;
+    height: 50px ;
+    background: gold;
+}
+.card > header > .btnAdd{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 5px;
+    background: var(--auxiliar-bg-color);
+    font-size: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+}
+.card > header > .btnAdd > span{
+    background: transparent;
+    font-size: 36px;
+   
+}
+/* styles of footer card */
 footer{
     border-top: 1px solid var(--border-color);
     background:#f4f4f4;
 }
-footer>h3,p{
+footer>div>h3,p{
     background:transparent;
+}
+footer>div >h3{
+
+    font-weight: 300;
+    font-size: 1rem;
+    color: #9b9fb1;
+}
+footer>div >p{
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var( --primary-text-color);
 }
 .featureNum{
     border-right: 1px solid var(--border-color);

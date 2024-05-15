@@ -4,6 +4,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasecardComponent } from './basecard/basecard.component';
 
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 
 @NgModule({
@@ -13,7 +16,8 @@ import { BasecardComponent } from './basecard/basecard.component';
     BasecardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   exports:[
     NavbarComponent,

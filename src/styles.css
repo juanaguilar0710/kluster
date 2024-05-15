@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
     --main-bg-color:#F7F7F7;
+    --auxiliar-bg-color:#eee;
+    --second-bg-color:#f8f9fa;
+    --seauxiliar-bg-color:#eee;
     --primary-text-color:#333333;
     --shadow-color:#CCCED1;
     --alerts-color-warning:#DB3700;
     --brand-color:#651FFF;
     --button-primary-color:#00E676;
-    --border-color:#DFE0E6;
+    --border-color:#d6d7dd;
+    --border-color-second:#bbbbbe;
 }
 *{
     margin: 0;
@@ -14,3 +18,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--main-bg-color);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
