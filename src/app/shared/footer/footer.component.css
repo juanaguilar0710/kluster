@@ -1,13 +1,24 @@
 footer{
-    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    position: fixed;
     bottom: 0px;
     justify-content: space-around;
     padding: 1rem;
-    background: var(--main-bg-color);
+    /* background: var(--main-bg-color); */
+
+}
+.logo{
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo > img{
+    width: fit-content;
 }
 .sectionRight{
     width: max-content;

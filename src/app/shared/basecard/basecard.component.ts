@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-basecard',
@@ -9,10 +10,15 @@ export class BasecardComponent implements OnInit {
 
   @Input() data:any;
 
-  constructor() { }
+  constructor(private modalService:ModalService) { }
 
   ngOnInit(): void {
-    console.log(this.data)
+  }
+
+  openModal(data:any):void{
+    this.modalService.$modal.emit(true);
+    this.modalService.$dataModal.emit(data);
+    console.log(data)
   }
 
 }

@@ -3,7 +3,7 @@
     --main-bg-color:#F7F7F7;
     --auxiliar-bg-color:#eee;
     --second-bg-color:#f8f9fa;
-    --seauxiliar-bg-color:#eee;
+    --auxiliar-bg-color:#eee;
     --primary-text-color:#333333;
     --shadow-color:#CCCED1;
     --alerts-color-warning:#DB3700;
@@ -11,6 +11,7 @@
     --button-primary-color:#00E676;
     --border-color:#d6d7dd;
     --border-color-second:#bbbbbe;
+    --second-text-color:#9b9fb1;
 }
 *{
     margin: 0;

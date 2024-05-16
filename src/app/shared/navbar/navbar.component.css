@@ -15,7 +15,7 @@ nav{
     height: 56px;
     box-sizing: border-box;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -25,8 +25,11 @@ nav{
     transition: all 3ms ease;
     color: var(--primary-text-color);
 }
-.btnNav:hover{
+.btnNav:hover, .btnUndo{
     box-shadow: 0px 5px 10px var(--shadow-color);
+}
+.btnUndo{
+    margin-bottom: 1.5rem;
 }
 nav>.bottom{
 position: fixed;
@@ -44,4 +47,30 @@ bottom: 0;
 .btnProfile>span{
     
     background: transparent;
+}
+/* styles for custom label */
+.btnDemo{
+    position: relative;
+    
+
+}
+.btnDemo:hover{
+    overflow: visible;
+
+}
+.btnDemo:hover > .customLabel{
+    transform: translateX(280px);
+
+}
+.customLabel{
+    position: absolute;
+    background: var(--brand-color);
+    color: var(--main-bg-color);
+    width: max-content;
+    font-size: 18px;
+    padding: 1rem 2rem;
+    left: -210px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+
 }

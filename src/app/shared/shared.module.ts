@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasecardComponent } from './basecard/basecard.component';
+import { DetailsComponent } from './details/details.component';
 
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -13,16 +14,19 @@ import {MatIconModule} from '@angular/material/icon';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    BasecardComponent
+    BasecardComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   exports:[
     NavbarComponent,
     FooterComponent,
-    BasecardComponent
+    BasecardComponent,
+    DetailsComponent
   ]
 })
 export class SharedModule { }

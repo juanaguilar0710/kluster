@@ -1,0 +1,156 @@
+.bgModal{
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    background: rgba(243, 235, 242, 0.463);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+.modal{
+    width: 80%;
+    height: 90vh;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px var(--shadow-color);
+    display: flex;
+    flex-direction: row;
+    padding: 4rem;
+    padding-left: 5rem;
+    box-sizing: border-box;
+}
+/* styles for Info in modal left part */
+.leftSection{
+    margin-right: 1rem;
+}
+.leftSection> header, .description>.costAndFeatures{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.leftSection> header> .img{
+    width: 56px;
+    height: 56px;
+    background: var(--brand-color);
+}
+.leftSection> header> .labels{
+    margin-left:1rem ;
+    width: max-content;
+    box-sizing: border-box;
+    
+}
+.leftSection> header> .labels > h2{
+    font-size: 1rem;
+    color: var(--second-text-color);
+    margin-bottom: 0px;
+     
+ }
+.leftSection> header> .labels > h3{
+   font-size: 2rem;
+   font-weight: bold;
+   color: var(--primary-text-color);
+    
+}
+.leftSection> .description>.costAndFeatures>.cost{
+    padding: 1rem 1.5rem;
+    padding-left: 0;
+    border-right: 1px solid var(--border-color);
+     
+ }
+ .leftSection> .description>.costAndFeatures>.featuresNum{
+    padding: 1rem 1.5rem;
+     
+ }
+ .leftSection> .description>.costAndFeatures>.cost>h3,
+ .leftSection> .description>.costAndFeatures>.featuresNum>h3{
+    margin-bottom: 0px;
+    color: var(--second-text-color);
+    font-size: 0.7rem;
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+ }
+ .leftSection> .description>.costAndFeatures>.cost>p,
+ .leftSection> .description>.costAndFeatures>.featuresNum>p{
+    color: var(--primary-text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+ }
+
+ .descriptionBody{
+    padding: 1rem;
+    padding-left: 0;
+ }
+ .descriptionBody>p{
+    font-size: 1rem;
+ }
+.journeyTable{
+    height: 30vh;
+    overflow: auto;
+}
+.journeyLabel{
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid var(--brand-color);
+    justify-content: center;
+    align-items: center;
+}
+.journeyLabel>span{
+    color: var(--second-text-color);
+    
+    font-size: 1rem;
+}
+.journeyLabel>h2{
+    width: max-content;
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+.journeyTable>table{
+    width: 100%;
+    
+}
+
+/* styles for Info in modal right part */
+.modal>.rightSection{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    position: relative;
+}
+.modal>.rightSection> .previewMobile{
+    width: 80%;
+    height: 60vh;
+    background: rgb(180, 181, 180);
+    border-radius: 15px;
+    margin: 1rem auto;
+}
+.modal>.rightSection> .btnAdd{
+    padding: 1rem 5rem;
+    margin: auto;
+    border-radius: 5px;
+    border: none;
+    color: var(--primary-text-color);
+    font-weight: bolder;
+    letter-spacing: 1px;
+    background-color: var(--button-primary-color);
+    cursor: pointer;
+    transition: all 1s ease;
+}
+.modal>.rightSection> .btnAdd:hover{
+    transform: scale(1.1,1.1);
+    border:1px solid var(--brand-color);
+    box-shadow: 0px 5px 10px var(--shadow-color);
+}
+.closeBtn{
+    position: absolute;
+    right: 0;
+    top: -20px;
+    cursor: pointer;
+}

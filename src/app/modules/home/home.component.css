@@ -9,13 +9,13 @@ header{
     position: relative;
 
 }
-header > h2 , div ,p{
+header >.introduction> h2 , div ,p{
     background: transparent;
     color: var(--primary-text-color);
     
     box-sizing: border-box;
 }
-header > h2 {
+header >.introduction> h2 {
     font-size: 46px;
     letter-spacing: 2.5px;
     background: transparent;
@@ -23,7 +23,7 @@ header > h2 {
     border-radius: 0px 15px 15px 15px;
    
 }
-header> h2 , p{
+header>.introduction> h2 , p{
     width: max-content;
     box-sizing: border-box;
     padding: 1rem 3rem;
@@ -33,12 +33,12 @@ header> h2 , p{
 
 
 }
-header>div>p{
+header>.introduction>div>p{
     font-size: 22px;
     margin-top: 1rem;
 }
 
-header >button{
+header >.introduction> button{
     padding: 1rem 3rem;
     background-color: var(--brand-color);
     color: var(--main-bg-color);
@@ -50,6 +50,10 @@ header >button{
     transition: all 0.3s ease;
     margin-top: 10px;
 }
-header >button:hover{
+header >.introduction> button:hover{
     transform: scale(1.1, 1.1);
+}
+.introduction{
+    width: 80%;
+    margin: auto;
 }
