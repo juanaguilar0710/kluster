@@ -1,0 +1,55 @@
+<div class="bgModal">
+    <div class="modal">
+        <div class="leftSection">
+            
+        </div>
+        <div class="rightSection">
+            <div class="closeBtn" (click)="closeModal()">
+                <span class="material-icons md-light">close</span>
+            </div>
+            <header>
+                <div class="labels">
+                    <h2>Sign In</h2>
+                    <h3>Sign in using</h3>
+                </div>
+            </header>
+            <section class="singinOptions">
+                <div class="btnOption">LinkedIn</div>
+                <div class="btnOption">Google</div>
+                <div class="btnOption">Facebook</div>
+
+                
+            </section>
+            <div class="labels">
+                <h3>Sign In with email</h3>
+            </div>
+            <div class="formEmail">
+                <form class="singIn-form">
+
+                    <!-- <mat-form-field class="example-full-width" >
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput formControl="emailFormControl" placeholder="Email" >
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field> -->
+                    <label for="emailTxt">Email</label>
+                    <input type="text" name="emailTxt" placeholder="email">
+                    <label for="passwordTxt">Password</label>
+                    <input type="password" name="passwordTxt" placeholder="password">
+                    
+                    <button class="btnSingIn">Sing in</button>
+                </form>
+            </div>
+            <div class="labels">
+                <h3>Don't have an account? <span> Sign up </span></h3>
+                <h3> Privacy
+                    CCPA</h3>
+            </div>
+            
+        </div>
+    </div>
+</div>

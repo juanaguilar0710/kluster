@@ -1,3 +1,6 @@
+<app-navbar></app-navbar>
+<app-details *ngIf="modalIs"></app-details> 
+<app-login *ngIf="loginModalIs"></app-login>
 <header>
     <div class="introduction">
 
@@ -16,7 +19,6 @@
         </button>
     </div>
 </header>
-
 <section>
     <app-cards></app-cards>
 </section>

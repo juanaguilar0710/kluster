@@ -5,7 +5,7 @@
             <img src="../../../assets/images/logoKlab.png" alt="Logo kloustr lab">
         
     </div>
-    <ul>
+    <ul *ngIf="!isAuthorized">
         <li class="btnNav btnUndo">
             <span class="material-icons md-light">undo</span>
         </li>
@@ -18,11 +18,27 @@
         </li>
     </ul>
 
+    <ul *ngIf="isAuthorized">
+        <li class="btnNav btnUndo">
+            <span class="material-icons md-light">undo</span>
+        </li>
+        <li class="btnNav">
+            <span class="material-icons md-light">card</span>
+        </li>
+        <li class="btnNav">
+            <span class="material-icons md-light">task</span>
+        </li>
+        <li class="btnNav btnDemo">
+            <span class="material-icons md-light">money</span>
+            
+        </li>
+    </ul>
+
     <div class="bottom">
         <div class="btnNav">
             <span class="material-icons md-light">rocket</span>
         </div>
-        <div class="btnNav btnProfile">
+        <div class="btnNav btnProfile" (click)="openLogin()">
             <span class="material-icons md-light">face</span>
         </div>
     </div>
