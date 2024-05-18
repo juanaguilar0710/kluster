@@ -1,5 +1,5 @@
 <nav>
-    <div class="btnNav logo">
+    <div class="btnNav logo" >
         
             <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
             <img src="../../../assets/images/logoKlab.png" alt="Logo kloustr lab">
@@ -7,29 +7,48 @@
     </div>
     <ul *ngIf="!isAuthorized">
         <li class="btnNav btnUndo">
-            <span class="material-icons md-light">undo</span>
+            <a href="">
+                <span class="material-icons md-light">undo</span>
+            </a>
         </li>
         <li class="btnNav">
-            <span class="material-icons md-light">dashboard</span>
+            <a href="">
+
+                <span class="material-icons md-light">dashboard</span>
+            </a>
         </li>
         <li class="btnNav btnDemo">
             <span class="material-icons md-light">headset</span>
-            <span class="customLabel"> Book a demo </span>
+            <span class="customLabel">  Book a demo </span>
         </li>
     </ul>
 
     <ul *ngIf="isAuthorized">
         <li class="btnNav btnUndo">
-            <span class="material-icons md-light">undo</span>
+            <a href="">
+
+                <span class="material-icons md-light" >undo</span>
+            </a>
         </li>
         <li class="btnNav">
-            <span class="material-icons md-light">card</span>
+            <a href="user/dashboard">
+
+                <span class="material-icons md-light">dashboard</span>
+            </a>
         </li>
         <li class="btnNav">
-            <span class="material-icons md-light">task</span>
+            <a href="user/payment">
+
+                
+                <span class="material-icons md-light">task</span>
+            </a>
         </li>
         <li class="btnNav btnDemo">
-            <span class="material-icons md-light">money</span>
+            <a href="user/dashboard">
+
+               
+                <span class="material-icons md-light">money</span>
+            </a>
             
         </li>
     </ul>

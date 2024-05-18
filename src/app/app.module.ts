@@ -8,6 +8,7 @@ import { PublicModule } from './modules/public/public.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
     SharedModule,
     PublicModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

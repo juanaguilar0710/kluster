@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/core/services/modal.service';
+import { ModalService } from 'src/services/modal.service';
 import {FormControl, Validators} from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -27,5 +27,6 @@ export class LoginComponent implements OnInit {
 
   singIn(){
     this.authServie.$authorized.emit(true);
+    this.closeModal();
   }
 }

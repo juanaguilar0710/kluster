@@ -14,9 +14,9 @@
                 </div>
             </header>
             <section class="singinOptions">
-                <div class="btnOption">LinkedIn</div>
-                <div class="btnOption">Google</div>
-                <div class="btnOption">Facebook</div>
+                <div class="btnOption" (click)="singIn()">LinkedIn</div>
+                <div class="btnOption" (click)="singIn()">Google</div>
+                <div class="btnOption" (click)="singIn()">Facebook</div>
 
                 
             </section>
@@ -41,7 +41,7 @@
                     <label for="passwordTxt">Password</label>
                     <input type="password" name="passwordTxt" placeholder="password">
                     
-                    <button class="btnSingIn">Sing in</button>
+                    <button class="btnSingIn" (click)="singIn()">Sing in</button>
                 </form>
             </div>
             <div class="labels">

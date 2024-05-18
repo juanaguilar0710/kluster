@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/auth/auth.service';
-import { ModalService } from 'src/app/core/services/modal.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from 'src/services/auth/auth.service';
+import { ModalService } from 'src/services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { ModalService } from 'src/app/core/services/modal.service';
 export class NavbarComponent implements OnInit {
   isAuthorized:boolean =false;
 
-  constructor(private modalService:ModalService, private authService: AuthService) { }
+  constructor(private modalService:ModalService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.$authorized.subscribe(res =>{
