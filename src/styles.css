@@ -22,3 +22,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-tab-label .mat-tab-label-content{
+    color: black !important;
+}
+.mat-tab-label{
+    width: 80px !important;
+min-width: fit-content !important;
+    box-sizing: border-box !important;
+    padding: 1rem !important;
+}
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    width: 80px !important;
+}
