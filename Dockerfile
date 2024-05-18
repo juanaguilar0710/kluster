@@ -18,7 +18,7 @@ WORKDIR /ng-app
 COPY . .
 
 ## Build the angular app in prodduction mode and store the artifacts in dist folder
-RUN npm run build-BPAI
+RUN npm run build-kls
 
 # Stage 2, "Setup nginx"
 FROM nginx:1.21.4-alpine
