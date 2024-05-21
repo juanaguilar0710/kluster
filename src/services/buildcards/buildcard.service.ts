@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Buildcard } from '../interface/buildcard.interface'; 
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildcardService {
 
-
   builds: Buildcard[] = [];
-  myStorage = window.localStorage;
 
   constructor() { 
     this.getBuildcards(); // Cargar las buildcards del localStorage al iniciar el servicio
@@ -24,13 +23,13 @@ export class BuildcardService {
 
   /* Guardar en el localStorage */
   saveBuildcardInStorage(builds: Buildcard[]) {
-    if (this.myStorage) {
-      this.myStorage.setItem('buildcards', JSON.stringify(builds));
+    if (environment.storage) {
+      environment.storage.setItem('buildcards', JSON.stringify(builds));
     }
   }
 
   getBuildcards() {
-    const buildStorage = this.myStorage.getItem('buildcards');
+    const buildStorage = environment.storage.getItem('buildcards');
     if (buildStorage) {
       this.builds = JSON.parse(buildStorage);
     }

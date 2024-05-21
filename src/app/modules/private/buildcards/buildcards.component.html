@@ -3,7 +3,7 @@
     <div class="top">
 
         <h2>Buildcards</h2>
-        <button>New Buildcards</button>
+        <button [routerLink]="['/newbuild']">New Buildcards</button>
     </div>
     <div class="filter">
         <div class="tabs">
@@ -16,7 +16,7 @@
                 <mat-tab label="Running" (click)="filterByStatus(3)">  <app-buildcardscontent></app-buildcardscontent> </mat-tab>
                 <mat-tab label="Care" (click)="filterByStatus(4)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
                 <mat-tab label="Complete" (click)="filterByStatus(5)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Invited" (click)="filterByStatus(-6)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
+                <mat-tab label="Invited" (click)="filterByStatus(6)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
             </mat-tab-group>
         </div>
           <div class="search">

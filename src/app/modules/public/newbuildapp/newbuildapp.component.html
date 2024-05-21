@@ -13,7 +13,7 @@
       <mat-horizontal-stepper linear #stepper>
         <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
           <form [formGroup]="firstFormGroup" class="formStepOne">
-            <ng-template style="color: black !important;">Fill out your name</ng-template>
+            <ng-template style="color: black !important;"> Fill out your name</ng-template>
         
             <mat-form-field>
               <mat-label>Nombre</mat-label>
@@ -60,7 +60,7 @@
             </mat-form-field>
         
             <div>
-              <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+              <button mat-button matStepperNext [disabled]="firstFormGroup.invalid" (click)="createCustomer()">Next</button>
             </div>
           </form>
         </mat-step>
@@ -79,20 +79,28 @@
             </div>
           </form>
         </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
+
+        <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                     required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious class="btnBack">Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
         </mat-step>
+
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
           <p>You are now done.</p>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious class="btnBack">Back</button>
+            <button mat-button (click)="createBuildcard()" class="btnCreate">Crear</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
