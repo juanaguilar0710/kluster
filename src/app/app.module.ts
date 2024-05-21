@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     PublicModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

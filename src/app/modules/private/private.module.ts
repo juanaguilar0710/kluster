@@ -10,12 +10,14 @@ import { SharedModule  } from 'src/app/shared/shared.module';
 
 /* material */
 import {MatTabsModule} from '@angular/material/tabs';
+import { BuildcardscontentComponent } from './buildcardscontent/buildcardscontent.component';
 
 @NgModule({
   declarations: [
     UsersettingsComponent,
     BuildcardsComponent,
-    PaymentComponent
+    PaymentComponent,
+    BuildcardscontentComponent
   ],
   imports: [
     CommonModule,

@@ -1,36 +1,73 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
 /* You can add global styles to this file, and also import other style files */
-:root{
-    --main-bg-color:#F7F7F7;
-    --auxiliar-bg-color:#eee;
-    --second-bg-color:#f8f9fa;
-    --auxiliar-bg-color:#eee;
-    --primary-text-color:#333333;
-    --shadow-color:#CCCED1;
-    --alerts-color-warning:#DB3700;
-    --brand-color:#651FFF;
-    --button-primary-color:#00E676;
-    --border-color:#d6d7dd;
-    --border-color-second:#bbbbbe;
-    --second-text-color:#9b9fb1;
+:root {
+  --main-bg-color: #f7f7f7;
+  --auxiliar-bg-color: #eee;
+  --second-bg-color: #f8f9fa;
+  --auxiliar-bg-color: #eee;
+  --primary-text-color: #333333;
+  --shadow-color: #ccced1;
+  --alerts-color-warning: #db3700;
+  --brand-color: #651fff;
+  --button-primary-color: #00e676;
+  --border-color: #d6d7dd;
+  --border-color-second: #bbbbbe;
+  --second-text-color: #9b9fb1;
 }
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--main-bg-color);
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--main-bg-color);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.mat-tab-label .mat-tab-label-content{
-    color: black !important;
+html,
+body {
+  height: 100%;
 }
-.mat-tab-label{
-    width: 80px !important;
-min-width: fit-content !important;
-    box-sizing: border-box !important;
-    padding: 1rem !important;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
-    width: 80px !important;
+.mat-tab-label .mat-tab-label-content {
+  color: black !important;
 }
+.mat-tab-label {
+  width: 80px !important;
+  min-width: fit-content !important;
+  box-sizing: border-box !important;
+  padding: 1rem !important;
+}
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  width: 80px !important;
+}
+.mat-step-icon-content,
+.mat-step-icon .mat-icon {
+  color: var(--primary-text-color);
+  background: transparent;
+}
+.mat-step-header .mat-step-label.mat-step-label-active,
+.mat-step-label,
+.mat-step-label .mat-step-label-active .mat-step-label-selected,
+.mat-step-text-label .ng-star-inserted {
+  color: var(--primary-text-color) !important;
+  background: transparent !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: var(--primary-text-color);
+}
+
+::ng-deep .mat-form-field-infix{
+    color: var(--primary-text-color) !important;
+}
+::ng-deep input.mat-input-element {
+    color: #484a4c !important;
+  }
+  
+  ::ng-deep .mat-input-element .mat-form-field-autofill-control .inputCustom .ng-tns-c136-1 .cdk-text-field-autofill-monitored .ng-dirty .ng-valid .ng-touched{
+    color: #00e676 !important;
+  }

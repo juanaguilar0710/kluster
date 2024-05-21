@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BuildcardService } from 'src/services/buildcards/buildcard.service';
+import { Buildcard } from 'src/services/interface/buildcard.interface';
 
 
 @Component({
@@ -8,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuildcardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private buildcardService:BuildcardService) { }
+
+  builds:Buildcard[] =[];
 
   ngOnInit(): void {
   }
 
+
+  filterByStatus(status:number):void{
+    this.builds=this.buildcardService.filterByStatus(status);
+  }
 }

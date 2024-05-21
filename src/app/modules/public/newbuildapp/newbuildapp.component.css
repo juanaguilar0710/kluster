@@ -1,0 +1,41 @@
+.sectionSteps{
+    margin-left: 80px;
+}
+.formStepOne{
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+.title{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+}
+.title >  h2{
+    width: fit-content;
+    margin: auto;
+    background: transparent;
+}
+.stepsArea{
+    width: 80%;
+    margin: auto;
+}
+button{
+    padding: 1rem 4rem;
+    border-radius: 5px;
+    border: none;
+    background: var(--brand-color);
+    color: var(--auxiliar-bg-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+button:active{
+    transform: scale(.9,.9);
+}
+.btnBack{
+    background: var(--primary-text-color);
+    margin-right: 1rem;
+}
