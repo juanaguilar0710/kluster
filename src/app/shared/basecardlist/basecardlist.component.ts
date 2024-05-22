@@ -14,6 +14,7 @@ export class BasecardlistComponent implements OnInit {
   filteredData: Basecard[] = [];
   selectedCategory: String = '';
   categories: String[] = [];
+  canContinue: boolean = false;
 
   constructor(private modalService:ModalService,private basecardService: BasecardService) { }
 
@@ -21,6 +22,12 @@ export class BasecardlistComponent implements OnInit {
     this.data = this.basecardService.getAllBaseCards();
     this.filteredData = this.data;
     this.categories = this.getUniqueCategories(this.data);
+
+    // Suscripción al evento $baseCardId para actualizar canContinue
+    this.basecardService.$baseCardId.subscribe((id: number | null) => {
+      this.canContinue = id !== null;
+      console.log(id !== null)
+    });
   }
   closeModal(){
     this.modalService.$basecardlistModal.emit(false)
@@ -47,7 +54,6 @@ export class BasecardlistComponent implements OnInit {
   }
 
   resetData(){
-    console.log('what')
     this.data = this.basecardService.getAllBaseCards();
     console.log(this.data)
   }

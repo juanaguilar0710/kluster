@@ -3,9 +3,10 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { BuildcardService } from 'src/services/buildcards/buildcard.service';
+import { FeatureService } from 'src/services/buildcards/feature.service';
 import { CustomerService } from 'src/services/customer/customer.service';
 import { Customer } from 'src/services/interface/Customer';
-import { Basecard } from 'src/services/interface/basecard';
+import { Basecard, Feature } from 'src/services/interface/basecard';
 import { Buildcard } from 'src/services/interface/buildcard.interface';
 import { ModalService } from 'src/services/modal.service';
 
@@ -30,6 +31,9 @@ export class NewbuildappComponent implements OnInit {
   operatingSystems: string[] = ['iOS', 'Android', 'Windows', 'macOS', 'Linux'];
   platforms: string[] = ['Cellular', 'Desktop', 'Tablet'];
   documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas'];
+  features: Feature[] = [];
+  selectedFeatures: string[] = [];
+  totalCost: number = 0;
 
 
   constructor(
@@ -38,7 +42,8 @@ export class NewbuildappComponent implements OnInit {
     private buildcardService: BuildcardService,
     private basecardService: BasecardService,
     private router: Router,
-    private modalService:ModalService
+    private modalService:ModalService,
+    private featureService:FeatureService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +63,8 @@ export class NewbuildappComponent implements OnInit {
 
     this.secondFormGroup = this._formBuilder.group({
       customBaseCtrl: ['',],
+      nameBuildCtrl:['',[Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      selectedFeaturesCtrl: this._formBuilder.array([])
     });
     this.thirdFormGroup = this._formBuilder.group({
       operatingSystems: this._formBuilder.array([]),
@@ -66,6 +73,7 @@ export class NewbuildappComponent implements OnInit {
     });
     this.basecardService.$baseCardId.subscribe((res)=>{ this.checkBasecard()})
     this.modalService.$basecardlistModal.subscribe((res)=>{ this.modalListIs = res})
+    this.features = this.featureService.getAllFeatures();
   }
 
 
@@ -98,24 +106,11 @@ export class NewbuildappComponent implements OnInit {
 
   // Método adicional para crear el objeto Buildcard
   createBuildcard() {
-    console.log(this.newBuildCard)
-  this.router.navigate(['/user/dashboard'])
-    /* if (this.secondFormGroup.valid) {
-      this.newBuildCard = {
-        name: this.secondFormGroup.get('secondCtrl')?.value,
-         };
-
-      console.log('Buildcard Info:', this.newBuildCard);
-
-      // Lógica para enviar el objeto newBuildCard al servicio
-      this.buildcardService.createNewBuild(this.newBuildCard).subscribe(response => {
-        console.log('Buildcard created:', response);
-      }, error => {
-        console.error('Error creating buildcard:', error);
-      });
-    } else {
-      console.error('Second form is not valid');
-    } */
+    
+    this.newBuildCard.status=1
+    this.router.navigate(['/user/dashboard'])
+    this.buildcardService.createNewBuild(this.newBuildCard)
+    
   }
 
   checkBasecard(): void {
@@ -141,10 +136,14 @@ export class NewbuildappComponent implements OnInit {
   }
   saveUrl(){
     if (this.secondFormGroup.valid) {
+      const features = this.secondFormGroup.get('selectedFeaturesCtrl')?.value;
+
+      this.newBuildCard.name =this.secondFormGroup.get('nameBuildCtrl')?.value
       this.newBuildCard.urlBase =this.secondFormGroup.get('customBaseCtrl')?.value
       this.newBuildCard.last_update = Date()
       this.newBuildCard.status = 0 
       this.newBuildCard.developmentDuration = 30  
+      this.newBuildCard.features = features
     } else {
       console.error('Form is not valid');
     }
@@ -152,7 +151,7 @@ export class NewbuildappComponent implements OnInit {
   }
   saveBase(){
     if (this.basecardExist) {
-
+      this.newBuildCard.name =this.secondFormGroup.get('nameBuildCtrl')?.value
       this.newBuildCard.basecard_Id=this.basecardSelected
       this.newBuildCard.status = 0
       this.newBuildCard.cost = this.basecardSelected.cost
@@ -192,5 +191,42 @@ export class NewbuildappComponent implements OnInit {
       console.error('Form is not valid');
     }
   }
+  updateTotalCost(): void {
+    let formArray: FormArray | null = this.secondFormGroup.get('selectedFeaturesCtrl') as FormArray;
+    if (formArray) {
+      let totalCost = 0;
+      formArray.controls.forEach(control => {
+        const featureName = control.value;
+        console.log(featureName)
+        const feature = this.features.find(f => f.nameFeature === featureName);
+        if (feature) {
+          console.log("holay"+ feature)
+          totalCost += feature.costFeature;
+        }
+      });
+      this.totalCost = totalCost;
+    }
+  }
 
+  onCheckboxChangeSecond(e: any, controlName: string) {
+    let checkArray: FormArray = this._formBuilder.array([]);
+    
+    if (checkArray) {
+      if (e.target.checked) {
+        checkArray.push(new FormControl(e.target.value));
+      } else {
+        let i: number = 0;
+        checkArray.controls.forEach((item: any) => {
+          if (item.value == e.target.value) {
+            checkArray.removeAt(i);
+            return;
+          }
+          i++;
+        });
+      }
+  
+      this.updateTotalCost();
+    }
+  }
+  
 }

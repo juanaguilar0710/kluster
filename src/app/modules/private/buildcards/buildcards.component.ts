@@ -11,14 +11,28 @@ import { Buildcard } from 'src/services/interface/buildcard.interface';
 export class BuildcardsComponent implements OnInit {
 
   constructor(private buildcardService:BuildcardService) { }
+  builds: Buildcard[] = [];
+  filteredBuilds: Buildcard[] = [];
 
-  builds:Buildcard[] =[];
 
   ngOnInit(): void {
+    this.builds = this.buildcardService.getBuildcards();
+    this.filterByStatus(-1); // Default to 'All' status
   }
 
+getAllBuildCards(){
+  this.builds = this.buildcardService.getBuildcards();
+}
 
-  filterByStatus(status:number):void{
+  filterByStatus(status: number): void {
+    if (status === -1) {
+      this.filteredBuilds = this.builds;
+    } else {
+      this.filteredBuilds = this.buildcardService.filterByStatus(status);
+    }
+  }
+
+  /* filterByStatus(status:number):void{
     this.builds=this.buildcardService.filterByStatus(status);
-  }
+  } */
 }

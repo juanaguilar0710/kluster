@@ -54,7 +54,9 @@
     padding: 3rem 2rem;
     background: var(--brand-color);
     box-sizing: border-box;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .selectCategories{
     background: transparent;
@@ -76,4 +78,13 @@
     padding: 5px 15px;
 }
 
+.btnContinue{
+    padding: 1rem 4rem;
+    border-radius: 5px;
+    border: none;
+    background: var(--primary-text-color);
+    color: var(--auxiliar-bg-color);
+    font-weight: bold;
+    cursor: pointer;
 
+}

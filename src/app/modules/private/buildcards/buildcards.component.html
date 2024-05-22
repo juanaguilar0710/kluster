@@ -1,29 +1,49 @@
 <app-navbar></app-navbar>
 <header>
-    <div class="top">
-
-        <h2>Buildcards</h2>
-        <button [routerLink]="['/newbuild']">New Buildcards</button>
+  <div class="top">
+    <h2>Buildcards</h2>
+    <button [routerLink]="['/newbuild']">New Buildcards</button>
+  </div>
+  <div class="filter">
+    <div class="tabs">
+      <mat-tab-group class="tabsFilter">
+        <mat-tab label="All" (click)="getAllBuildCards()">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Draft" (click)="filterByStatus(0)">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Ready" (click)="filterByStatus(1)">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Paid" (click)="filterByStatus(2)">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Running" (click)="filterByStatus(3)">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        
+        <mat-tab label="Complete" (click)="filterByStatus(4)">
+          <ng-template matTabContent>
+            <app-buildcardscontent [builds]="filteredBuilds"></app-buildcardscontent>
+          </ng-template>
+        </mat-tab>
+        
+      </mat-tab-group>
     </div>
-    <div class="filter">
-        <div class="tabs">
-
-            <mat-tab-group class="tabsFilter">
-                <mat-tab label="All" (click)="filterByStatus(-1)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Draft" (click)="filterByStatus(0)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Ready" (click)="filterByStatus(1)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Paid" (click)="filterByStatus(2)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Running" (click)="filterByStatus(3)">  <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Care" (click)="filterByStatus(4)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Complete" (click)="filterByStatus(5)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-                <mat-tab label="Invited" (click)="filterByStatus(6)"> <app-buildcardscontent></app-buildcardscontent> </mat-tab>
-            </mat-tab-group>
-        </div>
-          <div class="search">
-            <label for="filtertxt">Filter</label>
-            <input type="text" name="filtertxt">
-          </div>
+    <div class="search">
+      <label for="filtertxt">Filter</label>
+      <input type="text" name="filtertxt">
     </div>
-    
+  </div>
 </header>
-

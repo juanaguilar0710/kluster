@@ -1,47 +1,40 @@
 <section>
     <div class="buildcards">
-        <div class="card" *ngFor="let build of cards">
-            <section>
-                <small class="tag status">{{build.status}}</small>
-                <div class="labelsInfo">
-                    <h2 class="titleBuildcard"> {{build.name}}</h2>
-                    <small class="lastEdit">Last Edit: {{build.last_update}}</small>
-                </div>
-                <div class="optionsCard">
-
-                </div>
-                <div class="progressBarArea">
-                    <div class="labelsProgress">
-
-                        <small class="labelProcess">Make it mine</small>
-                        <small class="tag">
-                            IN PROGRESS
-                        </small>
-                    </div>
-                    <div class="progressBar">
-
-                    </div>
-                </div>
-            </section>
-            <footer>
-                <div class="footerInfo">
-
-                    <div class="features">
-                        
-                        <h3>Features</h3>
-                        <p>{{build.features.length}}</p>
-                    </div>
-                    <div class="Duration">
-                        
-                        <h3>Duration</h3>
-                        <p>{{build.duration_of_development}}</p>
-                    </div>
-                </div>
-                <button>Continue</button>
-            </footer>
-        </div>
-        <div class="message" *ngIf="messageIs">
-                <h2>You don't have any builds to show</h2>
-        </div>
-</div>
-</section>
+      <div class="card" *ngFor="let build of builds">
+        <section>
+          <small class="tag status">{{ build.status }}</small>
+          <div class="labelsInfo">
+            <h2 class="titleBuildcard">{{ build.name }}</h2>
+            <small class="lastEdit">Last Edit: {{ build.last_update}}</small>
+          </div>
+          <div class="optionsCard">
+          </div>
+          <div class="progressBarArea">
+            <div class="labelsProgress">
+              <small class="labelProcess">Make it mine</small>
+              <small class="tag">IN PROGRESS</small>
+            </div>
+            <div class="progressBar">
+            </div>
+          </div>
+        </section>
+        <footer>
+          <div class="footerInfo">
+            <div class="features">
+              <h3>Features</h3>
+              <p>{{ build.features.length }}</p>
+            </div>
+            <div class="Duration">
+              <h3>Duration</h3>
+              <p>{{ build.duration_of_development }}</p>
+            </div>
+          </div>
+          <button>Continue</button>
+        </footer>
+      </div>
+      <div class="message" *ngIf="!builds || builds.length === 0">
+        <h2>You don't have any builds to show</h2>
+      </div>
+    </div>
+  </section>
+  

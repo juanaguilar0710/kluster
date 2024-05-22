@@ -1,13 +1,18 @@
 .sectionSteps{
     margin-left: 80px;
 }
-.formStepOne,.formStepTwo,.formStepThree{
+.formStepOne,.formStepTwo,.formStepThree,.formStepFour{
     padding: 3rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 80%;
     margin: auto;
+    width: 90%;
+    border: 1px solid var(--brand-color);
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 0px 15px 15px 15px;
+    box-shadow: 0px 5px 10px var(--shadow-color);
 }
 .title{
     width: 100%;
@@ -82,4 +87,89 @@ button:active{
     background: transparent;
     font-size: 48px;
    
+}
+.formStepFour{
+    
+}
+.formStepFour h3{
+    width: max-content;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin: auto;
+}
+.formStepFour p{
+    color: var(--primary-text-color);
+}
+.titleLine{
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 1rem;
+    text-transform: capitalize;
+    color: var(--alerts-color-warning);
+}
+.container{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.containerDetailsDelivery{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.detailsDelivery{
+    width: max-content;
+}
+
+.details >ul >li{
+    list-style:none;
+}
+.btnsFinal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.imgDecoration >img{
+    width: 130px;
+    margin: auto;
+}
+.infoText{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.contTexts{
+    display: flex;
+    flex-direction: column;
+}
+.contDecoration{
+    width: 100%;
+    background: var(--brand-color);
+    height: 50px;
+}
+.deliverys{
+    width: 100%;
+}
+.infot{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
 }

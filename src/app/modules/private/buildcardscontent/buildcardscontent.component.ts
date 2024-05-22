@@ -8,16 +8,12 @@ import { Buildcard } from 'src/services/interface/buildcard.interface';
 })
 export class BuildcardscontentComponent implements OnInit {
 
-  @Input() cards:Buildcard[] =[]
-  
-  messageIs:boolean = false;
+  @Input() builds: Buildcard[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    if(this.cards.length <=0){
-      this.messageIs = true;
-    }
+   
   }
 
 

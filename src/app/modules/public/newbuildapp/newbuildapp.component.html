@@ -72,6 +72,18 @@
 
 
         <form [formGroup]="secondFormGroup" class="formStepTwo">
+          <h2 class="textOptions">Set name app</h2>
+          <mat-form-field style="margin-bottom: 1rem;">
+            <mat-label>Nombre</mat-label>
+            <input class="inputCustom" matInput formControlName="nameBuildCtrl" placeholder="Nombre completo" required>
+            <mat-error *ngIf="secondFormGroup.get('nameBuildCtrl')!.hasError('required')">
+              Nombre es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="secondFormGroup.get('nameBuildCtrl')!.hasError('pattern')">
+              Nombre solo puede contener letras
+            </mat-error>
+          </mat-form-field>
+
           <div class="previewCard">
             <h2 class="textOptions" *ngIf="basecardExist">You've selected this base</h2>
             <h2 class="textOptions" *ngIf="!basecardExist">Select a base</h2>
@@ -94,6 +106,19 @@
             <mat-label>url</mat-label>
             <input matInput formControlName="customBaseCtrl" placeholder="https://google">
           </mat-form-field>
+
+          <div *ngIf="secondFormGroup.get('customBaseCtrl')!.value !== '' && !basecardExist">
+            <h2 class="textOptions">Select features <span class="textOptional">Optional</span></h2>
+            <div *ngFor="let feature of features">
+              <label>
+                <input type="checkbox" [value]="feature" (change)="onCheckboxChangeSecond($event,'features')"> {{ feature.nameFeature }} - ${{ feature.costFeature }}
+              </label>
+            </div>
+            <div>
+              <p>Total Cost: ${{ totalCost }}</p>
+            </div>
+          </div>
+
           <div style="margin-top: 1rem;">
             <button mat-button matStepperPrevious class="btnBack">Back</button>
             <button mat-button matStepperNext>Use this URL</button>
@@ -135,45 +160,95 @@
       <!-- fourth step resume info -->
       <mat-step>
         <ng-template matStepLabel>Resumen</ng-template>
-        <div class="summary">
-          <h3>Customer Info</h3>
-          <p>Name: {{ customerInfo?.name }}</p>
-          <p>Company: {{ customerInfo?.companyName }}</p>
-          <p>Phone: {{ customerInfo?.numberPhone }}</p>
+        <div class="formStepFour">
+          <div class="contDecoration">
 
-          <h3>Basecard Info</h3>
-          <p>Title: {{ basecardSelected?.title }}</p>
-          <p>Features:</p>
-          <ul>
-            <li *ngFor="let feature of basecardSelected?.features">
-              {{ feature.nameFeature }}
-            </li>
-          </ul>
-          <p>Category: {{ basecardSelected?.category }}</p>
+          </div>
+          <div class="container">
 
-          <h3>Sistemas Operativos</h3>
-          <div *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
-            <p>{{ os }}</p>
+            
+            <div class="infoText">
+
+              <h3>Customer Info</h3>
+              <div class="details">
+                
+                <p> <span class="titleLine"> Name:</span> {{ customerInfo?.name }}</p>
+                <p> <span class="titleLine"> Company:</span> {{ customerInfo?.companyName }}</p>
+                <p> <span class="titleLine"> country code:</span> {{ customerInfo?.countryCode }}</p>
+                <p> <span class="titleLine"> Phone:</span> {{ customerInfo?.numberPhone }}</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="container">
+            <div class="infoText">
+
+              <h3>Basecard Info</h3>
+              <div class="details">
+                
+                <p> <span class="titleLine">Title: </span> {{ newBuildCard?.name }}</p>
+                <p> <span class="titleLine">Features: </span></p>
+                <ul>
+                  <li *ngFor="let feature of basecardSelected?.features">
+                    {{ feature.nameFeature }}
+                  </li>
+                </ul>
+                <p> <span class="titleLine">Category: </span> {{ basecardSelected?.category }}</p>
+              </div>
+            </div>
+            
           </div>
 
-          <h3>Plataformas</h3>
-          <div *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
-            <p>{{ platform }}</p>
+          <div class="container containerDetailsDelivery">
+            
+            <h3>Entregables</h3>
+            <div class="infoText deliverys">
+
+            <div class="so detailsDelivery">
+
+              <h3>Sistemas Operativos</h3>
+              <div *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
+                <p>{{ os }}</p>
+              </div>
+            </div>
+            <div class="platforms detailsDelivery">
+              <h3>Plataformas</h3>
+              <div *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
+                <p>{{ platform }}</p>
+              </div>
+            </div>
+            <div class="doc detailsDelivery">
+
+            <h3>Documentación</h3>
+            <div *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
+              <p>{{ doc }}</p>
+            </div>
+          </div>
+          </div>
+        </div>
+          <div class="container">
+            <div class="infot">
+
+              <h3>Costo Total</h3>
+              <p>{{ newBuildCard?.cost | currency}}</p>
+            </div>
+            
+          
+            
+            <div class="infot">
+
+              <h3>Duración del Desarrollo</h3>
+              <p>{{ newBuildCard?.developmentDuration }} days</p>
+            </div>
           </div>
 
-          <h3>Documentación</h3>
-          <div *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
-            <p>{{ doc }}</p>
+
+          <div class="imgDecoration">
+            <img src="../../../../assets/images/dev.svg" alt="imgtime">
           </div>
-
-          <h3>Costo Total</h3>
-          <p>{{ newBuildCard?.cost }}</p>
-
-          <h3>Duración del Desarrollo</h3>
-          <p>{{ newBuildCard?.developmentDuration }}</p>
         </div>
 
-        <div>
+        <div class="btnsFinal">
           <button mat-button matStepperPrevious class="btnBack">Back</button>
           <button mat-button (click)="createBuildcard()" class="btnCreate">Crear y Guardar</button>
         </div>
