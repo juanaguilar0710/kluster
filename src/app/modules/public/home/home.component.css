@@ -38,7 +38,7 @@ header>.introduction>div>p{
     margin-top: 1rem;
 }
 
-header >.introduction> button{
+header >.introduction> button, .btnContinue{
     padding: 1rem 3rem;
     background-color: var(--brand-color);
     color: var(--main-bg-color);
@@ -57,3 +57,35 @@ header >.introduction> button:hover{
     width: 80%;
     margin: auto;
 }
+.btnNewBase{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.btnNewBase> span{
+    font-size: 1.3rem;
+    background: transparent;
+    margin-left: 5px;
+    color: var(--button-primary-color);
+}
+.btnContinue{
+    position: fixed;
+    right: 20px;
+    bottom: 30px !important;
+    transition: all .3s ease;
+}
+.btnContinue:active{
+    transform: scale(.9,.9);
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .pulse-button {
+    animation: heartbeat 1s infinite;
+  }

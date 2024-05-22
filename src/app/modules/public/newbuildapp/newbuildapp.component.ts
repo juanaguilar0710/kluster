@@ -30,7 +30,7 @@ export class NewbuildappComponent implements OnInit {
 
   operatingSystems: string[] = ['iOS', 'Android', 'Windows', 'macOS', 'Linux'];
   platforms: string[] = ['Cellular', 'Desktop', 'Tablet'];
-  documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas'];
+  documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas','Diseños', 'MockUps'];
   features: Feature[] = [];
   selectedFeatures: string[] = [];
   totalCost: number = 0;

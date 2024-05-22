@@ -15,10 +15,11 @@
         </div>
         
         <button class="btnNewBase" [routerLink]="['newbuild']">
-            New
+            Make your idea <span>!Now¡</span> 
         </button>
     </div>
 </header>
+<button  class="btnNewBase btnContinue pulse-button" *ngIf="canContinue"[routerLink]="['newbuild']">Continue</button>
 <section>
     <app-cards></app-cards>
 </section>

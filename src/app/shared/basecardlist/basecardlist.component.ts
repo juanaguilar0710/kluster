@@ -23,7 +23,6 @@ export class BasecardlistComponent implements OnInit {
     this.filteredData = this.data;
     this.categories = this.getUniqueCategories(this.data);
 
-    // Suscripción al evento $baseCardId para actualizar canContinue
     this.basecardService.$baseCardId.subscribe((id: number | null) => {
       this.canContinue = id !== null;
       console.log(id !== null)
