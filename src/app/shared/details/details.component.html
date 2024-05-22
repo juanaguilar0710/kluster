@@ -5,18 +5,18 @@
                 <div class="img"></div>
                 <div class="labels">
                     <h2>Build an app like</h2>
-                    <h3>Title</h3>
+                    <h3>{{baseData.title}}</h3>
                 </div>
             </header>
             <section class="description">
                 <div class="costAndFeatures">
                     <div class="cost">
                         <h3>Cost from</h3>
-                        <p>000000</p>
+                        <p>{{baseData.cost}}</p>
                     </div>
                     <div class="featuresNum">
                         <h3>Features</h3>
-                        <p>10</p>
+                        <p>{{baseData.numberFeatures}}</p>
                     </div>
                 </div>
                 <div class="descriptionBody">
@@ -58,7 +58,8 @@
                 <span class="material-icons md-light">close</span>
             </div>
             <div class="previewMobile"></div>
-            <button class="btnAdd">Add base</button>
+            <button class="btnAdd" (click)="useBase()">Add base</button>
         </div>
     </div>
 </div>
+<!--  -->

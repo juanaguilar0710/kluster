@@ -1,5 +1,7 @@
 .card{
     width: 100%;
+    min-width: 220px;
+    box-sizing: border-box;
     border: 1px solid var(--border-color);
     border-radius: 0px 15px 15px 15px;
     box-sizing: border-box;
@@ -43,6 +45,7 @@
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 .card > header > img{
     width: 50px ;
@@ -59,7 +62,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin: 0;
+    z-index: 80;
+    position: absolute;
+    right: 20px;
 }
 .card > header > .btnAdd > span{
     background: transparent;
@@ -75,7 +80,7 @@ footer>div>h3,p{
     background:transparent;
 }
 footer>div >h3{
-
+    width: max-content;
     font-weight: 300;
     font-size: 1rem;
     color: #9b9fb1;

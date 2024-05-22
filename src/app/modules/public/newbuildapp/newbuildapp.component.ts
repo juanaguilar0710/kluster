@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { BuildcardService } from 'src/services/buildcards/buildcard.service';
 import { CustomerService } from 'src/services/customer/customer.service';
 import { Customer } from 'src/services/interface/Customer';
+import { Basecard } from 'src/services/interface/basecard';
 import { Buildcard } from 'src/services/interface/buildcard.interface';
+import { ModalService } from 'src/services/modal.service';
 
 @Component({
   selector: 'app-newbuildapp',
@@ -19,11 +22,23 @@ export class NewbuildappComponent implements OnInit {
   customerInfo!: Customer;
   newBuildCard!: Buildcard;
 
+  modalListIs:boolean=false;
+
+  basecardSelected!: Basecard;
+  basecardExist:boolean =false;
+
+  operatingSystems: string[] = ['iOS', 'Android', 'Windows', 'macOS', 'Linux'];
+  platforms: string[] = ['Cellular', 'Desktop', 'Tablet'];
+  documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas'];
+
+
   constructor(
     private _formBuilder: FormBuilder,
     private customerService: CustomerService,
     private buildcardService: BuildcardService,
-    private router: Router
+    private basecardService: BasecardService,
+    private router: Router,
+    private modalService:ModalService
   ) {}
 
   ngOnInit(): void {
@@ -39,13 +54,22 @@ export class NewbuildappComponent implements OnInit {
         [Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
       ],
     });
+    this.checkBasecard();
+
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+      customBaseCtrl: ['',],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required],
+      operatingSystems: this._formBuilder.array([]),
+      platforms: this._formBuilder.array([]),
+      documentation: this._formBuilder.array([])
     });
+    this.basecardService.$baseCardId.subscribe((res)=>{ this.checkBasecard()})
+    this.modalService.$basecardlistModal.subscribe((res)=>{ this.modalListIs = res})
   }
+
+
+  
 
   createCustomer() {
     if (this.firstFormGroup.valid) {
@@ -57,8 +81,15 @@ export class NewbuildappComponent implements OnInit {
         companyName: this.firstFormGroup.get('companyCtrl')?.value,
       };
 
+      this.newBuildCard={
+        name:'',
+        features:[],
+        reference:'',
+        id:1,
+        last_update:Date(),
+        customer:this.customerInfo
+      }
       this.customerService.createNewCustomer(this.customerInfo);
-
       // this.createBuildcard();
     } else {
       console.error('Form is not valid');
@@ -67,7 +98,7 @@ export class NewbuildappComponent implements OnInit {
 
   // Método adicional para crear el objeto Buildcard
   createBuildcard() {
-    console.log('done');
+    console.log(this.newBuildCard)
   this.router.navigate(['/user/dashboard'])
     /* if (this.secondFormGroup.valid) {
       this.newBuildCard = {
@@ -86,4 +117,80 @@ export class NewbuildappComponent implements OnInit {
       console.error('Second form is not valid');
     } */
   }
+
+  checkBasecard(): void {
+    const basecardId = this.basecardService.getBaseCardId();
+    if (basecardId !== null) {
+      const basecard = this.basecardService.getBaseCardById(basecardId);
+      if (basecard) {
+        this.basecardSelected = basecard;
+        this.basecardExist = true;
+      } else {
+        this.basecardExist = false;
+        console.error('Basecard not found');
+      }
+    } else {
+      this.basecardExist = false;
+      console.error('No basecard ID set');
+    }
+  }
+
+  seeBaseList(){
+    this.modalListIs=true
+    this.modalService.$basecardlistModal.emit(true)
+  }
+  saveUrl(){
+    if (this.secondFormGroup.valid) {
+      this.newBuildCard.urlBase =this.secondFormGroup.get('customBaseCtrl')?.value
+      this.newBuildCard.last_update = Date()
+      this.newBuildCard.status = 0 
+      this.newBuildCard.developmentDuration = 30  
+    } else {
+      console.error('Form is not valid');
+    }
+    
+  }
+  saveBase(){
+    if (this.basecardExist) {
+
+      this.newBuildCard.basecard_Id=this.basecardSelected
+      this.newBuildCard.status = 0
+      this.newBuildCard.cost = this.basecardSelected.cost
+      this.newBuildCard.features = this.basecardSelected.features
+      this.newBuildCard.last_update = Date()
+      this.newBuildCard.developmentDuration = this.basecardSelected.developmentDuration
+    } else {
+      console.error('basecard is not valid');
+    }
+  }
+
+  onCheckboxChange(e: any, controlName: string) {
+    const checkArray: FormArray = this.thirdFormGroup.get(controlName) as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  saveDeliveryDetails() {
+    if (this.thirdFormGroup.valid) {
+      const deliveryDetail = this.thirdFormGroup.value;
+      this.newBuildCard.delivery_detail = Object.keys(deliveryDetail).map(key => deliveryDetail[key]);
+      console.log('New Build Card:', this.newBuildCard);
+      // Aquí puedes llamar al método para crear la nueva BuildCard
+      // this.createBuildcard();
+    } else {
+      console.error('Form is not valid');
+    }
+  }
+
 }

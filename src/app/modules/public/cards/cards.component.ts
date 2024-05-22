@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CardsData } from 'src/app/data/cards.data';
+import { BasecardService } from 'src/services/buildcards/basecard.service';
+import { Basecard } from 'src/services/interface/basecard';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -7,11 +8,25 @@ import { CardsData } from 'src/app/data/cards.data';
 })
 export class CardsComponent implements OnInit {
 
-  data = CardsData;
+  data: Basecard[] = [];
 
-  constructor() { }
+  constructor(private basecardService: BasecardService) { }
 
   ngOnInit(): void {
+    this.data = this.basecardService.getAllBaseCards();
   }
 
+  getBaseCard(id: number):Basecard | null {
+    const baseCard = this.basecardService.getBaseCardById(id);
+    if (baseCard) {
+      return baseCard
+    } else {
+      return null;
+      console.error('Base card not found');
+    }
+  }
+
+  filterByCategory(category: string) {
+    this.data = this.basecardService.filterBaseCardsByCategory(category);
+  }
 }

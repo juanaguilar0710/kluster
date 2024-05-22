@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { ModalService } from 'src/services/modal.service';
+import { Subscription } from 'rxjs';
+import { Basecard } from 'src/services/interface/basecard';
 
 export interface PeriodicElement {
   name: string;
-  
   weight: number;
   
 }
@@ -28,20 +31,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class DetailsComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'name', 'weight'];
+  displayedColumns: string[] = [ 'Feature', 'Cost'];
   dataSource = ELEMENT_DATA;
 
-  baseData:any
+  baseData!:Basecard;
 
-  constructor(private modalService:ModalService) { }
+  constructor(private modalService:ModalService,
+    private basecardService: BasecardService,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
-    this.modalService.$dataModal.subscribe((res)=>{
-      this.baseData= res
-    })
+    this.baseData = this.modalService.getDataModal()
+    
   }
-  
   closeModal(){
     this.modalService.$modal.emit(false)
   }
+
+  useBase(): void {
+    this.router.navigate(['/newbuild'])
+    this.basecardService.setBaseCardId(this.baseData!.id);
+    this.closeModal()
+  }
+
+  
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     BrowserAnimationsModule,
     MatIconModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

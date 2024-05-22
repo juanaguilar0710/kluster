@@ -1,108 +1,183 @@
 <app-navbar></app-navbar>
+<app-basecardlist *ngIf="modalListIs"></app-basecardlist>
 <section class="sectionSteps">
-    
-      <div class="title">
-        <h2>
 
-          Make your Idea
-        </h2>
-      </div>
-      <div class="stepsArea">
+  <div class="title">
+    <h2>
 
-      
-      <mat-horizontal-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-          <form [formGroup]="firstFormGroup" class="formStepOne">
-            <ng-template style="color: black !important;"> Fill out your name</ng-template>
-        
-            <mat-form-field>
-              <mat-label>Nombre</mat-label>
-              <input class="inputCustom" matInput formControlName="nameCtrl" placeholder="Nombre completo" required>
-              <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('required')">
-                Nombre es <strong>requerido</strong>
-              </mat-error>
-              <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('pattern')">
-                Nombre solo puede contener letras
-              </mat-error>
-            </mat-form-field>
-        
-            <mat-form-field>
-              <mat-label>Código del país</mat-label>
-              <input matInput formControlName="codeCtrl" placeholder="ej: +57" required>
-              <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('required')">
-                Código del país es <strong>requerido</strong>
-              </mat-error>
-              <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('pattern')">
-                Código debe comenzar con + seguido del código del país
-              </mat-error>
-            </mat-form-field>
-        
-            <mat-form-field>
-              <mat-label>Teléfono</mat-label>
-              <input matInput formControlName="phoneCtrl" placeholder="Número de teléfono" required>
-              <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('required')">
-                Teléfono es <strong>requerido</strong>
-              </mat-error>
-              <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('pattern')">
-                Teléfono solo puede contener números
-              </mat-error>
-            </mat-form-field>
-        
-            <mat-form-field>
-              <mat-label>Nombre de empresa</mat-label>
-              <input matInput formControlName="companyCtrl" placeholder="Empresa" required>
-              <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('required')">
-                Nombre de empresa es <strong>requerido</strong>
-              </mat-error>
-              <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('pattern')">
-                Nombre de empresa solo puede contener letras
-              </mat-error>
-            </mat-form-field>
-        
-            <div>
-              <button mat-button matStepperNext [disabled]="firstFormGroup.invalid" (click)="createCustomer()">Next</button>
-            </div>
-          </form>
-        </mat-step>
-        
-        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                     required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious class="btnBack">Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
+      Make your Idea
+    </h2>
+  </div>
+  <div class="stepsArea">
 
-        <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
-          <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                     required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious class="btnBack">Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
 
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
+    <mat-horizontal-stepper linear #stepper>
+      <!-- first step customer info -->
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <form [formGroup]="firstFormGroup" class="formStepOne">
+          <ng-template style="color: black !important;"> Fill out your name</ng-template>
+
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input class="inputCustom" matInput formControlName="nameCtrl" placeholder="Nombre completo" required>
+            <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('required')">
+              Nombre es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('pattern')">
+              Nombre solo puede contener letras
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Código del país</mat-label>
+            <input matInput formControlName="codeCtrl" placeholder="ej: +57" required>
+            <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('required')">
+              Código del país es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('pattern')">
+              Código debe comenzar con + seguido del código del país
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="phoneCtrl" placeholder="Número de teléfono" required>
+            <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('required')">
+              Teléfono es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('pattern')">
+              Teléfono solo puede contener números
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nombre de empresa</mat-label>
+            <input matInput formControlName="companyCtrl" placeholder="Empresa" required>
+            <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('required')">
+              Nombre de empresa es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('pattern')">
+              Nombre de empresa solo puede contener letras
+            </mat-error>
+          </mat-form-field>
+
           <div>
-            <button mat-button matStepperPrevious class="btnBack">Back</button>
-            <button mat-button (click)="createBuildcard()" class="btnCreate">Crear</button>
+            <button mat-button matStepperNext [disabled]="firstFormGroup.invalid"
+              (click)="createCustomer()">Next</button>
           </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </div>
+        </form>
+      </mat-step>
+      <!-- second step basecard selection -->
+      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+
+
+        <form [formGroup]="secondFormGroup" class="formStepTwo">
+          <div class="previewCard">
+            <h2 class="textOptions" *ngIf="basecardExist">You've selected this base</h2>
+            <h2 class="textOptions" *ngIf="!basecardExist">Select a base</h2>
+            <div class="contentCard">
+              <div class="btnAdd" *ngIf="!basecardExist" (click)="seeBaseList()">
+                <span class="material-icons md-48">add</span>
+              </div>
+              <app-basecard *ngIf="basecardExist" [data]="basecardSelected" [canAdd]="false"></app-basecard>
+            </div>
+
+            <div>
+              <button mat-button matStepperNext *ngIf="basecardExist" (click)="saveBase()">Use this base</button>
+            </div>
+          </div>
+          <ng-template matStepLabel>Fill out your address</ng-template>
+
+          <h2 class="textOptions">Or you can provide a URL link with the base you want to use <span
+              class="textOptional">Optional</span></h2>
+          <mat-form-field>
+            <mat-label>url</mat-label>
+            <input matInput formControlName="customBaseCtrl" placeholder="https://google">
+          </mat-form-field>
+          <div style="margin-top: 1rem;">
+            <button mat-button matStepperPrevious class="btnBack">Back</button>
+            <button mat-button matStepperNext>Use this URL</button>
+          </div>
+        </form>
+      </mat-step>
+      <!-- third step Delivery Details -->
+      <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+        <form [formGroup]="thirdFormGroup" class="formStepThree">
+          <ng-template matStepLabel>Detalles de entrega</ng-template>
+
+          <h3>Sistemas Operativos</h3>
+          <div *ngFor="let os of operatingSystems">
+            <label>
+              <input type="checkbox" [value]="os" (change)="onCheckboxChange($event, 'operatingSystems')"> {{os}}
+            </label>
+          </div>
+
+          <h3>Plataformas</h3>
+          <div *ngFor="let platform of platforms">
+            <label>
+              <input type="checkbox" [value]="platform" (change)="onCheckboxChange($event, 'platforms')"> {{platform}}
+            </label>
+          </div>
+
+          <h3>Documentación</h3>
+          <div *ngFor="let doc of documentationOptions">
+            <label>
+              <input type="checkbox" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> {{doc}}
+            </label>
+          </div>
+
+          <div style="margin-top: 1rem;">
+            <button mat-button matStepperPrevious class="btnBack">Back</button>
+            <button mat-button matStepperNext (click)="saveDeliveryDetails()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <!-- fourth step resume info -->
+      <mat-step>
+        <ng-template matStepLabel>Resumen</ng-template>
+        <div class="summary">
+          <h3>Customer Info</h3>
+          <p>Name: {{ customerInfo?.name }}</p>
+          <p>Company: {{ customerInfo?.companyName }}</p>
+          <p>Phone: {{ customerInfo?.numberPhone }}</p>
+
+          <h3>Basecard Info</h3>
+          <p>Title: {{ basecardSelected?.title }}</p>
+          <p>Features:</p>
+          <ul>
+            <li *ngFor="let feature of basecardSelected?.features">
+              {{ feature.nameFeature }}
+            </li>
+          </ul>
+          <p>Category: {{ basecardSelected?.category }}</p>
+
+          <h3>Sistemas Operativos</h3>
+          <div *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
+            <p>{{ os }}</p>
+          </div>
+
+          <h3>Plataformas</h3>
+          <div *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
+            <p>{{ platform }}</p>
+          </div>
+
+          <h3>Documentación</h3>
+          <div *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
+            <p>{{ doc }}</p>
+          </div>
+
+          <h3>Costo Total</h3>
+          <p>{{ newBuildCard?.cost }}</p>
+
+          <h3>Duración del Desarrollo</h3>
+          <p>{{ newBuildCard?.developmentDuration }}</p>
+        </div>
+
+        <div>
+          <button mat-button matStepperPrevious class="btnBack">Back</button>
+          <button mat-button (click)="createBuildcard()" class="btnCreate">Crear y Guardar</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
 </section>

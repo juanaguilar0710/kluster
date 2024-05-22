@@ -1,0 +1,27 @@
+<div class="bgModal">
+    <div class="modal">
+        <div class="leftSection">
+            <div class="selectCategories">
+                <label for="category">Category:</label>
+                <select id="category" [(ngModel)]="selectedCategory" (change)="filterCardsByCategory($event)">
+                  <option value="all" >All</option>
+                  <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                </select>
+              </div>
+        </div>
+        <div class="rightSection">
+            <div class="closeBtn" (click)="closeModal()">
+                <span class="material-icons md-light">close</span>
+            </div>
+            <header>
+                <h2>Select a basecard</h2>
+            </header>
+            <section class="cards">
+                <app-basecard *ngFor="let card of data" [data]="card"></app-basecard>
+            </section>
+            
+            
+            
+        </div>
+    </div>
+</div>
