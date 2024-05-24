@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Buildcard } from '../interface/buildcard.interface'; 
 import { environment } from 'src/environments/environment';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +15,28 @@ export class BuildcardService {
   }
 
   createNewBuild(newBuild: Buildcard) {
-    console.log('breoo')
+
     if (newBuild !== null && newBuild !== undefined) {
-      console.log('yeap')
       this.builds.push(newBuild);
       this.saveBuildcardInStorage(this.builds);
     }
   }
 
   saveBuildcardInStorage(builds: Buildcard[]) {
-    console.log('hola')
     if (environment.storage) {
       environment.storage.setItem('buildcards', JSON.stringify(builds));
     }
   }
 
-  getBuildcards() :any{
+  getBuildcards() :Observable<any>{
     const buildStorage = environment.storage.getItem('buildcards');
-    if (buildStorage) {
-      this.builds = JSON.parse(buildStorage);
-    }
-    return this.builds
+  
+    
+    if (buildStorage) {    
+      this.builds = JSON.parse(buildStorage);   } else {    
+      this.builds = []; 
+       }      
+     return of(this.builds);
   }
 
   updateBuildcard(updatedBuild: Buildcard) {

@@ -16,12 +16,16 @@ export class BuildcardsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.builds = this.buildcardService.getBuildcards();
+    this.getAllBuildCards();
     this.filterByStatus(-1); // Default to 'All' status
   }
 
 getAllBuildCards(){
-  this.builds = this.buildcardService.getBuildcards();
+  this.buildcardService.getBuildcards().subscribe((res)=>{
+    this.builds =res
+  },error =>{
+    console.log(error);
+  });
 }
 
   filterByStatus(status: number): void {
