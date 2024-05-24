@@ -184,7 +184,6 @@ export class NewbuildappComponent implements OnInit {
     if (this.thirdFormGroup.valid) {
       const deliveryDetail = this.thirdFormGroup.value;
       this.newBuildCard.delivery_detail = Object.keys(deliveryDetail).map(key => deliveryDetail[key]);
-      console.log('New Build Card:', this.newBuildCard);
       // Aquí puedes llamar al método para crear la nueva BuildCard
       // this.createBuildcard();
     } else {
@@ -197,10 +196,9 @@ export class NewbuildappComponent implements OnInit {
       let totalCost = 0;
       formArray.controls.forEach(control => {
         const featureName = control.value;
-        console.log(featureName)
+
         const feature = this.features.find(f => f.nameFeature === featureName);
         if (feature) {
-          console.log("holay"+ feature)
           totalCost += feature.costFeature;
         }
       });

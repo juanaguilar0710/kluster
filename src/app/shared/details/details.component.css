@@ -19,6 +19,7 @@
     padding: 4rem;
     padding-left: 5rem;
     box-sizing: border-box;
+    background-color: white;
 }
 /* styles for Info in modal left part */
 .leftSection{

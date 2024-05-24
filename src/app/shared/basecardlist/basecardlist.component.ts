@@ -25,7 +25,7 @@ export class BasecardlistComponent implements OnInit {
 
     this.basecardService.$baseCardId.subscribe((id: number | null) => {
       this.canContinue = id !== null;
-      console.log(id !== null)
+
     });
   }
   closeModal(){
@@ -54,6 +54,5 @@ export class BasecardlistComponent implements OnInit {
 
   resetData(){
     this.data = this.basecardService.getAllBaseCards();
-    console.log(this.data)
   }
 }
