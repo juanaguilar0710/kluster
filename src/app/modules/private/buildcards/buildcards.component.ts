@@ -20,13 +20,13 @@ export class BuildcardsComponent implements OnInit {
     this.filterByStatus(-1); // Default to 'All' status
   }
 
-getAllBuildCards(){
-  this.buildcardService.getBuildcards().subscribe((res)=>{
-    this.builds =res
-  },error =>{
-    console.log(error);
-  });
-}
+  getAllBuildCards(){
+    this.buildcardService.getBuildcards().subscribe((res)=>{
+      this.builds =res
+    },error =>{
+      console.log(error);
+    });
+  }
 
   filterByStatus(status: number): void {
     if (status === -1) {
@@ -36,7 +36,4 @@ getAllBuildCards(){
     }
   }
 
-  /* filterByStatus(status:number):void{
-    this.builds=this.buildcardService.filterByStatus(status);
-  } */
 }

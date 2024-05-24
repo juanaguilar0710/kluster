@@ -20,8 +20,8 @@
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--main-bg-color);
 }
+
 
 html,
 body {
@@ -71,3 +71,5 @@ body {
   ::ng-deep .mat-input-element .mat-form-field-autofill-control .inputCustom .ng-tns-c136-1 .cdk-text-field-autofill-monitored .ng-dirty .ng-valid .ng-touched{
     color: #00e676 !important;
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
