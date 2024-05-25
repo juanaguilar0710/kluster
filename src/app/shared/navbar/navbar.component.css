@@ -48,6 +48,14 @@ bottom: 0;
     
     background: transparent;
 }
+
+li a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+li a:active{
+    color: var(--primary-text-color);
+}
 /* styles for custom label */
 .btnDemo{
     position: relative;

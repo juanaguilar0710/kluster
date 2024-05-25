@@ -11,7 +11,7 @@ export interface Buildcard {
     basecard_Id?:Basecard,
     urlBase?:String,
     id:number,
-    last_update?:String,
+    last_update?:Date,
     customer?:Customer,
     delivery_detail?:any[],
     developmentDuration?:number

@@ -11,6 +11,8 @@ import { SharedModule  } from 'src/app/shared/shared.module';
 /* material */
 import {MatTabsModule} from '@angular/material/tabs';
 import { BuildcardscontentComponent } from './buildcardscontent/buildcardscontent.component';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BuildcardscontentComponent } from './buildcardscontent/buildcardsconten
     CommonModule,
     PrivateRoutingModule,
     SharedModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule,
+    FormsModule
   ]
 })
 export class PrivateModule { }

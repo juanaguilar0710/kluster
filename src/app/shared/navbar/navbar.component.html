@@ -1,7 +1,6 @@
 <nav>
     <div class="btnNav logo" (click)="goToHome()">
         
-            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
             <img src="../../../assets/images/logoKlab.png" alt="Logo kloustr lab">
         
     </div>
@@ -36,30 +35,18 @@
                 <span class="material-icons md-light">dashboard</span>
             </a>
         </li>
-        <!-- <li class="btnNav">
-            <a href="user/payment">
-
-                
-                <span class="material-icons md-light">task</span>
-            </a>
-        </li> -->
-        <!-- <li class="btnNav btnDemo">
-            <a href="user/dashboard">
-
-               
-                <span class="material-icons md-light">money</span>
-            </a>
-            
-        </li> -->
+       
     </ul>
 
     <div class="bottom">
         <div class="btnNav">
-            <span class="material-icons md-light">rocket</span>
+          <span class="material-icons md-light">rocket</span>
         </div>
-        <div class="btnNav btnProfile" (click)="openLogin()">
-            <span class="material-icons md-light">face</span>
+        <div class="btnNav btnProfile" *ngIf="!isAuthorized" (click)="openLogin()" >
+          <span class="material-icons md-light">face</span>
         </div>
-    </div>
-    
+        <div class="btnNav btnProfile" *ngIf="isAuthorized" (click)="logout()" >
+          <span class="material-icons md-light">face</span>
+        </div>
+      </div>
 </nav>

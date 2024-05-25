@@ -1,13 +1,31 @@
 <section>
     <div class="buildcards">
       <div class="card" *ngFor="let build of builds">
-        <section>
-          <small class="tag status">{{ build.status }}</small>
-          <div class="labelsInfo">
-            <h2 class="titleBuildcard">{{ build.name }}</h2>
-            <small class="lastEdit">Last Edit: {{ build.last_update}}</small>
-          </div>
-          <div class="optionsCard">
+        <section class="top">
+          <small class="tag status" [appCustomBackgroundColor]="toStringStatus(build.status!)">{{ toStringStatus( build.status!) }}</small>
+          <div class="titleAndOptions">
+            <div class="labelsInfo">
+              <h2 class="titleBuildcard">{{ build.name }}</h2>
+              <small class="lastEdit"><span class="ttlabel">Last Edit:</span> {{ build.last_update! | date }}</small>
+            </div>
+            <div class="optionsCard">
+              <mat-icon class="iconOptions" (click)="toggleOptions(build.id)">more_vert</mat-icon>
+              <ul class="optionsList" *ngIf="optionsVisibility[build.id]">
+                <li class="option"  (click)="deleteBuild(build.id)"><mat-icon class="iconli">delete</mat-icon> Delete</li>
+                <li class="option" (click)="editName(build.id)"><mat-icon class="iconli">edit</mat-icon> Rename</li>
+              </ul>
+
+            </div>
+            <div class="changeNameForm" *ngIf="changeNameIs">
+              <div class="btnDeleteCard"  (click)="closeModal()">
+                <mat-icon>cancel</mat-icon>
+              </div>
+              <h2>Change tittle build</h2>
+              <form>
+                <input type="text" name="changeName" class="changeNameTxt" id="changeNameId" placeholder="{{ build.name }}" [(ngModel)]="newName">
+                <button class="btnChange" (click)="updateBuildName(build.id)">Change</button>
+              </form>
+            </div>
           </div>
           <div class="progressBarArea">
             <div class="labelsProgress">
@@ -26,7 +44,7 @@
             </div>
             <div class="Duration">
               <h3>Duration</h3>
-              <p>{{ build.duration_of_development }}</p>
+              <p>{{ build.developmentDuration }}</p>
             </div>
           </div>
           <button>Continue</button>

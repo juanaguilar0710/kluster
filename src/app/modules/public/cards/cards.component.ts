@@ -13,20 +13,32 @@ export class CardsComponent implements OnInit {
   constructor(private basecardService: BasecardService) { }
 
   ngOnInit(): void {
-    this.data = this.basecardService.getAllBaseCards();
+    this.basecardService.getAllBaseCards().subscribe((res)=>{
+      this.data=res
+    },error=>{
+      console.error(error)
+    });
   }
 
-  getBaseCard(id: number):Basecard | null {
-    const baseCard = this.basecardService.getBaseCardById(id);
-    if (baseCard) {
-      return baseCard
-    } else {
+  /* getBaseCard(id: number):Basecard | null {
+    this.basecardService.getBaseCardById(id).subscribe((res)=>{
+
+      if (res) {
+        return res
+      } else {
+        return null;
+        console.error('Base card not found');
+      }
+    },error=>{
       return null;
-      console.error('Base card not found');
-    }
-  }
+    });
+  } */
 
-  filterByCategory(category: string) {
-    this.data = this.basecardService.filterBaseCardsByCategory(category);
+  filterByCategory(category: string): void {
+    this.basecardService.filterBaseCardsByCategory(category).subscribe((res)=>{
+      this.data=res
+    },error=>{
+      console.error(error)
+    });;
   }
 }

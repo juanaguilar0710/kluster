@@ -4,7 +4,6 @@
 
   <div class="title">
     <h2>
-
       Make your Idea
     </h2>
   </div>
@@ -14,53 +13,53 @@
       <!-- first step customer info -->
       <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
         <form [formGroup]="firstFormGroup" class="formStepOne">
-          <ng-template > Fill out your name</ng-template>
+          <ng-template matStepLabel>About you</ng-template>
 
           <mat-form-field>
-            <mat-label>Nombre</mat-label>
+            <mat-label>Name</mat-label>
             <input matInput formControlName="nameCtrl" placeholder="Nombre completo" required>
             <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('required')">
-              Nombre es <strong>requerido</strong>
+              Names is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('pattern')">
-              Nombre solo puede contener letras
+              Name field can only container letters 
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Código del país</mat-label>
+            <mat-label>Country Code</mat-label>
             <input matInput formControlName="codeCtrl" placeholder="ej: +57" required>
             <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('required')">
-              Código del país es <strong>requerido</strong>
+              Country code is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('pattern')">
-              Código debe comenzar con + seguido del código del país
+              Country code must start with +
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Teléfono</mat-label>
+            <mat-label>Phone</mat-label>
             <input matInput formControlName="phoneCtrl" placeholder="Número de teléfono" required>
             <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('required')">
-              Teléfono es <strong>requerido</strong>
+              Phone is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('pattern')">
-              Teléfono solo puede contener números
+              Phone can only contain numbers
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Nombre de empresa</mat-label>
+            <mat-label>Name company</mat-label>
             <input matInput formControlName="companyCtrl" placeholder="Empresa" required>
             <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('required')">
-              Nombre de empresa es <strong>requerido</strong>
+              Name Company is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="firstFormGroup.get('companyCtrl')!.hasError('pattern')">
-              Nombre de empresa solo puede contener letras
+              Company Name field can only contain letters
             </mat-error>
           </mat-form-field>
 
-          <div>
+          <div class="contBtn">
             <button mat-button matStepperNext [disabled]="firstFormGroup.invalid"
               (click)="createCustomer()">Next</button>
           </div>
@@ -73,20 +72,24 @@
         <form [formGroup]="secondFormGroup" class="formStepTwo">
           <h2 class="textOptions">Set name app</h2>
           <mat-form-field style="margin-bottom: 1rem;">
-            <mat-label>Nombre</mat-label>
+            <mat-label>Name</mat-label>
             <input class="inputCustom" matInput formControlName="nameBuildCtrl" placeholder="Nombre completo" required>
             <mat-error *ngIf="secondFormGroup.get('nameBuildCtrl')!.hasError('required')">
-              Nombre es <strong>requerido</strong>
+              Name fields is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="secondFormGroup.get('nameBuildCtrl')!.hasError('pattern')">
-              Nombre solo puede contener letras
+              Name field can only container letters 
             </mat-error>
           </mat-form-field>
 
           <div class="previewCard">
+
             <h2 class="textOptions" *ngIf="basecardExist">You've selected this base</h2>
             <h2 class="textOptions" *ngIf="!basecardExist">Select a base</h2>
             <div class="contentCard">
+              <div class="btnDeleteCard" *ngIf="basecardExist" (click)="deleteSelectionCard()">
+                <mat-icon>cancel</mat-icon>
+              </div>
               <div class="btnAdd" *ngIf="!basecardExist" (click)="seeBaseList()">
                 <span class="material-icons md-48">add</span>
               </div>
@@ -97,7 +100,7 @@
               <button mat-button matStepperNext *ngIf="basecardExist" (click)="saveBase()">Use this base</button>
             </div>
           </div>
-          <ng-template matStepLabel>Fill out your address</ng-template>
+          <ng-template matStepLabel>Choose your App</ng-template>
 
           <h2 class="textOptions">Or you can provide a URL link with the base you want to use <span
               class="textOptional">Optional</span></h2>
@@ -127,28 +130,29 @@
       <!-- third step Delivery Details -->
       <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
         <form [formGroup]="thirdFormGroup" class="formStepThree">
-          <ng-template matStepLabel>Detalles de entrega</ng-template>
+          <ng-template matStepLabel>Delivery Details</ng-template>
+          
+          <h3>Documentation</h3>
+          <div *ngFor="let doc of documentationOptions">
+            <label>
+              <input type="checkbox" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> {{doc}}
+            </label>
+          </div>
 
-          <h3>Sistemas Operativos</h3>
+          <h3>Operating Systems</h3>
           <div *ngFor="let os of operatingSystems">
             <label>
               <input type="checkbox" [value]="os" (change)="onCheckboxChange($event, 'operatingSystems')"> {{os}}
             </label>
           </div>
 
-          <h3>Plataformas</h3>
+          <h3>Platforms</h3>
           <div *ngFor="let platform of platforms">
             <label>
               <input type="checkbox" [value]="platform" (change)="onCheckboxChange($event, 'platforms')"> {{platform}}
             </label>
           </div>
 
-          <h3>Documentación</h3>
-          <div *ngFor="let doc of documentationOptions">
-            <label>
-              <input type="checkbox" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> {{doc}}
-            </label>
-          </div>
 
           <div style="margin-top: 1rem;">
             <button mat-button matStepperPrevious class="btnBack">Back</button>
@@ -158,7 +162,7 @@
       </mat-step>
       <!-- fourth step resume info -->
       <mat-step>
-        <ng-template matStepLabel>Resumen</ng-template>
+        <ng-template matStepLabel>Summary</ng-template>
         <div class="formStepFour">
           <div class="contDecoration">
 
@@ -200,25 +204,25 @@
 
           <div class="container containerDetailsDelivery">
             
-            <h3>Entregables</h3>
+            <h3>Deliverables</h3>
             <div class="infoText deliverys">
 
             <div class="so detailsDelivery">
 
-              <h3>Sistemas Operativos</h3>
+              <h3>Operating Systems</h3>
               <div *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
                 <p>{{ os }}</p>
               </div>
             </div>
             <div class="platforms detailsDelivery">
-              <h3>Plataformas</h3>
+              <h3>Platforms</h3>
               <div *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
                 <p>{{ platform }}</p>
               </div>
             </div>
             <div class="doc detailsDelivery">
 
-            <h3>Documentación</h3>
+            <h3>Documentation</h3>
             <div *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
               <p>{{ doc }}</p>
             </div>
@@ -228,7 +232,7 @@
           <div class="container">
             <div class="infot">
 
-              <h3>Costo Total</h3>
+              <h3> Total Cost</h3>
               <p>{{ newBuildCard?.cost | currency}}</p>
             </div>
             
@@ -236,7 +240,7 @@
             
             <div class="infot">
 
-              <h3>Duración del Desarrollo</h3>
+              <h3>Duration of development</h3>
               <p>{{ newBuildCard?.developmentDuration }} days</p>
             </div>
           </div>

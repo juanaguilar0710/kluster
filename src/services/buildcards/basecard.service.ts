@@ -1,36 +1,49 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Basecard } from '../interface/basecard';
 import { CardsData } from 'src/app/data/cards.data';
+import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasecardService {
 
-  $baseCardId = new EventEmitter<number>();
   private baseCards: Basecard[] = CardsData;
-  private baseCardId: number | null = null;
+  private baseCardsSubject: BehaviorSubject<Basecard[]> = new BehaviorSubject<Basecard[]>([]);
+  baseCards$: Observable<Basecard[]> = this.baseCardsSubject.asObservable();
 
-  constructor() { }
-  
-  setBaseCardId(id: number): void {
-    this.baseCardId = id;
-    this.$baseCardId.emit(id);
+
+  private baseCardIdSubject: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
+  baseCardId$ = this.baseCardIdSubject.asObservable();
+
+  constructor() { 
+    this.loadBaseCards();
   }
 
-  getBaseCardId(): number | null {
-    return this.baseCardId;
+  private loadBaseCards(): void {
+    this.baseCardsSubject.next(this.baseCards);
   }
 
-  getBaseCardById(id: number): Basecard | undefined {
-    return this.baseCards.find(card => card.id === id);
+  setBaseCards(baseCards: Basecard[]): void {
+    this.baseCardsSubject.next(baseCards);
   }
 
-  filterBaseCardsByCategory(category: String): Basecard[] {
-    return this.baseCards.filter(card => card.category === category);
+  setBaseCardId(id: number|null): void {
+    this.baseCardIdSubject.next(id);
   }
 
-  getAllBaseCards(): Basecard[] {
-    return this.baseCards;
+  getBaseCardById(id: number): Observable<Basecard> {
+    const card = this.baseCards.find(card => card.id === id);
+    return card ? of(card) : throwError(`Basecard with id ${id} not found.`);
+  }
+
+  filterBaseCardsByCategory(category: String): Observable<Basecard[]> {
+    const filteredCards = this.baseCards.filter(card => card.category === category);
+    return of(filteredCards);
+  }
+
+  getAllBaseCards(): Observable<Basecard[]> {
+    return this.baseCards$;
   }
 }

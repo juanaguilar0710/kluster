@@ -17,17 +17,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private authService: AuthService,
     private router: Router,
     private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
-    this.authSubscription = this.authService.authStatus$.subscribe((status) => {
-      this.isAuthorized = status;
-    },error=>{
+    this.authSubscription = this.loginService.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isAuthorized = isLoggedIn;
+    }, error => {
       console.error(error);
-      
     });
   }
 

@@ -19,13 +19,13 @@ export class BasecardlistComponent implements OnInit {
   constructor(private modalService:ModalService,private basecardService: BasecardService) { }
 
   ngOnInit(): void {
-    this.data = this.basecardService.getAllBaseCards();
+    this.getAllBasecards()
+
     this.filteredData = this.data;
     this.categories = this.getUniqueCategories(this.data);
 
-    this.basecardService.$baseCardId.subscribe((id: number | null) => {
+    this.basecardService.baseCardId$.subscribe((id: number | null) => {
       this.canContinue = id !== null;
-
     });
   }
   closeModal(){
@@ -35,12 +35,15 @@ export class BasecardlistComponent implements OnInit {
     const target = event.target as HTMLSelectElement;
     this.selectedCategory = target.value;
     if(this.selectedCategory == 'all'){
-      this.data = this.basecardService.getAllBaseCards();
+      this.getAllBasecards()
       return;
     }
     if (this.selectedCategory) {
-      this.filteredData = this.basecardService.filterBaseCardsByCategory(this.selectedCategory);
-      this.data = this.filteredData
+      this.basecardService.filterBaseCardsByCategory(this.selectedCategory).subscribe((res)=>{
+        this.data=res
+      },error=>{
+        console.error(error)
+      });
     } else {
       this.filteredData = this.data;
     }
@@ -53,6 +56,15 @@ export class BasecardlistComponent implements OnInit {
   }
 
   resetData(){
-    this.data = this.basecardService.getAllBaseCards();
+    this.getAllBasecards()
+  }
+
+  getAllBasecards(){
+    this.basecardService.getAllBaseCards().subscribe((res)=>{
+      this.data=res
+    },error=>{
+      console.error(error)
+    });
+
   }
 }

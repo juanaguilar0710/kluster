@@ -5,10 +5,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasecardComponent } from './basecard/basecard.component';
 import { DetailsComponent } from './details/details.component';
+import { BasecardlistComponent } from './basecardlist/basecardlist.component';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
-import { BasecardlistComponent } from './basecardlist/basecardlist.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CustomBackgroundColorDirective } from './directives/custom-backgroud-color.directive';
 
 
 
@@ -18,20 +20,24 @@ import { BasecardlistComponent } from './basecardlist/basecardlist.component';
     FooterComponent,
     BasecardComponent,
     DetailsComponent,
-    BasecardlistComponent
+    BasecardlistComponent,
+    CustomBackgroundColorDirective
+    
   ],
   imports: [
     CommonModule,
     MatIconModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   exports:[
     NavbarComponent,
     FooterComponent,
     BasecardComponent,
     DetailsComponent,
-    BasecardlistComponent
+    BasecardlistComponent,
+    CustomBackgroundColorDirective
   ]
 })
 export class SharedModule { }

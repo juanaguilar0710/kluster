@@ -80,11 +80,12 @@
 }
 
 .btnContinue{
-    padding: 1rem 4rem;
+    padding: 1.3rem 4rem;
     border-radius: 5px;
     border: none;
-    background: var(--primary-text-color);
-    color: var(--auxiliar-bg-color);
+    font-size: 1rem;
+    background: var(--main-bg-color);
+    color: var(--brand-color);
     font-weight: bold;
     cursor: pointer;
 

@@ -26,14 +26,13 @@
 html,
 body {
   height: 100%;
+  background: var(--main-bg-color);
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.mat-tab-label .mat-tab-label-content {
-  color: black !important;
-}
+
 .mat-tab-label {
   width: 80px !important;
   min-width: fit-content !important;
@@ -71,5 +70,6 @@ body {
   ::ng-deep .mat-input-element .mat-form-field-autofill-control .inputCustom .ng-tns-c136-1 .cdk-text-field-autofill-monitored .ng-dirty .ng-valid .ng-touched{
     color: #00e676 !important;
   }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-stepper-vertical, .mat-stepper-horizontal{
+  background: transparent;
+}

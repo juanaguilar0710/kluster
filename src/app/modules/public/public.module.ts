@@ -15,6 +15,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SharedModule,
     MatInputModule,
     MatFormFieldModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     MatStepperModule,

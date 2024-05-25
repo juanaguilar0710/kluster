@@ -71,7 +71,7 @@ export class NewbuildappComponent implements OnInit {
       platforms: this._formBuilder.array([]),
       documentation: this._formBuilder.array([])
     });
-    this.basecardService.$baseCardId.subscribe((res)=>{ this.checkBasecard()})
+    this.basecardService.baseCardId$.subscribe((res)=>{ this.checkBasecard()})
     this.modalService.$basecardlistModal.subscribe((res)=>{ this.modalListIs = res})
     this.features = this.featureService.getAllFeatures();
   }
@@ -93,8 +93,8 @@ export class NewbuildappComponent implements OnInit {
         name:'',
         features:[],
         reference:'',
-        id:1,
-        last_update:Date(),
+        id:0,
+        last_update: new Date(),
         customer:this.customerInfo
       }
       this.customerService.createNewCustomer(this.customerInfo);
@@ -114,21 +114,28 @@ export class NewbuildappComponent implements OnInit {
   }
 
   checkBasecard(): void {
-    const basecardId = this.basecardService.getBaseCardId();
-    if (basecardId !== null) {
-      const basecard = this.basecardService.getBaseCardById(basecardId);
-      if (basecard) {
-        this.basecardSelected = basecard;
-        this.basecardExist = true;
+    this.basecardService.baseCardId$.subscribe(basecardId => {
+      if (basecardId !== null) {
+        this.basecardService.getBaseCardById(basecardId).subscribe(basecard => {
+          if (basecard) {
+            this.basecardSelected = basecard;
+            this.basecardExist = true;
+          } else {
+            this.basecardExist = false;
+            console.error('Basecard not found');
+          }
+        }, error => {
+          console.error('Error fetching basecard:', error);
+        });
       } else {
         this.basecardExist = false;
-        console.error('Basecard not found');
+        console.error('No basecard ID set');
       }
-    } else {
-      this.basecardExist = false;
-      console.error('No basecard ID set');
-    }
+    }, error => {
+      console.error('Error fetching basecard ID:', error);
+    });
   }
+  
 
   seeBaseList(){
     this.modalListIs=true
@@ -140,7 +147,7 @@ export class NewbuildappComponent implements OnInit {
 
       this.newBuildCard.name =this.secondFormGroup.get('nameBuildCtrl')?.value
       this.newBuildCard.urlBase =this.secondFormGroup.get('customBaseCtrl')?.value
-      this.newBuildCard.last_update = Date()
+      this.newBuildCard.last_update = new Date()
       this.newBuildCard.status = 0 
       this.newBuildCard.developmentDuration = 30  
       this.newBuildCard.features = features
@@ -156,7 +163,7 @@ export class NewbuildappComponent implements OnInit {
       this.newBuildCard.status = 0
       this.newBuildCard.cost = this.basecardSelected.cost
       this.newBuildCard.features = this.basecardSelected.features
-      this.newBuildCard.last_update = Date()
+      this.newBuildCard.last_update = new Date()
       this.newBuildCard.developmentDuration = this.basecardSelected.developmentDuration
     } else {
       console.error('basecard is not valid');
@@ -184,8 +191,6 @@ export class NewbuildappComponent implements OnInit {
     if (this.thirdFormGroup.valid) {
       const deliveryDetail = this.thirdFormGroup.value;
       this.newBuildCard.delivery_detail = Object.keys(deliveryDetail).map(key => deliveryDetail[key]);
-      // Aquí puedes llamar al método para crear la nueva BuildCard
-      // this.createBuildcard();
     } else {
       console.error('Form is not valid');
     }
@@ -227,4 +232,7 @@ export class NewbuildappComponent implements OnInit {
     }
   }
   
+  deleteSelectionCard(){
+    this.basecardService.setBaseCardId(null);
+  }
 }

@@ -1,64 +1,92 @@
 import { Injectable } from '@angular/core';
 import { Buildcard } from '../interface/buildcard.interface'; 
 import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildcardService {
 
-  builds: Buildcard[] = [];
+  private buildsSubject: BehaviorSubject<Buildcard[]> = new BehaviorSubject<Buildcard[]>([]);
+  builds$: Observable<Buildcard[]> = this.buildsSubject.asObservable();
 
-  constructor() { 
-    this.getBuildcards(); 
+  constructor() {
+    this.loadBuildcards();
   }
 
-  createNewBuild(newBuild: Buildcard) {
-
-    if (newBuild !== null && newBuild !== undefined) {
-      this.builds.push(newBuild);
-      this.saveBuildcardInStorage(this.builds);
+  private loadBuildcards(): void {
+    const buildStorage = environment.storage.getItem('buildcards');
+    if (buildStorage) {
+      this.buildsSubject.next(JSON.parse(buildStorage));
+    } else {
+      this.buildsSubject.next([]);
     }
   }
 
-  saveBuildcardInStorage(builds: Buildcard[]) {
+  private saveBuildcardInStorage(builds: Buildcard[]): void {
     if (environment.storage) {
       environment.storage.setItem('buildcards', JSON.stringify(builds));
     }
   }
 
-  getBuildcards() :Observable<any>{
-    const buildStorage = environment.storage.getItem('buildcards');
-  
-    
-    if (buildStorage) {    
-      this.builds = JSON.parse(buildStorage);   } else {    
-      this.builds = []; 
-       }      
-     return of(this.builds);
-  }
-
-  updateBuildcard(updatedBuild: Buildcard) {
-    const index = this.builds.findIndex(build => build.id === updatedBuild.id);
-    if (index !== -1) {
-      this.builds[index] = updatedBuild;
-      this.saveBuildcardInStorage(this.builds);
+  createNewBuild(newBuild: Buildcard): void {
+    const currentBuilds = this.buildsSubject.value;
+    if (newBuild) {
+      const updatedBuilds = [...currentBuilds, newBuild];
+      this.buildsSubject.next(updatedBuilds);
+      this.saveBuildcardInStorage(updatedBuilds);
     }
   }
 
- 
-  deleteBuildcard(id: number) {
-    this.builds = this.builds.filter(build => build.id !== id);
-    this.saveBuildcardInStorage(this.builds);
+  updateBuildcard(updatedBuild: Buildcard): void {
+    const currentBuilds = this.buildsSubject.value;
+    const index = currentBuilds.findIndex(build => build.id === updatedBuild.id);
+    if (index !== -1) {
+      currentBuilds[index] = updatedBuild;
+      this.buildsSubject.next([...currentBuilds]);
+      this.saveBuildcardInStorage(currentBuilds);
+    }
+  }
+  updateBuildName(id: number, newName: string): void {
+    const currentBuilds = this.buildsSubject.value;
+    const index = currentBuilds.findIndex(build => build.id === id);
+    if (index !== -1) {
+      currentBuilds[index].name = newName;
+      this.buildsSubject.next([...currentBuilds]);
+      this.saveBuildcardInStorage(currentBuilds);
+    }
   }
 
-  
-  filterByStatus(status: number): Buildcard[] {
-    return this.builds.filter(build => build.status === status);
+  deleteBuildcard(id: number): void {
+    const updatedBuilds = this.buildsSubject.value.filter(build => build.id !== id);
+    this.buildsSubject.next(updatedBuilds);
+    this.saveBuildcardInStorage(updatedBuilds);
   }
 
-  filterByName(name: string): Buildcard[] {
-    return this.builds.filter(build => build.name.includes(name));
+  filterByStatus(status: number): Observable<Buildcard[]> {
+    return this.builds$.pipe(
+      map(builds => {
+        if (status === -1) {
+          return builds;
+        } else {
+          return builds.filter(build => build.status === status);
+        }
+      }),
+      catchError(error => {
+        console.error('Error filtering builds by status:', error);
+        return of([]);
+      })
+    );
+  }
+
+  getBuildcards(): Observable<Buildcard[]> {
+    return this.builds$.pipe(
+      catchError(error => {
+        console.error('Error getting buildcards:', error);
+        return of([]);
+      })
+    );
   }
 }

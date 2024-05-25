@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.modalService.$modal.subscribe((res)=>{ this.modalIs = res})
     this.modalService.$loginModal.subscribe((res)=>{ this.loginModalIs = res})
 
-    this.baseCardService.$baseCardId.subscribe((id: number | null) => {
+    this.baseCardService.baseCardId$.subscribe((id: number | null) => {
       this.canContinue = id !== null;
     });
   }
