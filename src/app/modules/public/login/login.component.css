@@ -114,3 +114,28 @@ label{
     display: flex;
     margin: 5px auto;
 }
+@media screen and (max-width:870px) {
+  
+  .modal {
+    width: 90%;
+    height: 80vh;
+  }
+  /* styles for Info in modal left part */
+  .leftSection {
+    margin-right: 1rem;
+    width: 40%;
+  }
+  
+  /* styles for Info in modal right part */
+  .modal > .rightSection {
+    width: auto;
+    padding: 1.5rem 2rem;
+  }
+  .modal > .rightSection > header > .labels > h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    text-align: center;
+  }
+ 
+}

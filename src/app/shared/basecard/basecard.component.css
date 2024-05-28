@@ -104,3 +104,10 @@ footer>div >p{
 
 
 
+@media screen and (max-width:860px) {
+    .card{
+        min-width: 100% !important;
+        margin: 1rem auto;
+    }
+    
+}

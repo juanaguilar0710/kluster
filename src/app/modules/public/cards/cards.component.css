@@ -11,5 +11,14 @@ section{
 app-basecard{
     box-sizing: border-box;
     width: 32%;
+    min-width: 300px;
     margin: 1rem auto;
+}
+@media screen and (max-width:860px) {
+    section{
+        width: 90%;
+        margin: auto;
+        padding: 2rem 4rem;
+    }
+    
 }

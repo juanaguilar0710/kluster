@@ -20,6 +20,7 @@ export class NewbuildappComponent implements OnInit {
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
   isEditable = true;
+  modalFeatureListIs= false;
   customerInfo!: Customer;
   newBuildCard!: Buildcard;
 
@@ -32,8 +33,11 @@ export class NewbuildappComponent implements OnInit {
   platforms: string[] = ['Cellular', 'Desktop', 'Tablet'];
   documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas','Diseños', 'MockUps'];
   features: Feature[] = [];
-  selectedFeatures: string[] = [];
+  selectedFeatures: Feature[] = [];
   totalCost: number = 0;
+  confirmationStep = false
+
+  
 
 
   constructor(
@@ -72,8 +76,17 @@ export class NewbuildappComponent implements OnInit {
       documentation: this._formBuilder.array([])
     });
     this.basecardService.baseCardId$.subscribe((res)=>{ this.checkBasecard()})
-    this.modalService.$basecardlistModal.subscribe((res)=>{ this.modalListIs = res})
-    this.features = this.featureService.getAllFeatures();
+    this.modalService.$basecardlistModal.subscribe((res)=>{ this.modalListIs = res},error=>{console.error(error)})
+    this.modalService.$featureListModal.subscribe((res)=>{ this.modalFeatureListIs = res},error=>{console.error(error)})
+    this.featureService.getAllFeatures().subscribe((res)=>{
+      this.features=res
+    },error=>{
+      console.error(error)
+    });
+
+    this.featureService.selectedFeatures$.subscribe((features: Feature[]) => {
+      this.selectedFeatures = features;
+    });
   }
 
 
@@ -108,8 +121,8 @@ export class NewbuildappComponent implements OnInit {
   createBuildcard() {
     
     this.newBuildCard.status=1
-    this.router.navigate(['/user/dashboard'])
     this.buildcardService.createNewBuild(this.newBuildCard)
+    this.router.navigate(['/user/dashboard'])
     
   }
 
@@ -119,6 +132,7 @@ export class NewbuildappComponent implements OnInit {
         this.basecardService.getBaseCardById(basecardId).subscribe(basecard => {
           if (basecard) {
             this.basecardSelected = basecard;
+            this.getFeaturesOfSelectedBase(this.basecardSelected);
             this.basecardExist = true;
           } else {
             this.basecardExist = false;
@@ -136,7 +150,15 @@ export class NewbuildappComponent implements OnInit {
     });
   }
   
-
+  getFeaturesOfSelectedBase(base: Basecard): void {
+    const featuresOnBase = base.features;
+    if (featuresOnBase.length >= 0) {
+      this.selectedFeatures = featuresOnBase;
+      featuresOnBase.forEach(feature => {
+        this.featureService.addFeatureToList(feature);
+      });
+    }
+  }
   seeBaseList(){
     this.modalListIs=true
     this.modalService.$basecardlistModal.emit(true)
@@ -150,26 +172,85 @@ export class NewbuildappComponent implements OnInit {
       this.newBuildCard.last_update = new Date()
       this.newBuildCard.status = 0 
       this.newBuildCard.developmentDuration = 30  
-      this.newBuildCard.features = features
+      this.newBuildCard.features = this.selectedFeatures
     } else {
       console.error('Form is not valid');
     }
     
   }
-  saveBase(){
+ saveBase(){
     if (this.basecardExist) {
       this.newBuildCard.name =this.secondFormGroup.get('nameBuildCtrl')?.value
       this.newBuildCard.basecard_Id=this.basecardSelected
       this.newBuildCard.status = 0
-      this.newBuildCard.cost = this.basecardSelected.cost
-      this.newBuildCard.features = this.basecardSelected.features
+      this.totalCost=this.calculateTotalCost()
+      this.newBuildCard.cost =this.totalCost
+      this.newBuildCard.features = this.selectedFeatures
       this.newBuildCard.last_update = new Date()
       this.newBuildCard.developmentDuration = this.basecardSelected.developmentDuration
     } else {
       console.error('basecard is not valid');
     }
+  } 
+  validateInfo(): void {
+    if (!this.basecardExist && (!this.secondFormGroup.get('customBaseCtrl')?.value || this.secondFormGroup.get('customBaseCtrl')?.value.trim() === '')) {
+      alert('No URL or Basecard selected');
+      return;
+    }
+  
+    if (this.selectedFeatures.length === 0) {
+      alert('No features selected');
+      return;
+    }
+  
+    this.confirmationStep = true;
   }
+  
+  saveUrlOrBasecard(): void {
+    this.validateInfo();
+    
+    
+    if (this.confirmationStep) {
+      if (this.secondFormGroup.valid) {
+        const url = this.secondFormGroup.get('customBaseCtrl')?.value;
+        const features = this.selectedFeatures;
+  
+        if (url && url.trim() !== '') {
+          this.newBuildCard.urlBase = url.trim();
+          this.newBuildCard.basecard_Id = undefined;
+  
+          if (features.length > 0) {
+            this.newBuildCard.features=features;
+            this.totalCost=this.calculateTotalCost()
+            this.newBuildCard.cost =this.totalCost
+            
+          } else {
+            alert('No features selected'); 
+            return;
+          }
+        } else if (this.basecardExist) {
+          this.saveBase();
+  
+          if (features.length > 0) {
+            this.newBuildCard.features=features;
+            this.totalCost=this.calculateTotalCost()
+            this.newBuildCard.cost =this.totalCost
+          } else {
+            alert('No features selected');
+            return;
+          }
+        }
+      } else {
+        alert('Form is not valid');
+        return;
+      }
+    }
+  }
+  
 
+  closeAlert(){
+    this.confirmationStep =false
+  }
   onCheckboxChange(e: any, controlName: string) {
     const checkArray: FormArray = this.thirdFormGroup.get(controlName) as FormArray;
 
@@ -195,44 +276,31 @@ export class NewbuildappComponent implements OnInit {
       console.error('Form is not valid');
     }
   }
-  updateTotalCost(): void {
-    let formArray: FormArray | null = this.secondFormGroup.get('selectedFeaturesCtrl') as FormArray;
-    if (formArray) {
-      let totalCost = 0;
-      formArray.controls.forEach(control => {
-        const featureName = control.value;
 
-        const feature = this.features.find(f => f.nameFeature === featureName);
-        if (feature) {
-          totalCost += feature.costFeature;
-        }
-      });
-      this.totalCost = totalCost;
-    }
-  }
-
-  onCheckboxChangeSecond(e: any, controlName: string) {
-    let checkArray: FormArray = this._formBuilder.array([]);
-    
-    if (checkArray) {
-      if (e.target.checked) {
-        checkArray.push(new FormControl(e.target.value));
-      } else {
-        let i: number = 0;
-        checkArray.controls.forEach((item: any) => {
-          if (item.value == e.target.value) {
-            checkArray.removeAt(i);
-            return;
-          }
-          i++;
-        });
-      }
-  
-      this.updateTotalCost();
-    }
-  }
   
   deleteSelectionCard(){
     this.basecardService.setBaseCardId(null);
   }
+
+  seeFeatureList(){
+    this.modalFeatureListIs=true
+    this.modalService.$featureListModal.emit(true)
+  }
+
+
+  deleteFeature(feature: Feature): void {
+    this.featureService.removeFeatureFromList(feature);
+  }
+
+  isChecked(doc: string): boolean {
+    return this.documentationOptions.some(option => option === doc);
+  }
+  calculateTotalCost(): number {
+    let totalCost = 0;
+    this.selectedFeatures.forEach(feature => {
+        totalCost += feature.cost;
+    });
+    return totalCost;
+}
+
 }

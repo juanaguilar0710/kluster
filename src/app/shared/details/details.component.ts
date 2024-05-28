@@ -3,25 +3,7 @@ import { Router } from '@angular/router';
 import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { ModalService } from 'src/services/modal.service';
 import { Subscription } from 'rxjs';
-import { Basecard } from 'src/services/interface/basecard';
-
-export interface PeriodicElement {
-  name: string;
-  weight: number;
-  
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Hydrogen', weight: 1.0079},
-  { name: 'Helium', weight: 4.0026},
-  { name: 'Lithium', weight: 6.941},
-  { name: 'Beryllium', weight: 9.0122},
-  { name: 'Boron', weight: 10.811},
-  { name: 'Carbon', weight: 12.0107},
-  { name: 'Nitrogen', weight: 14.0067},
-  { name: 'Oxygen', weight: 15.9994},
-  { name: 'Fluorine', weight: 18.9984},
-  { name: 'Neon', weight: 20.1797},
-];
+import { Basecard, Feature } from 'src/services/interface/basecard';
 
 @Component({
   selector: 'app-details',
@@ -32,7 +14,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DetailsComponent implements OnInit {
 
   displayedColumns: string[] = [ 'Feature', 'Cost'];
-  dataSource = ELEMENT_DATA;
+  dataSource!:Feature[];
 
   baseData!:Basecard;
 
@@ -43,6 +25,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.baseData = this.modalService.getDataModal()
+
+
+    this.dataSource= this.baseData.features
     
   }
   closeModal(){

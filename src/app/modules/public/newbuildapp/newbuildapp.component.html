@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <app-basecardlist *ngIf="modalListIs"></app-basecardlist>
+<app-features-list *ngIf="modalFeatureListIs"></app-features-list>
 <section class="sectionSteps">
 
   <div class="title">
@@ -96,9 +97,9 @@
               <app-basecard *ngIf="basecardExist" [data]="basecardSelected" [canAdd]="false"></app-basecard>
             </div>
 
-            <div>
+            <!-- <div>
               <button mat-button matStepperNext *ngIf="basecardExist" (click)="saveBase()">Use this base</button>
-            </div>
+            </div> -->
           </div>
           <ng-template matStepLabel>Choose your App</ng-template>
 
@@ -109,21 +110,38 @@
             <input matInput formControlName="customBaseCtrl" placeholder="https://google">
           </mat-form-field>
 
-          <div *ngIf="secondFormGroup.get('customBaseCtrl')!.value !== '' && !basecardExist">
+          <div >
             <h2 class="textOptions">Select features <span class="textOptional">Optional</span></h2>
-            <div *ngFor="let feature of features">
-              <label>
-                <input type="checkbox" [value]="feature" (change)="onCheckboxChangeSecond($event,'features')"> {{ feature.nameFeature }} - ${{ feature.costFeature }}
-              </label>
-            </div>
-            <div>
-              <p>Total Cost: ${{ totalCost }}</p>
-            </div>
+            
+              <div class="featuresSelected">
+                  <h3 *ngIf="selectedFeatures.length > 0">You have selected</h3>
+                  <h3 *ngIf="selectedFeatures.length <=0">You haven't selected any features</h3>
+                  <div class="featuresSelectedList">
+                    <div class="tagFeatureSelected" *ngFor="let feature of selectedFeatures">
+                      <small>{{feature.name}}</small>
+                      <div class="btnDeleteTag" (click)="deleteFeature(feature)">
+                        <span class="material-icons md-48">close</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="feturesSelectionBtn">
+                    <button class="btnFeature" (click)="seeFeatureList()">Add feature</button>
+                  </div>
+              </div>
+           
+           
           </div>
+            <div class="messageConfirmation" *ngIf="confirmationStep">
+              <div class="messageInfo">
 
-          <div style="margin-top: 1rem;">
+                <h3>Do you want to continue with this information?</h3>
+                <button mat-button class="btnBack" (click)="closeAlert()">No</button>
+                <button mat-button matStepperNext (click)="saveUrlOrBasecard()">yes</button>
+              </div>
+            </div>
+          <div  class="btnsPage">
             <button mat-button matStepperPrevious class="btnBack">Back</button>
-            <button mat-button matStepperNext>Use this URL</button>
+            <button mat-button  (click)="validateInfo()">Save</button>
           </div>
         </form>
       </mat-step>
@@ -132,29 +150,36 @@
         <form [formGroup]="thirdFormGroup" class="formStepThree">
           <ng-template matStepLabel>Delivery Details</ng-template>
           
-          <h3>Documentation</h3>
-          <div *ngFor="let doc of documentationOptions">
-            <label>
-              <input type="checkbox" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> {{doc}}
-            </label>
-          </div>
-
-          <h3>Operating Systems</h3>
+          <fieldset>
+            <legend>Documentation</legend>
+            <div *ngFor="let doc of documentationOptions">
+                <input type="checkbox" id="{{doc}}" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> 
+                <label for="{{doc}}">{{doc}}</label>
+            </div>
+        </fieldset>
+        
+          <fieldset>
+            <legend>Operating Systems</legend>
+         
+          
           <div *ngFor="let os of operatingSystems">
-            <label>
-              <input type="checkbox" [value]="os" (change)="onCheckboxChange($event, 'operatingSystems')"> {{os}}
-            </label>
-          </div>
+            <input type="checkbox" [value]="os" (change)="onCheckboxChange($event, 'operatingSystems')" id="{{os}}"> 
+              <label for="{{os}}">{{os}}</label>
+           
+             </div>
+        </fieldset>
 
-          <h3>Platforms</h3>
-          <div *ngFor="let platform of platforms">
-            <label>
-              <input type="checkbox" [value]="platform" (change)="onCheckboxChange($event, 'platforms')"> {{platform}}
-            </label>
-          </div>
+          <fieldset>
+            <legend>Platforms</legend>
+            
+            <div *ngFor="let platform of platforms">
+              <input type="checkbox" [value]="platform"  (change)="onCheckboxChange($event, 'platforms')" id="{{platform}}"> 
+              <label for="{{platform}}">{{platform}}</label>
+            </div>
+          </fieldset>
 
 
-          <div style="margin-top: 1rem;">
+          <div style="margin-top: 1rem; display: flex;">
             <button mat-button matStepperPrevious class="btnBack">Back</button>
             <button mat-button matStepperNext (click)="saveDeliveryDetails()">Next</button>
           </div>
@@ -164,90 +189,101 @@
       <mat-step>
         <ng-template matStepLabel>Summary</ng-template>
         <div class="formStepFour">
-          <div class="contDecoration">
+          <h2 class="stepFourTitle">Details of your app</h2>
+          <div class="top">
 
-          </div>
-          <div class="container">
-
-            
-            <div class="infoText">
-
-              <h3>Customer Info</h3>
-              <div class="details">
+            <div class="leftSection">
+              <div class="container">
+  
+              
+                <div class="infoText">
+    
+                  <h3>Customer Info</h3>
+                  <div class="details">
+                    
+                    <p> <span class="titleLine"> Name:</span> {{ customerInfo?.name }}</p>
+                    <p> <span class="titleLine"> Company:</span> {{ customerInfo?.companyName }}</p>
+                    <p> <span class="titleLine"> country code:</span> {{ customerInfo?.countryCode }}</p>
+                    <p> <span class="titleLine"> Phone:</span> {{ customerInfo?.numberPhone }}</p>
+                  </div>
+                  <div class="imgDecCustomer">
+                    <img src="../../../../assets/images/dev.svg" alt="">
+                  </div>
+                </div>
+    
+              </div>
+              <div class="container">
+                <div class="infoText">
+    
+                  <h3>Basecard Info</h3>
+                  <div class="details">
+                    
+                    <p> <span class="titleLine">Title: </span> {{ newBuildCard?.name }}</p>
+                    <p> <span class="titleLine">Features: </span></p>
+                    <ul>
+                      <li *ngFor="let feature of selectedFeatures">
+                        {{ feature.name }}
+                      </li>
+                    </ul>
+                    <p> <span class="titleLine">Category: </span> {{ basecardSelected?.category }}</p>
+                  </div>
+                </div>
                 
-                <p> <span class="titleLine"> Name:</span> {{ customerInfo?.name }}</p>
-                <p> <span class="titleLine"> Company:</span> {{ customerInfo?.companyName }}</p>
-                <p> <span class="titleLine"> country code:</span> {{ customerInfo?.countryCode }}</p>
-                <p> <span class="titleLine"> Phone:</span> {{ customerInfo?.numberPhone }}</p>
               </div>
-            </div>
-
-          </div>
-          <div class="container">
-            <div class="infoText">
-
-              <h3>Basecard Info</h3>
-              <div class="details">
+    
+              <div class="container containerDetailsDelivery">
                 
-                <p> <span class="titleLine">Title: </span> {{ newBuildCard?.name }}</p>
-                <p> <span class="titleLine">Features: </span></p>
-                <ul>
-                  <li *ngFor="let feature of basecardSelected?.features">
-                    {{ feature.nameFeature }}
-                  </li>
-                </ul>
-                <p> <span class="titleLine">Category: </span> {{ basecardSelected?.category }}</p>
+                <h3>Deliverables</h3>
+                <div class="infoText  deliverys">
+    
+                <div class="so detailsDelivery infoText">
+    
+                  <h3>Operating Systems</h3>
+                  <div class="docChip" *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
+                    <p>{{ os }}</p>
+                  </div>
+                </div>
+                <div  class="platforms detailsDelivery infoText">
+                  <h3>Platforms</h3>
+                  <div class="docChip" *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
+                    <p>{{ platform }}</p>
+                  </div>
+                </div>
+                <div  class="doc detailsDelivery infoText">
+    
+                <h3>Documentation</h3>
+                <div class="docChip" *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
+                  <p>{{ doc }}</p>
+                </div>
+              </div>
               </div>
             </div>
-            
-          </div>
-
-          <div class="container containerDetailsDelivery">
-            
-            <h3>Deliverables</h3>
-            <div class="infoText deliverys">
-
-            <div class="so detailsDelivery">
-
-              <h3>Operating Systems</h3>
-              <div *ngFor="let os of thirdFormGroup.get('operatingSystems')?.value">
-                <p>{{ os }}</p>
+              <div class="container numbersLabel">
+                <div class="infot costLabel">
+    
+                  <h3> Total Cost</h3>
+                  <p>{{ newBuildCard?.cost | currency}}</p>
+                </div>
+                
+              
+                
+                <div class="infot durationLabel">
+    
+                  <h3>Duration of development</h3>
+                  <p>{{ newBuildCard?.developmentDuration }} days</p>
+                </div>
               </div>
             </div>
-            <div class="platforms detailsDelivery">
-              <h3>Platforms</h3>
-              <div *ngFor="let platform of thirdFormGroup.get('platforms')?.value">
-                <p>{{ platform }}</p>
-              </div>
-            </div>
-            <div class="doc detailsDelivery">
-
-            <h3>Documentation</h3>
-            <div *ngFor="let doc of thirdFormGroup.get('documentation')?.value">
-              <p>{{ doc }}</p>
+            <div class="rightSection">
+              <img class="preview" src="../../../../assets/images/appTest.svg" alt="">
+              
             </div>
           </div>
-          </div>
-        </div>
-          <div class="container">
-            <div class="infot">
-
-              <h3> Total Cost</h3>
-              <p>{{ newBuildCard?.cost | currency}}</p>
-            </div>
-            
           
-            
-            <div class="infot">
-
-              <h3>Duration of development</h3>
-              <p>{{ newBuildCard?.developmentDuration }} days</p>
-            </div>
-          </div>
 
 
           <div class="imgDecoration">
-            <img src="../../../../assets/images/dev.svg" alt="imgtime">
+            <img src="../../../../assets/images/time.svg" alt="imgtime">
           </div>
         </div>
 

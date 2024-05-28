@@ -73,3 +73,9 @@ body {
 .mat-stepper-vertical, .mat-stepper-horizontal{
   background: transparent;
 }
+
+@media screen and (max-width:600px) {
+  ::ng-deep .mat-horizontal-content-container{
+      overflow: visible !important;
+  }
+}

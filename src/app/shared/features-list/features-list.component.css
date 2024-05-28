@@ -27,8 +27,9 @@
     justify-content: space-around;
     align-content: center;
     position: relative;
-    padding: 3rem;
+    padding: 3rem 2rem;
     box-sizing: border-box;
+    background-color: var(--main-bg-color);
 }
 .closeBtn{
     position: absolute;
@@ -37,19 +38,11 @@
     cursor: pointer;
 }
 .cards{
-    overflow: auto;
     width: 100%;
-    margin: auto;
-    height: 70vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-content: space-between;
-    justify-content: flex-start;
-    align-items: center;
-
+    height: 100vh;
+    overflow: auto;
 }
+/* Filter sections styles */
 .leftSection{
     width: 30%;
     padding: 3rem 2rem;
@@ -59,11 +52,13 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .selectCategories{
     background: transparent;
     display: flex;
     flex-direction: column;
 }
+
 .selectCategories > label{
     background: transparent;
     color: var(--second-bg-color);
@@ -78,50 +73,46 @@
     font-size: 1.3rem;
     padding: 5px 15px;
 }
-
-.btnContinue{
-    padding: 1.3rem 4rem;
-    border-radius: 5px;
-    border: none;
-    font-size: 1rem;
-    background: var(--main-bg-color);
-    color: var(--brand-color);
-    font-weight: bold;
-    cursor: pointer;
-
+.cards .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
-
-@media screen and (max-width:860px) {
-    .modal{
-        width: 95%;
-    }
-    /* styles for Info in modal right part */
-    .modal>.rightSection{
-        padding: 1rem !important ;
-    }
-    .cards{
-        
-        width: 100% !important ;
-        gap: 10px !important ;
-        display: block !important;
-    
-    }
-    .leftSection{
-        padding: 3rem 0.5rem !important ;
-    }
- 
-    .selectCategories > label{
-        font-size: initial !important ;
-    }
-    .selectCategories > select{
-        
-        font-size: initial !important ;
-        padding: 5px !important ;
-    }
-    
-    .btnContinue{
-        padding: 2px 5px !important ;
-        font-size:initial !important ;
-    
-    }
+.cards .title h2{
+    font-size: 2rem;
+    width: fit-content;
+    color: var(--primary-text-color);
+}
+.cardsContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.feature-card{
+    width: 320px !important;
+    margin: 1rem 0px;
+}
+.filterBySearch{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.filterBySearch input{
+    height: 30px;
+    margin: 0px 1rem 0px 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0px 5px 5px;
+    outline: none;
+    border: 1px solid var(--border-color-second);
+    padding-left: 5px;
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+.filterBySearch span{
+    color: var(--primary-text-color);
+    font-size: 2rem;
 }

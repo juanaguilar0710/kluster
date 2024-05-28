@@ -50,15 +50,12 @@ export class BuildcardscontentComponent implements OnInit {
   }
 
   updateBuildName(buildId: number): void {
-    console.log(this.newName)
     if (this.newName.trim() === '') {
-      // Muestra un mensaje de error o realiza alguna acción adecuada para el caso de campo vacío
-      console.log('El campo de nombre no puede estar vacío.');
       return;
     }
   
     this.buildcardService.updateBuildName(buildId, this.newName);
-    this.changeNameIs = false; // Oculta el formulario después de actualizar
+    this.changeNameIs = false; 
   }
   editName(buildId: number):void{
     this.changeNameIs=true

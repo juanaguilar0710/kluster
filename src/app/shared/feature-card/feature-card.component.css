@@ -1,0 +1,95 @@
+.card{
+    width: 45%;
+    min-width: 320px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 0px 15px 15px 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+h2, h3, p, small{
+    color: var(--primary-text-color);
+}
+
+footer, .sectionInfo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+.infotexts{
+    width: 70%;
+
+}
+.titles h2, h3{
+    width: fit-content;
+    margin: 0;
+}
+.titles h3{
+    font-size: 12px;
+}
+.titles h2{
+    margin-top: -15px;
+    text-transform: capitalize;
+}
+.infotexts > .info{
+    margin-top: 1rem;
+}
+.imagePreview{
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.preview{
+    width: 80px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid var(--border-color);
+    justify-content: space-between;
+}
+.footerText{
+    display: flex;
+    flex-direction: column;
+}
+.footerText > small{
+    color:var(--second-text-color);
+    font-size: 0.8rem;
+    width: fit-content;
+}
+.infoVaule{
+    color: var(--primary-text-color);
+    margin-left: 2px;
+}
+.btnAdd{
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: var(--second-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+   transition: all .3s ease;
+}
+.btnAdd:active{
+    transform: scale(.9,.9);
+}
+.btnAdd > span{
+    background: transparent;
+    font-size: 2rem;
+    color: var(--primary);
+   
+}

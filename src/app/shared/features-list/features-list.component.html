@@ -1,0 +1,38 @@
+
+<div class="bgModal">
+    <div class="modal">
+        <div class="leftSection">
+            <div class="selectCategories">
+                <label for="category">Category:</label>
+                <select id="category" [(ngModel)]="selectedCategory" (change)="filterFeaturesByCategory($event)">
+                  <option value="all" >All</option>
+                  <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                </select>
+              </div>
+
+             <!--  <button class="btnContinue" *ngIf="canContinue" (click)="closeModal()">Continue</button> -->
+        </div>
+        <div class="rightSection">
+            <div class="closeBtn" (click)="closeModal()">
+                <span class="material-icons md-light">close</span>
+            </div>
+            <section class="cards">
+
+                <div class="title">
+                    <h2>Select the features at your size</h2>
+                    <div class="filterBySearch">
+                        <span class="material-icons md-light">search</span>
+                            <input type="text" [(ngModel)]="searchInput" (input)="filterFeaturesByNameOrDescription()" placeholder="Search features">
+                    </div>
+                </div>
+                <div class="cardsContent">
+                    
+                    <app-feature-card *ngFor="let card of featureData" [data]="card" class="feature-card"></app-feature-card>
+                </div>
+            </section>
+            
+            
+            
+        </div>
+    </div>
+</div>

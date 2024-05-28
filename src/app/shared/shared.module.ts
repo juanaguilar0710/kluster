@@ -11,6 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CustomBackgroundColorDirective } from './directives/custom-backgroud-color.directive';
+import { FeaturesListComponent } from './features-list/features-list.component';
+import { FeatureCardComponent } from './feature-card/feature-card.component';
 
 
 
@@ -21,7 +23,9 @@ import { CustomBackgroundColorDirective } from './directives/custom-backgroud-co
     BasecardComponent,
     DetailsComponent,
     BasecardlistComponent,
-    CustomBackgroundColorDirective
+    CustomBackgroundColorDirective,
+    FeaturesListComponent,
+    FeatureCardComponent
     
   ],
   imports: [
@@ -37,6 +41,7 @@ import { CustomBackgroundColorDirective } from './directives/custom-backgroud-co
     BasecardComponent,
     DetailsComponent,
     BasecardlistComponent,
+    FeaturesListComponent,
     CustomBackgroundColorDirective
   ]
 })

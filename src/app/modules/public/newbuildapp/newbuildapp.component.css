@@ -2,7 +2,7 @@
     margin-left: 80px;
     background-color: transparent;
 }
-.formStepOne,.formStepTwo,.formStepThree,.formStepFour{
+.formStepOne,.formStepTwo,.formStepThree{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -131,62 +131,29 @@ button:active{
     box-shadow: 1px 1px 10px var(--shadow-color);
     transition: all .3s ease;
 }
-
-.formStepFour h3{
-    width: max-content;
-    padding: 1rem 2rem;
-    font-weight: bold;
-    color: var(--primary-text-color);
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    margin: auto;
+.formStepFour{
+    border-radius: 0px 15px 15px;
+    border: 1px solid #651fff2b;
+    background-image: url(../../../../assets/images/waveSummary.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
-.formStepFour p{
-    color: var(--primary-text-color);
-}
-.titleLine{
-    font-weight: bold;
-    font-size: 1rem;
-    margin-left: 1rem;
-    text-transform: capitalize;
-    color: var(--alerts-color-warning);
-}
-.container{
-    width: 80%;
-    margin: auto;
-    text-align: center;
+.top{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-
+    align-content: center;
+    justify-content: space-around;
+    padding-top: 2rem;
 }
-.details{
+
+.top .rightSection{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-.containerDetailsDelivery{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.detailsDelivery{
-    width: max-content;
-}
-
-.details >ul >li{
-    list-style:none;
-}
-.btnsFinal{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.imgDecoration >img{
-    width: 130px;
-    margin: auto;
+.top .leftSection{
+    width: 60%;
 }
 .infoText{
     width: 70%;
@@ -196,7 +163,161 @@ button:active{
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
 }
+.infoText .details p{
+    font-size: 1rem;
+    color: var(--primary-text-color);
+}
+.infoText .details p .titleLine{
+font-weight: bold;
+}
+.infoText .details ul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    margin: 1rem auto;
+}
+.infoText .details ul li{
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--auxiliar-bg-color);
+}
+.top .leftSection .infoText h3{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    
+}
+.preview{
+    width: 360px;
+    height: 600px;
+    border-radius: 15px;
+}
+
+.container h3{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.stepFourTitle{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    color: var(--primary-text-color);
+    margin-bottom: 0px;
+    border-bottom: 1px solid var(--border-color-second);
+    padding-bottom: 2rem;
+}
+.detailsDelivery{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: flex-start !important;
+    gap: 5px;
+}
+.detailsDelivery h3{
+    font-size: 1.5rem !important;
+}
+.docChip >p {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--auxiliar-bg-color);
+}
+.numbersLabel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+.numbersLabel .infot h3{
+    font-size: 1.5rem !important;
+    margin-top: 1rem;
+    color: var(--primary-text-color);
+}
+.numbersLabel .infot{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #e5dddd4f;
+}
+.docChip >p {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--auxiliar-bg-color);
+}
+.numbersLabel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+.numbersLabel .infot h3{
+    font-size: 1.2rem !important;
+    margin-top: 1rem;
+    color: var(--primary-text-color);
+}
+.numbersLabel .infot p{
+    font-size: 1.2rem !important;
+    margin-top: 1rem;
+    color: var(--primary-text-color);
+}
+.numbersLabel .infot{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #e5dddd4f;
+    box-sizing: border-box;
+}
+.numbersLabel .costLabel{
+    border-radius: 15px 0px 0px 15px;
+    padding: 0px 3rem;
+    border-right: 2px solid var(--shadow-color);
+}
+.numbersLabel .durationLabel{
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 3rem;
+}
+
+.imgDecoration{
+    position: relative;
+    margin: 2rem auto;
+    height: 20px;
+}
+.imgDecoration img{
+    right: 30px;
+    position: absolute;
+    width: 200px !important;
+    top: -150px;
+}
+.btnsFinal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.imgDecCustomer >img{
+    width: 130px;
+    margin: auto;
+}
+
 .contTexts{
     display: flex;
     flex-direction: column;
@@ -206,11 +327,155 @@ button:active{
     background: var(--brand-color);
     height: 50px;
 }
-.deliverys{
-    width: 100%;
-}
-.infot{
-    width: max-content;
+.featuresSelectedList{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem auto;
+    align-items: center;
+    justify-content: flex-start;
+}
+.featuresSelected h3{
+    margin: 1rem auto;
+    font-size: 1rem;
+    width: fit-content;
+    font-weight: lighter;
+    color: var(--primary-text-color);
+}
+
+.featuresSelectedList > .tagFeatureSelected{
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    background-color: var(--border-color);
+    padding: 1rem;
+}
+.featuresSelectedList > .tagFeatureSelected >small{
+    width: fit-content;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+.featuresSelectedList > .tagFeatureSelected >.btnDeleteTag{
+    cursor: pointer;
+}
+.featuresSelectedList > .tagFeatureSelected >.btnDeleteTag> span{
+    font-size: 22px;
+    color: var(--button-primary-color);
+}
+.feturesSelectionBtn{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.btnsPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.messageConfirmation{
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(155, 161, 166, 0.708);
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    z-index: 101;
+}
+.messageConfirmation .messageInfo{
+    width: max-content;
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px var(--shadow-color);
+}
+.messageConfirmation button{
+    margin: 1rem;
+}
+
+fieldset{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    color: var(--primary-text-color);
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+fieldset div{
+    width: fit-content;
+    height: 50px;
+}
+fieldset div label{
+    padding: 1rem;
+    transition: all .3s ease;
+    border-radius: 5px;
+    margin: 2px;
+    background-color: var(--shadow-color);
+    color: var(--primary-text-color);
+}
+fieldset div label:hover{
+    border: 1px solid var(--brand-color);
+    box-shadow: 1px 1px 10px var(--shadow-color);
+    cursor: pointer;
+}
+fieldset div input[type="checkbox"]:checked + label {
+    background-color: var(--brand-color);
+    color: white;
+}
+
+fieldset div input[type="checkbox"]{
+    opacity: 0;
+} 
+.mat-form-field{
+
+    width: 60%;
+    margin: auto;
+}
+@media screen and (max-width:860px) {
+    .buildcards{
+    
+        width: 100%;
+        
+    }
+    .formStepOne,.formStepTwo,.formStepThree{
+        
+        width: 90%;
+       
+    }
+    .numbersLabel{
+        width: 100%;
+    }
+    
+    .numbersLabel .infot h3,p{
+        font-size: initial !important;
+        
+    }
+    
+    .numbersLabel .costLabel{
+       
+        padding: 0px 1rem;
+    }
+    .numbersLabel .durationLabel{
+        padding-left: 1rem;
+    }
+    .leftSection{
+        width: 100% !important;
+        padding: 5px;
+    }
+    .imgDecoration{
+        display: none;
+    }
 }

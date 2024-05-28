@@ -89,3 +89,50 @@ header >.introduction> button:hover{
   .pulse-button {
     animation: heartbeat 1s infinite;
   }
+
+
+  
+@media screen and (max-width:860px) {
+    header{
+  
+        padding: 3rem 6rem;
+    
+    }
+  .sectionApps{
+    overflow: hidden;
+  }
+    header >.introduction> h2 {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+        
+    }
+    header>.introduction> h2 , p{
+    
+        padding: 1rem 2rem;
+    
+    }
+    header>.introduction>div>p{
+        font-size: 1rem;
+        margin-top: 1rem;
+        max-width: 90%;
+    }
+    
+    header >.introduction> button, .btnContinue{
+        z-index: 90;
+    }
+    .introduction{
+        width: 90%;
+    }
+    header >.introduction> button{
+        padding: 1rem ;
+        
+        position: absolute;
+        right: 1rem;
+        
+    }
+    .btnNewBase{
+        font-size: 1rem;
+    }
+    
+    
+}

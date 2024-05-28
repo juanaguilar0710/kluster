@@ -10,6 +10,7 @@ export class ModalService {
   $loginModal = new EventEmitter<any>();
   $dataModal= new EventEmitter<Basecard>();
   $basecardlistModal= new EventEmitter<any>();
+  $featureListModal= new EventEmitter<any>();
   
   modalDataDetail!:Basecard;
   constructor() { }
