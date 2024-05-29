@@ -9,6 +9,11 @@ import { Basecard } from 'src/services/interface/basecard';
 export class CardsComponent implements OnInit {
 
   data: Basecard[] = [];
+  selectedCategory:string = ''
+  categories:any[] =[]
+  filteredData:Basecard[]=[]
+  searchInput:string='';
+
 
   constructor(private basecardService: BasecardService) { }
 
@@ -18,27 +23,46 @@ export class CardsComponent implements OnInit {
     },error=>{
       console.error(error)
     });
+    this.categories= this.getUniqueCategories(this.data);
   }
 
-  /* getBaseCard(id: number):Basecard | null {
-    this.basecardService.getBaseCardById(id).subscribe((res)=>{
+  filterCardsByCategory(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.selectedCategory = target.value;
+    if(this.selectedCategory == 'all'){
+      this.getAllBasecards()
+      return;
+    }
+    if (this.selectedCategory) {
+      this.basecardService.filterBaseCardsByCategory(this.selectedCategory).subscribe((res)=>{
+        this.data=res
+      },error=>{
+        console.error(error)
+      });
+    } else {
+      this.filteredData = this.data;
+    }
+  }
 
-      if (res) {
-        return res
-      } else {
-        return null;
-        console.error('Base card not found');
-      }
-    },error=>{
-      return null;
-    });
-  } */
-
-  filterByCategory(category: string): void {
-    this.basecardService.filterBaseCardsByCategory(category).subscribe((res)=>{
+  getUniqueCategories(cards: Basecard[]): String[] {
+    const categories = cards.map(card => card.category);
+    return [...new Set(categories)];
+  }
+  getAllBasecards(){
+    this.basecardService.getAllBaseCards().subscribe((res)=>{
       this.data=res
     },error=>{
       console.error(error)
-    });;
+    });
+
+  }
+  filterFeaturesByName(): void {
+    if (this.searchInput.trim() !== '') {
+      this.basecardService.filterFeaturesByName(this.searchInput).subscribe(filteredBasecard => {
+        this.data = filteredBasecard;
+      });
+    } else {
+      this.getAllBasecards();
+    }
   }
 }

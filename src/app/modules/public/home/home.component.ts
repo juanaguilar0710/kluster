@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BasecardService } from 'src/services/buildcards/basecard.service';
+import { Basecard } from 'src/services/interface/basecard';
 import { ModalService } from 'src/services/modal.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
   modalIs:boolean = false;
   loginModalIs:boolean = false;
   canContinue:boolean =false
+ 
 
   constructor( private modalService:ModalService, private baseCardService: BasecardService) { }
 
@@ -23,5 +25,5 @@ export class HomeComponent implements OnInit {
       this.canContinue = id !== null;
     });
   }
-
+  
 }

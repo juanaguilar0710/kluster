@@ -46,4 +46,10 @@ export class BasecardService {
   getAllBaseCards(): Observable<Basecard[]> {
     return this.baseCards$;
   }
+  filterFeaturesByName(query: string): Observable<Basecard[]> {
+    const filteredbasecards = this.baseCards.filter(basecard => 
+      basecard.title.toLowerCase().includes(query.toLowerCase()) 
+    );
+    return of(filteredbasecards);
+  }
 }

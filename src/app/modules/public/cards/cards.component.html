@@ -1,4 +1,18 @@
 <section>
+    <div class="search">
+        <div class="filterBySearch">
+            <span class="material-icons md-light">search</span>
+                <input type="text" [(ngModel)]="searchInput" (input)="filterFeaturesByName()" placeholder="Search features">
+        </div>
+        <div class="selectCategories">
+            <select style="margin-top: 0px; color: var(--primary-text-color);" id="category" [(ngModel)]="selectedCategory" (change)="filterCardsByCategory($event)">
+              <option value="" selected>Categories</option>
+              <option value="all" >All</option>
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+    </div>
+
 <app-basecard *ngFor="let card of data" [data]="card"></app-basecard>
 </section>
  

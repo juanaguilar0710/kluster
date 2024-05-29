@@ -86,6 +86,7 @@ export class NewbuildappComponent implements OnInit {
 
     this.featureService.selectedFeatures$.subscribe((features: Feature[]) => {
       this.selectedFeatures = features;
+      this.totalCost=this.calculateTotalCost()
     });
   }
 
