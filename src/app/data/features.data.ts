@@ -5,7 +5,6 @@ export const features: Feature[] = [
     { name: "send messages", cost: 27549, duration: 5, category: "Social", id: 2, img: "path/to/img2", description: "Send messages to stay connected with your contacts." },
     { name: "login and signup", cost: 16678, duration: 3, category: "Essentials", id: 3, img: "path/to/img3", description: "Create an account or log in to access the platform's features." },
     { name: "Like and shared", cost: 22845, duration: 4, category: "Social", id: 4, img: "path/to/img4", description: "Engage with content by liking and sharing posts." },
-    { name: "login / signup", cost: 13420, duration: 3, category: "Essentials", id: 5, img: "path/to/img5", description: "Sign up or log in to the platform to get started." },
     { name: "tracker driver", cost: 35120, duration: 10, category: "Smart Features", id: 6, img: "path/to/img6", description: "Track the location and progress of your driver in real-time." },
     { name: "book rider", cost: 43369, duration: 8, category: "Order Management", id: 7, img: "path/to/img7", description: "Book a ride with a driver through the platform." },
     { name: "Share location", cost: 14702, duration: 4, category: "Smart Features", id: 8, img: "path/to/img8", description: "Share your current location with friends or contacts." },

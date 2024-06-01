@@ -23,6 +23,8 @@ export class NewbuildappComponent implements OnInit {
   modalFeatureListIs= false;
   customerInfo!: Customer;
   newBuildCard!: Buildcard;
+  modalIs:boolean = false;
+
 
   modalListIs:boolean=false;
 
@@ -88,6 +90,7 @@ export class NewbuildappComponent implements OnInit {
       this.selectedFeatures = features;
       this.totalCost=this.calculateTotalCost()
     });
+    this.modalService.$modal.subscribe((res)=>{ this.modalIs = res},error=>{console.error(error)})
   }
 
 

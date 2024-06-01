@@ -16,10 +16,16 @@
   --border-color-second: #bbbbbe;
   --second-text-color: #9b9fb1;
 }
+@font-face {
+  font-family: 'Gilroy-Bold ☞';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gilroy-Bold ☞'), url('./assets/fonts/Gilroy-Bold.ttf') format('woff');
+  }
 * {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 
@@ -27,10 +33,14 @@ html,
 body {
   height: 100%;
   background: var(--main-bg-color);
+  font-family: 'Gilroy-Bold ☞' !important;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  
+}
+h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,strong,small,mat-step,mat-horizontal-stepper,ng-template{
+  font-family: 'Gilroy-Bold ☞' !important;
 }
 
 .mat-tab-label {

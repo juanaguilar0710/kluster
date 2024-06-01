@@ -1,5 +1,8 @@
-<div class="card" (click)="openModal()">
-    <div class="sectionInfo">
+<div class="card isSelectedCard">
+    <div class="btnDeleteCard" *ngIf="featureIsSelected" (click)="removeThisFeature()">
+        <mat-icon>cancel</mat-icon>
+      </div>
+    <div class="sectionInfo" [ngClass]="{'isSelectedContent':featureIsSelected}">
         <div class="infotexts">
 
             <div class="titles">
@@ -17,15 +20,15 @@
             
         </div>
     </div>
-    <footer>
+    <footer [ngClass]="{'isSelectedContent':featureIsSelected}">
         <div class="footerInfo">
 
             <div class="footerText">
-                <small>Cost From <span class="infoVaule">{{data.cost | currency}}</span></small>
-                <small>Duration From <span class="infoVaule">{{data.duration}} days</span></small>
+                <small>Cost From <span class="infoValue">{{data.cost | currency}}</span></small>
+                <small>Duration From <span class="infoValue">{{data.duration}} days</span></small>
             </div>
         </div>
-        <div class="btnAdd" (click)="addFeature(data); $event.stopPropagation()">
+        <div class="btnAdd" *ngIf="!featureIsSelected" (click)="addFeature(data); $event.stopPropagation()">
             <span class="material-icons md-48">add</span>
           </div>
     </footer>

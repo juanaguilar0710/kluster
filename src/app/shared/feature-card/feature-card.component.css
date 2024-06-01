@@ -12,16 +12,41 @@
     margin: 0;
     overflow: hidden;
     background-color: #fff;
+    position: relative;
+    transition: all .3s ease;
 }
 h2, h3, p, small{
     color: var(--primary-text-color);
 }
+
+.btnDeleteCard{
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 5px;
+    color: var(--primary-text-color);
+    top: 5px;
+    cursor: pointer !important;
+    z-index: 100;
+}
+.btnDeleteCard:active{
+   transform: scale(.9);
+}
+.btnDeleteCard > .mat-icon{
+    border-radius: 100%;
+    background: transparent;
+    transition: all .3s ease;
+ }
+.btnDeleteCard:hover > .mat-icon{
+    box-shadow: 1px 1px 10px var(--shadow-color)!important;
+ }
 
 footer, .sectionInfo{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1rem;
+    transition: all .3s ease;
 }
 .infotexts{
     width: 70%;
@@ -69,7 +94,7 @@ footer{
     font-size: 0.8rem;
     width: fit-content;
 }
-.infoVaule{
+.infoValue{
     color: var(--primary-text-color);
     margin-left: 2px;
 }
@@ -93,3 +118,10 @@ footer{
     color: var(--primary);
    
 }
+.isSelectedCard{
+    border: 1px solid var(--brand-color);
+    cursor: auto;
+} 
+.isSelectedContent{
+    opacity: 0.5;
+}    

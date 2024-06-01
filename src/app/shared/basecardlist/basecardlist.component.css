@@ -1,7 +1,7 @@
 .bgModal{
     width: 100vw;
     height: 100vh;
-    z-index: 200;
+    z-index: 199;
     background: rgba(243, 235, 242, 0.463);
     display: flex;
     justify-content: center;

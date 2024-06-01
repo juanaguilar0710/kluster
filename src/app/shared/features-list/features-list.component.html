@@ -11,6 +11,11 @@
               </div>
 
              <!--  <button class="btnContinue" *ngIf="canContinue" (click)="closeModal()">Continue</button> -->
+
+             <div class="messagesAddedContainer"  [ngClass]="{'messagesDisplay':messagesAddedIs || messagesRemoveIs}">
+                <small *ngIf="messagesAddedIs" class="messages addedMsg">You've successfully added a feature! </small>
+                <small *ngIf="messagesRemoveIs" class="messages removeMsg">You've successfully removed the feature!</small>
+             </div>
         </div>
         <div class="rightSection">
             <div class="closeBtn" (click)="closeModal()">
@@ -27,7 +32,7 @@
                 </div>
                 <div class="cardsContent">
                     
-                    <app-feature-card *ngFor="let card of featureData" [data]="card" class="feature-card"></app-feature-card>
+                    <app-feature-card *ngFor="let card of featureData" [data]="card" class="feature-card" (added)="displayMessage($event, 'add')" (removed)="displayMessage($event, 'remove')" ></app-feature-card>
                 </div>
             </section>
             

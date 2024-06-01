@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Feature } from '../interface/basecard';
 import { features } from 'src/app/data/features.data'; 
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BasecardService } from './basecard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class FeatureService {
   selectedFeatures$: Observable<Feature[]> = this.selectedFeaturesSubject.asObservable();
 
 
-  constructor() {}
+  constructor(private basecardService:BasecardService) {
+    this.getFeaturesOfBasecards();
+  }
 
   getAllFeatures(): Observable<Feature[]> {
     return of(this.features);
@@ -54,5 +57,24 @@ export class FeatureService {
       this.featuresUsingList.splice(index, 1);
       this.selectedFeaturesSubject.next([...this.featuresUsingList]);
     }
+  }
+
+  getFeaturesSelected():Observable<Feature[]> {
+    return of(this.featuresUsingList);
+  
+  }
+
+  private getFeaturesOfBasecards(): void {
+    this.basecardService.getAllBaseCards().subscribe((basecards) => {
+      basecards.forEach(basecard => {
+        basecard.features.forEach((feature: Feature) => {
+          if (!this.features.some(f => f.name === feature.name)) {
+            this.features.push(feature);
+          }
+        });
+      });
+    }, error => {
+      console.error(error);
+    });
   }
 }

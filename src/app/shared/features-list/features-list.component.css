@@ -116,3 +116,27 @@
     color: var(--primary-text-color);
     font-size: 2rem;
 }
+
+/* messages popup */
+
+.messagesAddedContainer{
+    width: max-content;
+    padding: 1rem 2rem;
+    margin: 0px auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: var(--main-bg-color);
+    visibility: hidden;
+}
+.messagesDisplay{
+    visibility: visible;
+}
+.messagesAddedContainer .messages{
+    font-size: 0.8rem;
+}
+.addedMsg{
+    color: var(--button-primary-color);
+}
+.removeMsg{
+    color: var(--alerts-color-warning);
+}

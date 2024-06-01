@@ -4,10 +4,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Instagram',
     features: [
-      { name: 'Upload images', cost: 2500, duration: 7, category: 'Photos & Videos', id: 1, img: 'path/to/img1', description: 'Upload and share images with followers.' },
-      { name: 'Send messages', cost: 2500, duration: 5, category: 'Communication', id: 2, img: 'path/to/img2', description: 'Send direct messages to other users.' },
-      { name: 'Login and signup', cost: 2500, duration: 3, category: 'Essentials', id: 3, img: 'path/to/img3', description: 'User authentication for login and signup.' },
-      { name: 'Like and share', cost: 2500, duration: 4, category: 'Social', id: 4, img: 'path/to/img4', description: 'Like and share posts from other users.' }
+      { name: "upload images", cost: 41752, duration: 7, category: "Photos & Videos", id: 1, img: "path/to/img1", description: "Upload and share images with friends and family." },
+      { name: "send messages", cost: 27549, duration: 5, category: "Social", id: 2, img: "path/to/img2", description: "Send messages to stay connected with your contacts." },
+      { name: "login and signup", cost: 16678, duration: 3, category: "Essentials", id: 3, img: "path/to/img3", description: "Create an account or log in to access the platform's features." },
+      { name: "Like and shared", cost: 22845, duration: 4, category: "Social", id: 4, img: "path/to/img4", description: "Engage with content by liking and sharing posts." },
     ],
     numberFeatures: 60,
     cost: 10000,
@@ -20,10 +20,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Uber',
     features: [
-      { name: 'Login / signup', cost: 17500, duration: 3, category: 'Essentials', id: 5, img: 'path/to/img5', description: 'User authentication for login and signup.' },
-      { name: 'Track driver', cost: 17500, duration: 7, category: 'Smart Features', id: 6, img: 'path/to/img6', description: 'Real-time tracking of driver location.' },
-      { name: 'Book ride', cost: 17500, duration: 5, category: 'Order Management', id: 7, img: 'path/to/img7', description: 'Book a ride quickly and easily.' },
-      { name: 'Share location', cost: 17500, duration: 6, category: 'Smart Features', id: 8, img: 'path/to/img8', description: 'Share your location with friends or family.' }
+      { name: "login and signup", cost: 16678, duration: 3, category: "Essentials", id: 3, img: "path/to/img3", description: "Create an account or log in to access the platform's features." },
+      { name: "tracker driver", cost: 35120, duration: 10, category: "Smart Features", id: 6, img: "path/to/img6", description: "Track the location and progress of your driver in real-time." },
+      { name: "book rider", cost: 43369, duration: 8, category: "Order Management", id: 7, img: "path/to/img7", description: "Book a ride with a driver through the platform." },
+      { name: "Share location", cost: 14702, duration: 4, category: "Smart Features", id: 8, img: "path/to/img8", description: "Share your current location with friends or contacts." },
     ],
     numberFeatures: 35,
     cost: 70000,
@@ -36,10 +36,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'WhatsApp',
     features: [
-      { name: 'Send messages', cost: 10000, duration: 5, category: 'Communication', id: 9, img: 'path/to/img9', description: 'Send text messages to contacts.' },
-      { name: 'Voice calls', cost: 10000, duration: 6, category: 'Communication', id: 10, img: 'path/to/img10', description: 'Make voice calls to contacts.' },
-      { name: 'Video calls', cost: 10000, duration: 7, category: 'Communication', id: 11, img: 'path/to/img11', description: 'Make video calls to contacts.' },
-      { name: 'Group chats', cost: 10000, duration: 4, category: 'Communication', id: 12, img: 'path/to/img12', description: 'Create and participate in group chats.' }
+      { name: "Send messages", cost: 25303, duration: 5, category: "Social", id: 9, img: "path/to/img9", description: "Send messages to communicate with others on the platform." },
+      { name: "Voice calls", cost: 47217, duration: 7, category: "Audio & Music", id: 10, img: "path/to/img10", description: "Make voice calls to contacts or friends." },
+      { name: "Video calls", cost: 29015, duration: 10, category: "Audio & Music", id: 11, img: "path/to/img11", description: "Make video calls to stay connected with friends, family, or colleagues." },
+      { name: "Group chats", cost: 32547, duration: 6, category: "Social", id: 12, img: "path/to/img12", description: "Engage in group conversations with multiple participants." },
     ],
     numberFeatures: 40,
     cost: 0,
@@ -52,10 +52,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Spotify',
     features: [
-      { name: 'Listen to music', cost: 12500, duration: 8, category: 'Audio & Music', id: 13, img: 'path/to/img13', description: 'Stream a wide variety of music.' },
-      { name: 'Create playlists', cost: 12500, duration: 6, category: 'Audio & Music', id: 14, img: 'path/to/img14', description: 'Create and manage your own playlists.' },
-      { name: 'Discover new songs', cost: 12500, duration: 7, category: 'Audio & Music', id: 15, img: 'path/to/img15', description: 'Discover new music based on your tastes.' },
-      { name: 'Offline mode', cost: 12500, duration: 5, category: 'Audio & Music', id: 16, img: 'path/to/img16', description: 'Download music to listen offline.' }
+      { name: "Listen to music", cost: 21813, duration: 5, category: "Audio & Music", id: 13, img: "path/to/img13", description: "Stream and enjoy your favorite music tracks." },
+      { name: "Create playlists", cost: 41787, duration: 8, category: "Audio & Music", id: 14, img: "path/to/img14", description: "Curate personalized playlists to suit your mood or occasion." },
+      { name: "Discover new songs", cost: 40618, duration: 7, category: "Audio & Music", id: 15, img: "path/to/img15", description: "Explore and find new music recommendations tailored to your taste." },
+      { name: "Offline mode", cost: 39473, duration: 6, category: "Audio & Music", id: 16, img: "path/to/img16", description: "Listen to music even when you're offline or have limited connectivity." },
     ],
     numberFeatures: 30,
     cost: 50000,
@@ -68,10 +68,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Google Maps',
     features: [
-      { name: 'Navigation', cost: 0, duration: 9, category: 'Utilities', id: 17, img: 'path/to/img17', description: 'Turn-by-turn navigation for driving, walking, or biking.' },
-      { name: 'Search places', cost: 0, duration: 8, category: 'Utilities', id: 18, img: 'path/to/img18', description: 'Search for places and businesses nearby.' },
-      { name: 'Traffic updates', cost: 0, duration: 7, category: 'Utilities', id: 19, img: 'path/to/img19', description: 'Get real-time traffic updates and conditions.' },
-      { name: 'Offline maps', cost: 0, duration: 6, category: 'Utilities', id: 20, img: 'path/to/img20', description: 'Download maps for offline use.' }
+      { name: "Navigation", cost: 24822, duration: 9, category: "Smart Features", id: 17, img: "path/to/img17", description: "Get directions and navigate to your destination efficiently." },
+      { name: "Search places", cost: 34900, duration: 8, category: "Smart Features", id: 18, img: "path/to/img18", description: "Search for places of interest such as restaurants, hotels, and attractions." },
+      { name: "Traffic updates", cost: 28943, duration: 6, category: "Smart Features", id: 19, img: "path/to/img19", description: "Stay informed about traffic conditions and congestion in real-time." },
+      { name: "Offline maps", cost: 30428, duration: 7, category: "Smart Features", id: 20, img: "path/to/img20", description: "Access maps and directions even without an internet connection." },
     ],
     numberFeatures: 25,
     cost: 0,
@@ -84,10 +84,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Facebook',
     features: [
-      { name: 'Post updates', cost: 0, duration: 4, category: 'Social', id: 21, img: 'path/to/img21', description: 'Share updates with friends and followers.' },
-      { name: 'Chat with friends', cost: 0, duration: 5, category: 'Communication', id: 22, img: 'path/to/img22', description: 'Instant messaging with friends.' },
-      { name: 'Share photos', cost: 0, duration: 6, category: 'Photos & Videos', id: 23, img: 'path/to/img23', description: 'Upload and share photos with your network.' },
-      { name: 'Join groups', cost: 0, duration: 7, category: 'Social', id: 24, img: 'path/to/img24', description: 'Join and participate in groups of interest.' }
+      { name: "Post updates", cost: 41702, duration: 5, category: "Social", id: 21, img: "path/to/img21", description: "Share updates and posts with your network of friends or followers." },
+      { name: "Chat with friends", cost: 19003, duration: 4, category: "Social", id: 22, img: "path/to/img22", description: "Engage in one-on-one conversations with your friends or contacts." },
+      { name: "Share photos", cost: 45135, duration: 6, category: "Photos & Videos", id: 23, img: "path/to/img23", description: "Share photos and images with others in your network or community." },
+      { name: "Join groups", cost: 27265, duration: 5, category: "Social", id: 24, img: "path/to/img24", description: "Join communities and groups based on shared interests or affiliations." },
     ],
     numberFeatures: 50,
     cost: 0,
@@ -100,10 +100,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Twitter',
     features: [
-      { name: 'Tweet', cost: 0, duration: 3, category: 'Social', id: 25, img: 'path/to/img25', description: 'Post short messages called tweets.' },
-      { name: 'Follow users', cost: 0, duration: 4, category: 'Social', id: 26, img: 'path/to/img26', description: 'Follow other users to see their tweets.' },
-      { name: 'Retweet', cost: 0, duration: 5, category: 'Social', id: 27, img: 'path/to/img27', description: 'Share tweets from other users.' },
-      { name: 'Direct messages', cost: 0, duration: 6, category: 'Communication', id: 28, img: 'path/to/img28', description: 'Send private messages to other users.' }
+      { name: "Tweet", cost: 15567, duration: 3, category: "Social", id: 25, img: "path/to/img25", description: "Share your thoughts, opinions, and updates in short, concise messages." },
+    { name: "Follow users", cost: 32240, duration: 4, category: "Social", id: 26, img: "path/to/img26", description: "Stay updated with the latest content from your favorite users or influencers." },
+    { name: "Retweet", cost: 23941, duration: 3, category: "Social", id: 27, img: "path/to/img27", description: "Share interesting tweets from other users with your followers." },
+    { name: "Direct messages", cost: 19100, duration: 5, category: "Social", id: 28, img: "path/to/img28", description: "Send private messages directly to specific users or contacts." },
     ],
     numberFeatures: 45,
     cost: 0,
@@ -116,10 +116,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Netflix',
     features: [
-      { name: 'Watch movies', cost: 25000, duration: 9, category: 'Entertainment', id: 29, img: 'path/to/img29', description: 'Stream a wide variety of movies.' },
-      { name: 'Watch TV shows', cost: 25000, duration: 8, category: 'Entertainment', id: 30, img: 'path/to/img30', description: 'Stream a wide variety of TV shows.' },
-      { name: 'Create profiles', cost: 25000, duration: 7, category: 'Productivity', id: 31, img: 'path/to/img31', description: 'Create profiles for different users.' },
-      { name: 'Offline viewing', cost: 25000, duration: 6, category: 'Entertainment', id: 32, img: 'path/to/img32', description: 'Download content to watch offline.' }
+      { name: "Watch movies", cost: 22038, duration: 7, category: "Content", id: 29, img: "path/to/img29", description: "Enjoy a wide selection of movies for entertainment and relaxation." },
+    { name: "Watch TV shows", cost: 11215, duration: 7, category: "Content", id: 30, img: "path/to/img30", description: "Enjoy your favorite TV shows on demand." },
+    { name: "Create profiles", cost: 36521, duration: 5, category: "Essentials", id: 31, img: "path/to/img31", description: "Set up personalized profiles for a tailored experience." },
+    { name: "Offline viewing", cost: 27746, duration: 6, category: "Content", id: 32, img: "path/to/img32", description: "Access content even without an internet connection." },
     ],
     numberFeatures: 55,
     cost: 100000,
@@ -132,10 +132,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Amazon',
     features: [
-      { name: 'Shop for products', cost: 20000, duration: 7, category: 'Ecommerce', id: 33, img: 'path/to/img33', description: 'Browse and purchase a wide range of products.' },
-      { name: 'Read reviews', cost: 20000, duration: 6, category: 'Customer Insight', id: 34, img: 'path/to/img34', description: 'Read and write reviews for products.' },
-      { name: 'Track orders', cost: 20000, duration: 5, category: 'Order Management', id: 35, img: 'path/to/img35', description: 'Track the status of orders and deliveries.' },
-      { name: 'Subscribe & Save', cost: 20000, duration: 4, category: 'Ecommerce', id: 36, img: 'path/to/img36', description: 'Subscribe to products for regular delivery and savings.' }
+      { name: "Shop for products", cost: 46092, duration: 8, category: "Ecommerce", id: 33, img: "path/to/img33", description: "Browse and purchase a wide range of products." },
+    { name: "Read reviews", cost: 17568, duration: 5, category: "Ecommerce", id: 34, img: "path/to/img34", description: "Make informed decisions with product reviews." },
+    { name: "Track orders", cost: 30891, duration: 7, category: "Order Management", id: 35, img: "path/to/img35", description: "Stay updated on the status of your orders." },
+    { name: "Subscribe & Save", cost: 11950, duration: 4, category: "Ecommerce", id: 36, img: "path/to/img36", description: "Save money with subscription-based purchases." },
     ],
     numberFeatures: 55,
     cost: 80000,
@@ -148,10 +148,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Snapchat',
     features: [
-      { name: 'Send snaps', cost: 15000, duration: 6, category: 'Photos & Videos', id: 37, img: 'path/to/img37', description: 'Send ephemeral photos and videos to friends.' },
-      { name: 'View stories', cost: 15000, duration: 7, category: 'Social', id: 38, img: 'path/to/img38', description: 'View stories shared by friends and creators.' },
-      { name: 'Discover content', cost: 15000, duration: 8, category: 'Social', id: 39, img: 'path/to/img39', description: 'Discover curated content from publishers and creators.' },
-      { name: 'Chat with friends', cost: 15000, duration: 5, category: 'Communication', id: 40, img: 'path/to/img40', description: 'Chat with friends using text, photos, and videos.' }
+      { name: "Send snaps", cost: 11252, duration: 3, category: "Social", id: 37, img: "path/to/img37", description: "Share moments with disappearing photos and videos." },
+    { name: "View stories", cost: 44909, duration: 6, category: "Social", id: 38, img: "path/to/img38", description: "Watch short-lived updates from friends and creators." },
+    { name: "Discover content", cost: 39086, duration: 8, category: "Content", id: 39, img: "path/to/img39", description: "Explore a variety of content tailored to your interests." },
+    { name: "Watch short videos", cost: 12675, duration: 4, category: "Content", id: 40, img: "path/to/img40", description: "Enjoy bite-sized video content for quick entertainment." },
     ],
     numberFeatures: 35,
     cost: 60000,
@@ -164,10 +164,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'TikTok',
     features: [
-      { name: 'Watch short videos', cost: 15000, duration: 4, category: 'Photos & Videos', id: 41, img: 'path/to/img41', description: 'Watch a variety of short-form videos from creators worldwide.' },
-      { name: 'Create and share videos', cost: 15000, duration: 5, category: 'Photos & Videos', id: 42, img: 'path/to/img42', description: 'Create and share short videos with music and effects.' },
-      { name: 'Explore trends', cost: 15000, duration: 6, category: 'Social', id: 43, img: 'path/to/img43', description: 'Explore trending challenges, hashtags, and content.' },
-      { name: 'Follow creators', cost: 15000, duration: 7, category: 'Social', id: 44, img: 'path/to/img44', description: 'Follow your favorite creators and interact with their content.' }
+      { name: "Watch short videos", cost: 12675, duration: 4, category: "Content", id: 40, img: "path/to/img40", description: "Enjoy bite-sized video content for quick entertainment." },
+    { name: "Create and share videos", cost: 42481, duration: 9, category: "Content", id: 41, img: "path/to/img41", description: "Capture and share memorable moments with friends and followers." },
+    { name: "Explore trends", cost: 42086, duration: 7, category: "Content", id: 42, img: "path/to/img42", description: "Stay updated on the latest trends and topics." },
+    { name: "Follow creators", cost: 36049, duration: 6, category: "Social", id: 43, img: "path/to/img43", description: "Stay connected with your favorite content creators." },
     ],
     numberFeatures: 30,
     cost: 60000,
@@ -180,10 +180,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'LinkedIn',
     features: [
-      { name: 'Professional networking', cost: 20000, duration: 5, category: 'Professional', id: 45, img: 'path/to/img45', description: 'Connect and network with professionals in your industry.' },
-      { name: 'Job search', cost: 20000, duration: 6, category: 'Professional', id: 46, img: 'path/to/img46', description: 'Search and apply for jobs based on your profile and interests.' },
-      { name: 'Industry news', cost: 20000, duration: 7, category: 'Professional', id: 47, img: 'path/to/img47', description: 'Stay updated with news and insights relevant to your profession.' },
-      { name: 'Skill endorsements', cost: 20000, duration: 8, category: 'Professional', id: 48, img: 'path/to/img48', description: 'Endorse and be endorsed for skills by your connections.' }
+      { name: "Professional networking", cost: 17651, duration: 5, category: "Social", id: 44, img: "path/to/img44", description: "Build and maintain professional connections." },
+    { name: "Job search", cost: 39233, duration: 8, category: "Social", id: 45, img: "path/to/img45", description: "Find job opportunities and network with professionals." },
+    { name: "Industry news", cost: 37406, duration: 7, category: "Content", id: 46, img: "path/to/img46", description: "Stay informed with the latest news in your industry." },
+    { name: "Skill endorsements", cost: 42821, duration: 9, category: "Social", id: 47, img: "path/to/img47", description: "Endorse and showcase your skills to colleagues and peers." },
     ],
     numberFeatures: 40,
     cost: 80000,
@@ -196,10 +196,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Pinterest',
     features: [
-      { name: 'Discover ideas', cost: 15000, duration: 6, category: 'Inspiration', id: 49, img: 'path/to/img49', description: 'Discover creative ideas and inspiration for various projects and interests.' },
-      { name: 'Save inspiration', cost: 15000, duration: 5, category: 'Inspiration', id: 50, img: 'path/to/img50', description: 'Save and organize ideas and inspiration for future reference.' },
-      { name: 'Plan projects', cost: 15000, duration: 4, category: 'Planning', id: 51, img: 'path/to/img51', description: 'Plan and organize projects, events, and activities.' },
-      { name: 'Shop', cost: 15000, duration: 3, category: 'Ecommerce', id: 52, img: 'path/to/img52', description: 'Discover and shop for products based on inspiration.' }
+      { name: "Discover ideas", cost: 39563, duration: 6, category: "Productivity", id: 48, img: "path/to/img48", description: "Find inspiration and new ideas for your projects." },
+    { name: "Save inspiration", cost: 23038, duration: 4, category: "Productivity", id: 49, img: "path/to/img49", description: "Save and organize ideas and inspiration for later." },
+    { name: "Plan projects", cost: 32108, duration: 7, category: "Project Management", id: 50, img: "path/to/img50", description: "Plan and manage your projects effectively." },
+    { name: "Shop", cost: 30555, duration: 6, category: "Ecommerce", id: 51, img: "path/to/img51", description: "Browse and shop for a wide range of products." },
     ],
     numberFeatures: 35,
     cost: 60000,
@@ -212,10 +212,10 @@ export const CardsData: Basecard[] = [
   {
     title: 'Zoom',
     features: [
-      { name: 'Video conferencing', cost: 25000, duration: 8, category: 'Communication', id: 53, img: 'path/to/img53', description: 'Host video meetings with multiple participants.' },
-      { name: 'Screen sharing', cost: 25000, duration: 7, category: 'Productivity', id: 54, img: 'path/to/img54', description: 'Share your screen with other meeting participants.' },
-      { name: 'Recording meetings', cost: 25000, duration: 6, category: 'Productivity', id: 55, img: 'path/to/img55', description: 'Record your meetings for later reference.' },
-      { name: 'Virtual backgrounds', cost: 25000, duration: 5, category: 'Entertainment', id: 56, img: 'path/to/img56', description: 'Add virtual backgrounds to your video feed.' }
+      { name: "Video conferencing", cost: 29202, duration: 7, category: "Smart Features", id: 52, img: "path/to/img52", description: "Connect face-to-face with colleagues and friends from anywhere." },
+    { name: "Screen sharing", cost: 39993, duration: 6, category: "Smart Features", id: 53, img: "path/to/img53", description: "Share your screen with others during meetings and presentations." },
+    { name: "Recording meetings", cost: 31106, duration: 5, category: "Smart Features", id: 54, img: "path/to/img54", description: "Record your meetings for future reference or sharing." },
+    { name: "Virtual backgrounds", cost: 37277, duration: 6, category: "Smart Features", id: 55, img: "path/to/img55", description: "Enhance your video calls with virtual backgrounds." },
     ],
     numberFeatures: 25,
     cost: 100000,

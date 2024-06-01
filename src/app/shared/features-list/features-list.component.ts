@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { FeatureService } from 'src/services/buildcards/feature.service';
-import { Feature } from 'src/services/interface/basecard';
+import { Basecard, Feature } from 'src/services/interface/basecard';
 import { ModalService } from 'src/services/modal.service';
 
 @Component({
@@ -15,14 +16,25 @@ export class FeaturesListComponent implements OnInit {
   filteredData: Feature[] = [];
   selectedCategory: String = '';
   categories: String[] = [];
+  allBases:Basecard[]=[]
+
+
+  messagesAddedIs:boolean = false;
+  messagesRemoveIs:boolean = false;
 
   searchInput: string = '';
 
-  constructor(private featureService: FeatureService, private modalService: ModalService) { }
+  constructor(private featureService: FeatureService, private modalService: ModalService, private basecardService:BasecardService) { }
 
   ngOnInit(): void {
     this.getAllFeatures();
     this.categories= this.getUniqueCategories(this.featureData)
+
+    this.basecardService.getAllBaseCards().subscribe((res)=>{
+      this.allBases=res
+    }, error =>{
+      console.error(error)
+    })
   }
 
   closeModal(): void {
@@ -71,4 +83,25 @@ export class FeaturesListComponent implements OnInit {
       this.getAllFeatures();
     }
   }
+  
+
+  displayMessage(status:boolean, property:string):void{
+    
+    if(property=='add'){
+      this.messagesRemoveIs = false;
+      this.messagesAddedIs = status
+      setTimeout(() => {
+       this.messagesAddedIs = false;
+    }, 1500);
+    }else{
+      this.messagesAddedIs = false;
+      this.messagesRemoveIs = status
+      setTimeout(() => {
+       this.messagesRemoveIs = false;
+    }, 1500);
+    }
+      
+  }
+ 
+
 }
