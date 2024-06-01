@@ -1,7 +1,6 @@
 div{
     display: flex;
     flex-direction: row;
-    background: red;
 }
 section{
     width: 100%;

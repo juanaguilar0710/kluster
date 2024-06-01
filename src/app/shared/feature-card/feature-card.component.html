@@ -1,4 +1,4 @@
-<div class="card isSelectedCard">
+<div class="card" [ngClass]="{'isSelectedCard':featureIsSelected}">
     <div class="btnDeleteCard" *ngIf="featureIsSelected" (click)="removeThisFeature()">
         <mat-icon>cancel</mat-icon>
       </div>

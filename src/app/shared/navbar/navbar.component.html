@@ -1,32 +1,13 @@
 <nav>
     <div class="btnNav logo" (click)="goToHome()">
         
-            <img src="../../../assets/images/logoKlab.png" alt="Logo kloustr lab">
+            <img src="../../../assets/images/simboloKloustr.png" alt="Logo kloustr lab">
         
     </div>
-    <ul *ngIf="!isAuthorized">
+    <ul>
         <li class="btnNav btnUndo">
             <a href="">
                 <span class="material-icons md-light">undo</span>
-            </a>
-        </li>
-        <li class="btnNav" (click)="openLogin()">
-           
-
-                <span class="material-icons md-light">dashboard</span>
-            
-        </li>
-        <li class="btnNav btnDemo">
-            <span class="material-icons md-light"(click)="openLogin()">headset</span>
-            <span class="customLabel">  Book a demo </span>
-        </li>
-    </ul>
-
-    <ul *ngIf="isAuthorized">
-        <li class="btnNav btnUndo">
-            <a href="">
-
-                <span class="material-icons md-light" >undo</span>
             </a>
         </li>
         <li class="btnNav">
@@ -35,18 +16,6 @@
                 <span class="material-icons md-light">dashboard</span>
             </a>
         </li>
-       
+        
     </ul>
-
-    <div class="bottom">
-        <div class="btnNav">
-          <span class="material-icons md-light">rocket</span>
-        </div>
-        <div class="btnNav btnProfile" *ngIf="!isAuthorized" (click)="openLogin()" >
-          <span class="material-icons md-light">face</span>
-        </div>
-        <div class="btnNav btnProfile" *ngIf="isAuthorized" (click)="logout()" >
-          <span class="material-icons md-light">face</span>
-        </div>
-      </div>
 </nav>

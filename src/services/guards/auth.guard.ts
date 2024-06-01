@@ -13,12 +13,13 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if (this.authService.isLoggedIn()) {
+   /*  if (this.authService.isLoggedIn()) {
       return true;
     } else {
       alert("Should be logYou must be logged in")
       this.router.navigate(['/']); // Redirige a la página de login si no está autenticado
       return false;
-    }
+    } */
+    return true;
   }
 }

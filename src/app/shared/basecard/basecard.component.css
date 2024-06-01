@@ -50,7 +50,6 @@
 .card > header > img{
     width: 50px ;
     height: 50px ;
-    background: gold;
 }
 .card > header > .btnAdd{
     height: 3rem;

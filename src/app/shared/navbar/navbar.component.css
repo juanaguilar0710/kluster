@@ -35,9 +35,8 @@ nav>.bottom{
 position: fixed;
 bottom: 0;
 }
-.logo{
-    color: var(--brand-color);
-    font-size: 32px;
+.logo>img{
+    width: 56px;
 }
 .btnProfile{
     border-radius: 100%;
