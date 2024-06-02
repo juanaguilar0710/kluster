@@ -8,7 +8,7 @@
     flex-direction: column;
     margin: auto;
     width: 60%;
-    border: 1px solid var(--brand-color);
+    border: 1px solid var(--brand-yellow-color);
     margin: 2rem auto;
     padding: 2rem;
     border-radius: 0px 15px 15px 15px;
@@ -48,7 +48,7 @@ button{
     padding: 1rem 4rem;
     border-radius: 5px;
     border: none;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     color: var(--auxiliar-bg-color);
     font-weight: bold;
     cursor: pointer;
@@ -114,7 +114,7 @@ button:active{
     transition: all .3s ease;
 }
 .btnDeleteCard:hover mat-icon{
-    box-shadow: 1px 1px 10px var(--brand-color);
+    box-shadow: 1px 1px 10px var(--brand-yellow-color);
     transform: scale(1.1,1.1);
 }
 .btnDeleteCard:active mat-icon{
@@ -123,7 +123,7 @@ button:active{
 .btnDeleteCard mat-icon{
     font-size: 1.8rem;
     background: var(--main-bg-color);
-    color: var(--brand-color);
+    color: var(--brand-yellow-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,6 +165,9 @@ button:active{
     align-content: center;
     align-items: center;
     color: var(--primary-text-color);
+}
+.infoText .details {
+    width: 100%;
 }
 .infoText .details p{
     font-size: 1rem;
@@ -241,6 +244,8 @@ font-weight: bold;
     align-items: center;
     width: 80%;
     margin: auto;
+    background-color: #e5dddd4f;
+    border-radius: 15px;
 }
 .numbersLabel .infot h3{
     font-size: 1.5rem !important;
@@ -252,7 +257,6 @@ font-weight: bold;
     display: flex;
     flex-direction: column;
     width: 50%;
-    background-color: #e5dddd4f;
 }
 .docChip >p {
     padding: 5px;
@@ -283,7 +287,6 @@ font-weight: bold;
     display: flex;
     flex-direction: column;
     width: 50%;
-    background-color: #e5dddd4f;
     box-sizing: border-box;
 }
 .numbersLabel .costLabel{
@@ -324,7 +327,7 @@ font-weight: bold;
 }
 .contDecoration{
     width: 100%;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     height: 50px;
 }
 .featuresSelectedList{
@@ -427,12 +430,12 @@ fieldset div label{
     color: var(--primary-text-color);
 }
 fieldset div label:hover{
-    border: 1px solid var(--brand-color);
+    border: 1px solid var(--brand-yellow-color);
     box-shadow: 1px 1px 10px var(--shadow-color);
     cursor: pointer;
 }
 fieldset div input[type="checkbox"]:checked + label {
-    background-color: var(--brand-color);
+    background-color: var(--brand-yellow-color);
     color: white;
 }
 
@@ -443,6 +446,18 @@ fieldset div input[type="checkbox"]{
 
     width: 60%;
     margin: auto;
+}
+
+.journeyTable{
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    border-radius: 15px;
+    background-color: transparent;
+}
+.journeyTable table{
+    width: 100%;
+    border-radius: 15px;
 }
 @media screen and (max-width:860px) {
     .buildcards{

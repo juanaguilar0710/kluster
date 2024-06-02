@@ -40,10 +40,10 @@ header>.introduction>div>p{
 
 header >.introduction> button, .btnContinue{
     padding: 1rem 3rem;
-    background-color: var(--brand-color);
-    color: var(--main-bg-color);
+    background-color: var(--brand-yellow-color);
+    color: var(--primary-text-color);
     border-radius: 5px;
-    border: 2px solid var(--border-color) !important;
+    border: 2px solid var(--primary-text-color) !important;
     cursor: pointer;
     position: absolute;
     right: 14rem;
@@ -65,7 +65,7 @@ header >.introduction> button:hover{
     font-size: 1.3rem;
     background: transparent;
     margin-left: 5px;
-    color: var(--button-primary-color);
+    color: var(--brand-black-color);
 }
 .btnContinue{
     position: fixed;

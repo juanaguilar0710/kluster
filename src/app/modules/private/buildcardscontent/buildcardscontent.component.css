@@ -174,7 +174,7 @@
     transition: all .3s ease;
 }
 .btnDeleteCard:hover mat-icon{
-    box-shadow: 1px 1px 10px var(--brand-color);
+    box-shadow: 1px 1px 10px var(--brand-yellow-color);
     transform: scale(1.1,1.1);
 }
 .btnDeleteCard:active mat-icon{
@@ -183,7 +183,7 @@
 .btnDeleteCard mat-icon{
     font-size: 1.8rem;
     background: var(--main-bg-color);
-    color: var(--brand-color);
+    color: var(--brand-yellow-color);
     display: flex;
     justify-content: center;
     align-items: center;

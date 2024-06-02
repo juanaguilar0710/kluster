@@ -26,7 +26,7 @@
 .leftSection {
   margin-right: 1rem;
   width: 50%;
-  background: var(--brand-color);
+  background: var(--brand-yellow-color);
 }
 
 /* styles for Info in modal right part */
@@ -108,7 +108,7 @@ label{
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     color: var(--second-bg-color);
     font-weight: bold;
     display: flex;

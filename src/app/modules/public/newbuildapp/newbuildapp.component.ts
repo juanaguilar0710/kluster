@@ -24,6 +24,7 @@ export class NewbuildappComponent implements OnInit {
   customerInfo!: Customer;
   newBuildCard!: Buildcard;
   modalIs:boolean = false;
+  messageStepFour:boolean =false;
 
 
   modalListIs:boolean=false;
@@ -40,6 +41,8 @@ export class NewbuildappComponent implements OnInit {
   confirmationStep = false
 
   
+  displayedColumns: string[] = [ 'Feature','Duration', 'Cost'];
+  dataSource:Feature[] =this.selectedFeatures;
 
 
   constructor(
@@ -126,7 +129,7 @@ export class NewbuildappComponent implements OnInit {
     
     this.newBuildCard.status=1
     this.buildcardService.createNewBuild(this.newBuildCard)
-    this.router.navigate(['/user/dashboard'])
+    this.messageStepFour=true
     
   }
 
@@ -218,7 +221,7 @@ export class NewbuildappComponent implements OnInit {
       if (this.secondFormGroup.valid) {
         const url = this.secondFormGroup.get('customBaseCtrl')?.value;
         const features = this.selectedFeatures;
-  
+        this.dataSource =features
         if (url && url.trim() !== '') {
           this.newBuildCard.urlBase = url.trim();
           this.newBuildCard.basecard_Id = undefined;
@@ -307,4 +310,8 @@ export class NewbuildappComponent implements OnInit {
     return totalCost;
 }
 
+closeAlertFourStep(){
+  this.router.navigate(['/user/dashboard'])
+  this.messageStepFour=false;
+}
 }

@@ -10,11 +10,16 @@
   --primary-text-color: #333333;
   --shadow-color: #ccced1;
   --alerts-color-warning: #db3700;
-  --brand-color: #ffd31f;
   --button-primary-color: #00e676;
   --border-color: #d6d7dd;
   --border-color-second: #bbbbbe;
   --second-text-color: #9b9fb1;
+  
+  /* brands colors */
+  --brand-yellow-color: #fdd500;
+  --brand-black-color: #000;
+  --brand-white-color: #fff;
+
 }
 @font-face {
   font-family: 'Gilroy-Bold ☞';
@@ -82,13 +87,13 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
   }
 
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit  {
-  background-color: var(--brand-color) !important;
+  background-color: var(--brand-yellow-color) !important;
 }
 .mat-stepper-vertical, .mat-stepper-horizontal{
   background: transparent;
 }
 .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label{
-  color: var(--brand-color)!important;
+  color: var(--brand-yellow-color)!important;
  
 }
 .mat-form-field-appearance-legacy .mat-form-field-ripple ,
@@ -99,7 +104,7 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
 .mat-form-field-appearance-legacy .mat-form-field-underline ,
 .mat-form-field-appearance-legacy .mat-form-field-underline,.mat-form-field-appearance-legacy .mat-form-field-underline
 {
-  background-color: var(--brand-color) !important;
+  background-color: var(--brand-yellow-color) !important;
 
 }
 @media screen and (max-width:600px) {

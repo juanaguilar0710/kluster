@@ -46,7 +46,7 @@
 .leftSection{
     width: 30%;
     padding: 3rem 2rem;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

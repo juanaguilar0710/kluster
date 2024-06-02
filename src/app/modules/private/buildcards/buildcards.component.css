@@ -24,7 +24,7 @@ header>.top{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     transition: all .3s ease;
     color: var(--second-bg-color);
     font-weight: bold;
@@ -74,6 +74,6 @@ header>.top{
 }
 .search input:focus{
    
-    border-color: var(--brand-color);
+    border-color: var(--brand-yellow-color);
     
 }

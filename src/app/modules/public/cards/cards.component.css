@@ -26,6 +26,7 @@ section{
     border: none;
     outline: none;
     font-size: 1.3rem;
+    border: 1px solid var(--border-color-second);
     padding: 5px 15px;
     
 }
@@ -36,13 +37,12 @@ section{
     align-items: center;
 }
 .filterBySearch input{
-    height: 30px;
+    height: 28px;
     margin: 0px 1rem 0px 0.5rem;
-    box-sizing: border-box;
     border-radius: 0px 5px 5px;
     outline: none;
     border: 1px solid var(--border-color-second);
-    padding-left: 5px;
+    padding: 5px;
     color: var(--primary-text-color);
     font-size: 1rem;
 }

@@ -71,7 +71,7 @@ li a:active{
 }
 .customLabel{
     position: absolute;
-    background: var(--brand-color);
+    background: var(--brand-yellow-color);
     color: var(--main-bg-color);
     width: max-content;
     font-size: 18px;
