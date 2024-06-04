@@ -12,17 +12,17 @@
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
           </ng-template>
         </mat-tab>
-        <mat-tab label="Draft">
+        <!-- <mat-tab label="Draft">
           <ng-template matTabContent>
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
           </ng-template>
-        </mat-tab>
+        </mat-tab> -->
         <mat-tab label="Ready">
           <ng-template matTabContent>
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
           </ng-template>
         </mat-tab>
-        <mat-tab label="Paid">
+       <!--  <mat-tab label="Paid">
           <ng-template matTabContent>
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
           </ng-template>
@@ -31,7 +31,7 @@
           <ng-template matTabContent>
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
           </ng-template>
-        </mat-tab>
+        </mat-tab> -->
         <mat-tab label="Complete">
           <ng-template matTabContent>
             <app-buildcardscontent [builds]="(filteredBuilds$ | async) || []"></app-buildcardscontent>
@@ -41,7 +41,7 @@
     </div>
     <div class="search">
       <label for="filtertxt">Filter</label>
-      <input type="text" name="filtertxt">
+      <input type="text" name="filtertxt" [(ngModel)]="searchInput" (input)="filterFeaturesByName()" placeholder="search">
     </div>
   </div>
 </header>

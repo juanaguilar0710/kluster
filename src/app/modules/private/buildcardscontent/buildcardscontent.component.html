@@ -1,57 +1,48 @@
 <section>
-    <div class="buildcards">
-      <div class="card" *ngFor="let build of builds">
-        <section class="top">
-          <small class="tag status" [appCustomBackgroundColor]="toStringStatus(build.status!)">{{ toStringStatus( build.status!) }}</small>
-          <div class="titleAndOptions">
-            <div class="labelsInfo">
-              <h2 class="titleBuildcard">{{ build.name }}</h2>
-              <small class="lastEdit"><span class="ttlabel">Last Edit:</span> {{ build.last_update! | date }}</small>
-            </div>
-            <div class="optionsCard">
-              <mat-icon class="iconOptions" (click)="toggleOptions(build.id)">more_vert</mat-icon>
-              <ul class="optionsList" *ngIf="optionsVisibility[build.id]">
-                <li class="option"  (click)="deleteBuild(build.id)"><mat-icon class="iconli">delete</mat-icon> Delete</li>
-                <li class="option" (click)="editName(build.id)"><mat-icon class="iconli">edit</mat-icon> Rename</li>
-              </ul>
-
-            </div>
-            <div class="changeNameForm" *ngIf="changeNameIs">
-              <div class="btnDeleteCard"  (click)="closeModal()">
-                <mat-icon>cancel</mat-icon>
-              </div>
-              <h2>Change tittle build</h2>
-              <form>
-                <input type="text" name="changeName" class="changeNameTxt" id="changeNameId" placeholder="{{ build.name }}" [(ngModel)]="newName">
-                <button class="btnChange" (click)="updateBuildName(build.id)">Change</button>
-              </form>
-            </div>
+  <div class="buildcards">
+    <div class="card" *ngFor="let build of builds">
+      <section class="top">
+        <small class="tag status" [appCustomBackgroundColor]="toStringStatus(build.status!)">{{ toStringStatus(build.status!) }}</small>
+        <div class="titleAndOptions">
+          <div class="labelsInfo">
+            <h2 class="titleBuildcard">{{ build.name }}</h2>
+            <small class="lastEdit"><span class="ttlabel">Last Edit:</span> {{ build.last_update! | date }}</small>
           </div>
-          <!-- <div class="progressBarArea">
-            <div class="labelsProgress">
-              <small class="tag">IN PROGRESS</small>
-            </div>
-            <div class="progressBar">
-            </div>
-          </div> -->
-        </section>
-        <footer>
-          <div class="footerInfo">
-            <div class="features">
-              <h3>Features</h3>
-              <p>{{ build.features.length }}</p>
-            </div>
-            <div class="Duration">
-              <h3>Duration</h3>
-              <p>{{ build.developmentDuration }}</p>
-            </div>
+          <div class="optionsCard">
+            <mat-icon class="iconOptions" (click)="toggleOptions(build.id)">more_vert</mat-icon>
+            <ul class="optionsList" *ngIf="optionsVisibility[build.id]">
+              <li class="option" (click)="deleteBuild(build.id)"><mat-icon class="iconli">delete</mat-icon> Delete</li>
+              <li class="option" (click)="editName(build.id)"><mat-icon class="iconli">edit</mat-icon> Rename</li>
+            </ul>
           </div>
-          <button>Continue</button>
-        </footer>
-      </div>
-      <div class="message" *ngIf="!builds || builds.length === 0">
-        <h2>You don't have any builds to show</h2>
-      </div>
+          <div class="changeNameForm" *ngIf="isEditingName(build.id)">
+            <div class="btnDeleteCard" (click)="closeModal()">
+              <mat-icon>cancel</mat-icon>
+            </div>
+            <h2>Change title build</h2>
+            <form>
+              <input type="text" name="changeName" class="changeNameTxt" id="changeNameId" placeholder="{{ build.name }}" [(ngModel)]="newName">
+              <button class="btnChange" (click)="updateBuildName(build.id)">Change</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footerInfo">
+          <div class="features">
+            <h3>Features</h3>
+            <p>{{ build.features.length }}</p>
+          </div>
+          <div class="Duration">
+            <h3>Duration</h3>
+            <p>{{ build.developmentDuration }}</p>
+          </div>
+        </div>
+        <button>Continue</button>
+      </footer>
     </div>
-  </section>
-  
+    <div class="message" *ngIf="!builds || builds.length === 0">
+      <h2>You don't have any builds to show</h2>
+    </div>
+  </div>
+</section>

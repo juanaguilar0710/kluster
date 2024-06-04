@@ -77,4 +77,11 @@ export class FeatureService {
       console.error(error);
     });
   }
+  getFeatureIds(features: Feature[]): number[] {
+    return features.map(feature => feature.id);
+  }
+
+  getFeaturesByIds(ids: number[]): Feature[] {
+    return this.features.filter(feature => ids.includes(feature.id));
+  }
 }

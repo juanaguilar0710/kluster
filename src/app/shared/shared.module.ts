@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasecardComponent } from './basecard/basecard.component';
@@ -14,6 +14,11 @@ import { CustomBackgroundColorDirective } from './directives/custom-backgroud-co
 import { FeaturesListComponent } from './features-list/features-list.component';
 import { FeatureCardComponent } from './feature-card/feature-card.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';;
+import { CountryCodeSelectComponent } from './country-code-select/country-code-select.component';
+
 
 
 @NgModule({
@@ -25,7 +30,9 @@ import { FeatureCardComponent } from './feature-card/feature-card.component';
     BasecardlistComponent,
     CustomBackgroundColorDirective,
     FeaturesListComponent,
-    FeatureCardComponent
+    FeatureCardComponent,
+    CountryCodeSelectComponent,
+
     
   ],
   imports: [
@@ -33,7 +40,12 @@ import { FeatureCardComponent } from './feature-card/feature-card.component';
     MatIconModule,
     MatTableModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports:[
     NavbarComponent,
@@ -42,7 +54,8 @@ import { FeatureCardComponent } from './feature-card/feature-card.component';
     DetailsComponent,
     BasecardlistComponent,
     FeaturesListComponent,
-    CustomBackgroundColorDirective
+    CustomBackgroundColorDirective,
+    CountryCodeSelectComponent
   ]
 })
 export class SharedModule { }

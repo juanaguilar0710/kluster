@@ -11,6 +11,7 @@ export class BuildcardService {
 
   private buildsSubject: BehaviorSubject<Buildcard[]> = new BehaviorSubject<Buildcard[]>([]);
   builds$: Observable<Buildcard[]> = this.buildsSubject.asObservable();
+  private nextId = 1;
 
   constructor() {
     this.loadBuildcards();
@@ -34,6 +35,7 @@ export class BuildcardService {
   createNewBuild(newBuild: Buildcard): void {
     const currentBuilds = this.buildsSubject.value;
     if (newBuild) {
+      newBuild.id = this.nextId++;
       const updatedBuilds = [...currentBuilds, newBuild];
       this.buildsSubject.next(updatedBuilds);
       this.saveBuildcardInStorage(updatedBuilds);
@@ -79,6 +81,14 @@ export class BuildcardService {
         return of([]);
       })
     );
+  }
+
+  filterByName(name: string): Observable<Buildcard[]> {
+    return this.builds$.pipe(map(builds =>{
+      return builds.filter((build => 
+        build.name.toLowerCase().includes(name.toLowerCase()) 
+      ))
+    })) 
   }
 
   getBuildcards(): Observable<Buildcard[]> {

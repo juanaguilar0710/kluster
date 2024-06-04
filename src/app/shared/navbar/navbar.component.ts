@@ -1,8 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AuthService } from 'src/services/auth/auth.service';
 import { ModalService } from 'src/services/modal.service';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/services/loginService/login.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,17 +15,10 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private modalService: ModalService,
-    private router: Router,
-    private loginService: LoginService
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.authSubscription = this.loginService.isLoggedIn$.subscribe((isLoggedIn) => {
-      this.isAuthorized = isLoggedIn;
-    }, error => {
-      console.error(error);
-    });
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     if (this.authSubscription) {
@@ -43,11 +34,4 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  login() {
-    this.loginService.login();
-  }
-
-  logout() {
-    this.loginService.logout();
-  }
 }

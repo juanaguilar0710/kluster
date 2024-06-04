@@ -6,24 +6,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { CardsComponent } from './cards/cards.component';
-import { LoginComponent } from './login/login.component';
 import { NewbuildappComponent } from './newbuildapp/newbuildapp.component';
 
 /* material */
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { PolicyComponent } from './policity/policy.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
     CardsComponent,
     HomeComponent,
-    LoginComponent,
     NewbuildappComponent,
+    TermsComponent,
+    PolicyComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +37,6 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatStepperModule,
   ],
-  exports: [HomeComponent, CardsComponent],
+  exports: [HomeComponent, CardsComponent, PolicyComponent,TermsComponent],
 })
 export class PublicModule {}

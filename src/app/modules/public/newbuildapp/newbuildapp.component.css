@@ -134,7 +134,7 @@ button:active{
 .formStepFour{
     border-radius: 0px 15px 15px;
     border: 1px solid #651fff2b;
-    background-image: url(../../../../assets/images/waveSummary.svg);
+    background-image: url(../../../../assets/images/waveDown.svg);
     background-repeat: no-repeat;
     background-position: bottom;
 }
@@ -459,6 +459,20 @@ fieldset div input[type="checkbox"]{
     width: 100%;
     border-radius: 15px;
 }
+
+.infoPhone{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.infoPhone .matFormPhone{
+    width: 50%;
+}
 @media screen and (max-width:860px) {
     .buildcards{
     
@@ -494,3 +508,5 @@ fieldset div input[type="checkbox"]{
         display: none;
     }
 }
+
+

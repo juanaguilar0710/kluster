@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BasecardService } from 'src/services/buildcards/basecard.service';
 import { BuildcardService } from 'src/services/buildcards/buildcard.service';
 import { FeatureService } from 'src/services/buildcards/feature.service';
+import { CountryService } from 'src/services/countrys/country.service';
 import { CustomerService } from 'src/services/customer/customer.service';
 import { Customer } from 'src/services/interface/Customer';
 import { Basecard, Feature } from 'src/services/interface/basecard';
@@ -52,7 +53,8 @@ export class NewbuildappComponent implements OnInit {
     private basecardService: BasecardService,
     private router: Router,
     private modalService:ModalService,
-    private featureService:FeatureService
+    private featureService:FeatureService,
+    private countryService:CountryService
   ) {}
 
   ngOnInit(): void {
@@ -94,6 +96,7 @@ export class NewbuildappComponent implements OnInit {
       this.totalCost=this.calculateTotalCost()
     });
     this.modalService.$modal.subscribe((res)=>{ this.modalIs = res},error=>{console.error(error)})
+
   }
 
 
@@ -117,6 +120,7 @@ export class NewbuildappComponent implements OnInit {
         last_update: new Date(),
         customer:this.customerInfo
       }
+      console.log(this.customerInfo)
       this.customerService.createNewCustomer(this.customerInfo);
       // this.createBuildcard();
     } else {
@@ -179,7 +183,7 @@ export class NewbuildappComponent implements OnInit {
       this.newBuildCard.last_update = new Date()
       this.newBuildCard.status = 0 
       this.newBuildCard.developmentDuration = 30  
-      this.newBuildCard.features = this.selectedFeatures
+      this.newBuildCard.features = this.featureService.getFeatureIds( this.selectedFeatures)
     } else {
       console.error('Form is not valid');
     }
@@ -192,7 +196,7 @@ export class NewbuildappComponent implements OnInit {
       this.newBuildCard.status = 0
       this.totalCost=this.calculateTotalCost()
       this.newBuildCard.cost =this.totalCost
-      this.newBuildCard.features = this.selectedFeatures
+      this.newBuildCard.features = this.featureService.getFeatureIds( this.selectedFeatures)
       this.newBuildCard.last_update = new Date()
       this.newBuildCard.developmentDuration = this.basecardSelected.developmentDuration
     } else {
@@ -227,7 +231,7 @@ export class NewbuildappComponent implements OnInit {
           this.newBuildCard.basecard_Id = undefined;
   
           if (features.length > 0) {
-            this.newBuildCard.features=features;
+            this.newBuildCard.features= this.featureService.getFeatureIds(features) ;
             this.totalCost=this.calculateTotalCost()
             this.newBuildCard.cost =this.totalCost
             
@@ -239,7 +243,7 @@ export class NewbuildappComponent implements OnInit {
           this.saveBase();
   
           if (features.length > 0) {
-            this.newBuildCard.features=features;
+            this.newBuildCard.features=this.featureService.getFeatureIds(features) ;
             this.totalCost=this.calculateTotalCost()
             this.newBuildCard.cost =this.totalCost
           } else {

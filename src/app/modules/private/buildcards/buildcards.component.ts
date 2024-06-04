@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, filter, map } from 'rxjs/operators';
 import { BuildcardService } from 'src/services/buildcards/buildcard.service';
 import { Buildcard } from 'src/services/interface/buildcard.interface';
 
@@ -14,7 +14,7 @@ import { Buildcard } from 'src/services/interface/buildcard.interface';
 export class BuildcardsComponent implements OnInit {
   
   filteredBuilds$: Observable<Buildcard[]> | undefined;
-
+  searchInput:string='';
   constructor(private buildcardService: BuildcardService) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class BuildcardsComponent implements OnInit {
     );
   }
 
-  onTabChange(event: MatTabChangeEvent): void {
+  /* onTabChange(event: MatTabChangeEvent): void {
     const tabIndex = event.index;
     switch (tabIndex) {
       case 1: // Draft
@@ -52,6 +52,32 @@ export class BuildcardsComponent implements OnInit {
         this.filterByStatus(-1);
         break;
     }
+  } */
+  onTabChange(event: MatTabChangeEvent): void {
+    const tabIndex = event.index;
+    switch (tabIndex) {
+      case 1: // Draft
+        this.filterByStatus(1);
+        break;
+      case 2: // Ready
+        this.filterByStatus(4);
+        break;
+      default:
+        this.filterByStatus(-1);
+        break;
+    }
   }
 
+  filterFeaturesByName(): void {
+    if (this.searchInput.trim() !== '') {
+
+      this.filteredBuilds$ = this.buildcardService.filterByName(this.searchInput).pipe(
+        catchError(error => {
+          return of([]); 
+        })
+      );
+    }else{
+      this.filterByStatus(-1)
+    }
+  }
 }

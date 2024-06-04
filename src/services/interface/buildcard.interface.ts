@@ -4,7 +4,7 @@ import { Basecard, Feature } from "./basecard"
 export interface Buildcard {    
     name:String,
     status?: number,
-    features:Feature[],
+    features: number[],
     duration_of_development?:number,
     cost?:number,
     reference:String

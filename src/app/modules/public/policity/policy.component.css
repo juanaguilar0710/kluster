@@ -1,0 +1,25 @@
+.terms-and-conditions {
+    font-family: Arial, sans-serif;
+    margin-top: 0px;
+    width: 100%;
+    line-height: 1.6;
+    padding-top: 2rem;
+    background-image: url(../../../../assets/images/wave.svg);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+  }
+  .container{
+    width: 80%;
+    margin: auto;
+    padding: 1rem 0px;
+  }
+  .mainH2{
+    font-size: 2rem;
+  }
+  h1, h2 {
+    color: var(--primary-text-color);
+  }
+  
+  p {
+    margin: 10px 0;
+  }

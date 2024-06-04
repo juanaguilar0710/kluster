@@ -7,6 +7,7 @@ import { Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class CustomerService {
+  private nextId = 1;
 
 constructor() { }
 

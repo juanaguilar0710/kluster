@@ -10,7 +10,7 @@
   --primary-text-color: #333333;
   --shadow-color: #ccced1;
   --alerts-color-warning: #db3700;
-  --button-primary-color: #00e676;
+  --button-primary-color: #0080ff;
   --border-color: #d6d7dd;
   --border-color-second: #bbbbbe;
   --second-text-color: #9b9fb1;
@@ -107,6 +107,11 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
   background-color: var(--brand-yellow-color) !important;
 
 }
+
+.cdk-overlay-pane{
+  width: max-content !important;
+}
+
 @media screen and (max-width:600px) {
   ::ng-deep .mat-horizontal-content-container{
       overflow: visible !important;

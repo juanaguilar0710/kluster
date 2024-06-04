@@ -1,0 +1,9 @@
+<mat-form-field>
+  <input matInput [formControl]="countryControl" [matAutocomplete]="auto" placeholder="Select a country">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let country of filteredCountries | async" [value]="country.dialCode">
+      <img [src]="country.flag" alt="{{ country.name }}" style="width: 20px; margin-right: 8px;"> ({{ country.dialCode }})
+      <span>{{ country.name }}</span> 
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

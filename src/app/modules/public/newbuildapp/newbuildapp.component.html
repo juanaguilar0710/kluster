@@ -23,32 +23,25 @@
             <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('required')">
               Names is <strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="firstFormGroup.get('nameCtrl')!.hasError('pattern')">
-              Name field can only container letters 
-            </mat-error>
           </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Country Code</mat-label>
-            <input matInput formControlName="codeCtrl" placeholder="ej: +57" required>
-            <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('required')">
-              Country code is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="firstFormGroup.get('codeCtrl')!.hasError('pattern')">
-              Country code must start with +
-            </mat-error>
-          </mat-form-field>
+           <div class="infoPhone">
+             <app-country-code-select formControlName="codeCtrl"></app-country-code-select>
 
-          <mat-form-field>
-            <mat-label>Phone</mat-label>
-            <input matInput formControlName="phoneCtrl" placeholder="Número de teléfono" required>
-            <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('required')">
-              Phone is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('pattern')">
-              Phone can only contain numbers
-            </mat-error>
-          </mat-form-field>
+             <mat-form-field class="matFormPhone">
+               <mat-label>Phone</mat-label>
+               <input matInput formControlName="phoneCtrl" placeholder="Número de teléfono" required>
+               <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('required')">
+                 Phone is <strong>required</strong>
+               </mat-error>
+               <mat-error *ngIf="firstFormGroup.get('phoneCtrl')!.hasError('pattern')">
+                 Phone can only contain numbers
+               </mat-error>
+             </mat-form-field>
+           </div>
+          
+           
+
 
           <mat-form-field>
             <mat-label>Name company</mat-label>

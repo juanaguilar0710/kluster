@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  storage: window.localStorage
+  storage: window.localStorage,
+  country: 'https://restcountries.com/v3.1/all'
 };
 
 /*

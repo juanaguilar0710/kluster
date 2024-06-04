@@ -5,13 +5,11 @@ footer{
     bottom: 0px;
     justify-content: space-around;
     padding: 1rem;
-    /* background: var(--main-bg-color); */
 
 }
 .logo{
     width: 56px;
     height: 56px;
-    overflow: hidden;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -19,7 +17,7 @@ footer{
 }
 .logo > img{
     width: fit-content;
-    width: 56px;
+    width: 200px;
 }
 .sectionRight{
     width: max-content;
@@ -35,4 +33,12 @@ ul>li{
     list-style: none;
     box-sizing: border-box;
     margin: auto 1rem;
+}
+ul>li >a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+ul>li >a:active{
+    text-decoration: none;
+    color: var(--button-primary-color);
 }
