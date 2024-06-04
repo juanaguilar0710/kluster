@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   
   isAuthorized: boolean = false;
   private authSubscription!: Subscription;
+  menuIs:boolean =false;
 
   constructor(
     private modalService: ModalService,
@@ -34,4 +35,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  openMenu(){
+      this.menuIs = !this.menuIs;
+      console.log(this.menuIs)
+  }
 }

@@ -507,6 +507,9 @@ fieldset div input[type="checkbox"]{
     .imgDecoration{
         display: none;
     }
+    .selectCode {
+        width: 40%;
+    }
 }
 
 

@@ -1,3 +1,7 @@
 .cdk-overlay-pane{
     width: max-content !important;
 }
+.selectMatFormField{
+    width: 100%;
+
+}

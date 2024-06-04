@@ -81,3 +81,71 @@ li a:active{
     transition: transform 0.3s ease;
 
 }
+.menu-mobile{
+    display: none;
+}
+.menuMobileList
+    {
+        
+        display: none;
+
+    }
+@media screen and (max-width:560px)  {
+    .menu-mobile{
+        display: flex;
+        font-size: 2rem;
+        align-items: center;
+        color: var(--primary-text-color);
+    }
+    .top{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0px 1.5rem;
+    }
+    nav{
+        flex-direction: row;
+        height: initial;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .btnNav{
+        margin: initial;
+    }
+    .menuNav{
+        display: none;
+    }
+    .menuMobileList
+    {
+        
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        border-bottom: 1px solid var(--shadow-color);
+        transition: all .3s ease;
+
+    }
+    .menuMobileListActive{
+        display: flex;
+    }
+    .btnNavMobile{
+        display: flex;
+        width: 80%;
+        margin: 5px auto;
+        height: 40px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--auxiliar-bg-color);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+  /*   .btnNavMobile > a{
+        width: 100%;
+    }
+     */
+ 
+}

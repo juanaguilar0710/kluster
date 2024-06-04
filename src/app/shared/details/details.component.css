@@ -155,3 +155,16 @@
     top: -20px;
     cursor: pointer;
 }
+
+@media screen and (max-width:860px)  {
+    .modal>.rightSection> .previewMobile{
+
+        height: 30vh;
+    }
+}
+@media screen and (max-width:560px)  {
+    .modal{
+        flex-direction: column;
+
+    }
+}

@@ -140,3 +140,10 @@
 .removeMsg{
     color: var(--alerts-color-warning);
 }
+@media screen and (max-width:860px)  {
+    .cards .title{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}

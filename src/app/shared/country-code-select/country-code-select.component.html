@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field class="selectMatFormField">
   <input matInput [formControl]="countryControl" [matAutocomplete]="auto" placeholder="Select a country">
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let country of filteredCountries | async" [value]="country.dialCode">

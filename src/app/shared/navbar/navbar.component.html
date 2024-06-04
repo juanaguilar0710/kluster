@@ -1,10 +1,15 @@
 <nav>
-    <div class="btnNav logo" (click)="goToHome()">
-        
+    <div class="top">
+
+        <div class="btnNav logo" (click)="goToHome()">
+            
             <img src="../../../assets/images/simboloKloustr.png" alt="Logo kloustr lab">
-        
+            
+        </div>
+        <span class="material-icons md-light  menu-mobile" (click)="openMenu()">menu</span>
     </div>
-    <ul>
+
+    <ul class="menuNav">
         <li class="btnNav btnUndo">
             <a href="">
                 <span class="material-icons md-light">undo</span>
@@ -17,5 +22,22 @@
             </a>
         </li>
         
+    </ul>
+
+
+    <ul class="menuMobileList" [ngClass]="{'menuMobileListActive':menuIs==true}">
+        <li class="btnNavMobile">
+            <a href="">
+                <span class="material-icons md-light">undo</span>
+                Back
+            </a>
+        </li>
+        <li class="btnNavMobile">
+            <a href="user/dashboard">
+
+                <span class="material-icons md-light">dashboard</span>
+                go to Dashboard
+            </a>
+        </li>
     </ul>
 </nav>
