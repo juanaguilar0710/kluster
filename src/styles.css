@@ -113,7 +113,8 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
 }
 
 @media screen and (max-width:600px) {
-  ::ng-deep .mat-horizontal-content-container{
+  .mat-horizontal-content-container{
       overflow: visible !important;
+      padding: 0px;
   }
 }

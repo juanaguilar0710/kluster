@@ -2,8 +2,6 @@ header{
     width: 90%;
     display: flex;
     margin-left: 100px;
-}
-header{
     flex-direction: column;
     padding-top: 2rem;
 }
@@ -33,6 +31,7 @@ header>.top{
 }
 .top>button:hover{
     opacity: .9;
+    box-shadow: 1px 1px 10px var(--shadow-color);
 }
 .top>button:active{
     transform: scale(.9,.9);
@@ -56,7 +55,7 @@ header>.top{
 .search{
     position: absolute;
     right: 0;
-    z-index: 100;
+    z-index: 50;
 }
 
 .search label{
@@ -76,4 +75,50 @@ header>.top{
    
     border-color: var(--brand-yellow-color);
     
+}
+.searchMobile ,.menu-mobile{
+    display: none;
+}
+.searchLong{
+    display: flex;
+}
+@media screen and (max-width:560px)  {
+    header{
+        width: 100%;
+        margin-left: 0px;
+        padding-top: 120px;
+    }
+    .menu-mobile{
+        display: flex;
+        cursor: pointer;
+        margin: 10px;
+        color: var(--second-text-color);
+    }
+    .searchMobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end !important;
+        align-items: flex-end;
+        width: fit-content;
+        height: max-content; 
+    }
+    .searchMobileOp{
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 5px;
+    }
+    .searchMobileOpActive{
+        display: flex;
+        background-color: var(--auxiliar-bg-color);
+        padding: 1rem;
+        gap: 5px;
+        border-radius: 5px 0px 5px 10px;
+        border: 1px solid var(--border-color-second);
+        box-shadow: 1px 1px 10px var(--shadow-color);
+        align-items: center;
+    }
+    .searchLong{
+        display: none;
+    }
 }

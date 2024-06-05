@@ -37,6 +37,5 @@ export class NavbarComponent implements OnInit {
 
   openMenu(){
       this.menuIs = !this.menuIs;
-      console.log(this.menuIs)
   }
 }

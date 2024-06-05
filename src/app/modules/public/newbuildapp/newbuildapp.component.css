@@ -149,8 +149,10 @@ button:active{
 
 .top .rightSection{
     display: flex;
+    width: 30%;
     flex-direction: row;
     justify-content: center;
+    overflow: hidden;
 }
 .top .leftSection{
     width: 60%;
@@ -200,7 +202,7 @@ font-weight: bold;
     
 }
 .preview{
-    width: 360px;
+    width: 180%;
     height: 600px;
     border-radius: 15px;
 }
@@ -281,6 +283,7 @@ font-weight: bold;
     font-size: 1.2rem !important;
     margin-top: 1rem;
     color: var(--primary-text-color);
+    text-align: center;
 }
 .numbersLabel .infot{
     width: max-content;
@@ -415,19 +418,32 @@ fieldset{
     align-content: center;
     align-items: center;
     justify-content: flex-start;
+    padding: 1rem;
     
 }
-fieldset div{
-    width: fit-content;
-    height: 50px;
+fieldset .budgetForm{
+    width: max-content !important;
+    height: fit-content !important;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.budgetForm input{
+    opacity: 0;
+    position: absolute;
 }
 fieldset div label{
     padding: 1rem;
     transition: all .3s ease;
     border-radius: 5px;
-    margin: 2px;
+
     background-color: var(--shadow-color);
     color: var(--primary-text-color);
+    margin: 0px;
+            box-sizing: border-box;
+            width: fit-content;
+            position: relative;
+            display: flex;
 }
 fieldset div label:hover{
     border: 1px solid var(--brand-yellow-color);
@@ -510,6 +526,153 @@ fieldset div input[type="checkbox"]{
     .selectCode {
         width: 40%;
     }
+    .contentCard{
+        width: 80%;
+    }
+    .featuresSelectedList{
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+
+    }
 }
 
 
+@media screen and (max-width:560px) {
+    .sectionSteps{
+        width: 100%;
+        margin: 0;
+        padding-top: 100px;
+    }
+    .stepsArea{
+        width: 90%;
+    }
+    .formStepOne, .formStepTwo, .formStepThree{
+        width: 100%;
+        min-width: 330px;
+        box-sizing: border-box;
+    }
+    .formStepTwo{
+        padding: 1rem;
+        
+    }
+    .formStepTwo .textOptions{
+        font-size: 0.9rem;
+        text-align: center;
+        line-height: normal;
+    }
+    .formStepTwo .mainH2{
+        font-size: 1rem;
+    }
+    .formStepTwo .textOptional{
+        font-size: 0.7rem;
+    }
+    .contentCard {
+        width: 100%;
+    }
+    .btnDeleteCard{
+        box-shadow: none;
+        right: -10px;
+    }
+    .btnDeleteCard mat-icon{
+        font-size: 1.2rem;
+        box-shadow: none;
+    }
+    .featuresSelectedList{
+        gap: 3px;
+    }
+    .featuresSelectedList > .tagFeatureSelected{
+        padding: 0rem 0.4rem;
+        background-color: var(--button-primary-color);
+    }
+    .featuresSelectedList > .tagFeatureSelected > small{
+        width: fit-content;
+        font-size: 0.6rem;
+        margin-right: 5px;
+        color: #fff;
+    }
+    .featuresSelectedList > .tagFeatureSelected > .btnDeleteTag > span{
+        font-size: 11px;
+        color: #fff;
+    }
+    button{
+        padding: 0.7rem 2rem;
+    }
+    .formStepThree{
+        padding: 1rem;
+    }
+    fieldset{
+        padding: 1rem 0.2rem;
+        gap: 3px;
+    }
+    fieldset div label {
+        padding: 0.5rem;
+        margin: 0px;
+        box-sizing: border-box;
+        width: fit-content;
+        position: relative;
+        display: flex;
+    }
+    .budgetForm{
+        width: max-content !important;
+        height: fit-content !important;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .budgetForm input{
+        opacity: 0;
+        position: absolute;
+    }
+    .numbersLabel .durationLabel {
+        padding: 0px 1rem;
+    }
+    .numbersLabel > .infot h3, p{
+
+        font-size: 13px !important;
+        line-height: normal;
+    }
+    .numbersLabel > .infot p{
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+    .numbersLabel .costLabel, .durationLabel{
+        box-sizing: border-box;
+    } 
+    .numbersLabel .costLabel p{
+        margin-top: 1rem;
+    }
+    .stepFourTitle{
+        font-size: 2rem;
+    }
+    .top .leftSection .infoText h3{
+        font-size: 1.5rem;
+    }
+    .infoText{
+        width: 90%;
+    }
+    .infoText .details{
+        width: max-content;
+        padding: 1rem 0.5rem;
+    }
+    .infoText .details p{
+        font-size: 1rem !important;
+    }   
+    .infoText .details p .titleLine{
+        color: var(--button-primary-color);
+    }
+    .top .rightSection {
+        height: 40vh;
+        align-items: center;
+    }
+     .imgDecoration{
+        display: flex;
+     }
+    .imgDecoration img{
+        right: 6px;
+        width: 111px !important;
+        top: -25px;
+    }
+    .detailsDelivery{
+        padding: 0rem 0.5rem;
+    }
+}

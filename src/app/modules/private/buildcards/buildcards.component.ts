@@ -15,6 +15,8 @@ export class BuildcardsComponent implements OnInit {
   
   filteredBuilds$: Observable<Buildcard[]> | undefined;
   searchInput:string='';
+  searchMobileIs:boolean=false
+  
   constructor(private buildcardService: BuildcardService) { }
 
   ngOnInit(): void {
@@ -79,5 +81,8 @@ export class BuildcardsComponent implements OnInit {
     }else{
       this.filterByStatus(-1)
     }
+  }
+  openFilterMenu(){
+      this.searchMobileIs=!this.searchMobileIs;
   }
 }

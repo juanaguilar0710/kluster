@@ -84,4 +84,8 @@ export class FeatureService {
   getFeaturesByIds(ids: number[]): Feature[] {
     return this.features.filter(feature => ids.includes(feature.id));
   }
+
+  resetFeaturesSelected():void{
+      this.features=[]
+  }
 }

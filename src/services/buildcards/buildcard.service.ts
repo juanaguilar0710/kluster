@@ -11,10 +11,11 @@ export class BuildcardService {
 
   private buildsSubject: BehaviorSubject<Buildcard[]> = new BehaviorSubject<Buildcard[]>([]);
   builds$: Observable<Buildcard[]> = this.buildsSubject.asObservable();
-  private nextId = 1;
+  private nextId!: number;
 
   constructor() {
     this.loadBuildcards();
+    this.loadNextId();
   }
 
   private loadBuildcards(): void {
@@ -39,6 +40,7 @@ export class BuildcardService {
       const updatedBuilds = [...currentBuilds, newBuild];
       this.buildsSubject.next(updatedBuilds);
       this.saveBuildcardInStorage(updatedBuilds);
+      this.saveNextId();
     }
   }
 
@@ -61,10 +63,11 @@ export class BuildcardService {
     }
   }
 
-  deleteBuildcard(id: number): void {
+  deleteBuildcard(id: number): Observable<void> {
     const updatedBuilds = this.buildsSubject.value.filter(build => build.id !== id);
     this.buildsSubject.next(updatedBuilds);
     this.saveBuildcardInStorage(updatedBuilds);
+    return of();
   }
 
   filterByStatus(status: number): Observable<Buildcard[]> {
@@ -99,4 +102,16 @@ export class BuildcardService {
       })
     );
   }
+  private loadNextId(): void {
+    const savedNextId = environment.storage.getItem('nextId');
+    this.nextId = savedNextId ? JSON.parse(savedNextId) : 1;
+  }
+
+  private saveNextId(): void {
+    if (environment.storage) {
+      environment.storage.setItem('nextId', JSON.stringify(this.nextId));
+    }
+  }
+
+
 }

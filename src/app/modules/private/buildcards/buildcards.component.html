@@ -2,7 +2,7 @@
 <header>
   <div class="top">
     <h2>Buildcards</h2>
-    <button [routerLink]="['/newbuild']">New Buildcards</button>
+    <button class="btnNew" [routerLink]="['/newbuild']">New Buildcards</button>
   </div>
   <div class="filter">
     <div class="tabs">
@@ -39,9 +39,17 @@
         </mat-tab>
       </mat-tab-group>
     </div>
-    <div class="search">
+    <div class="search searchLong">
       <label for="filtertxt">Filter</label>
       <input type="text" name="filtertxt" [(ngModel)]="searchInput" (input)="filterFeaturesByName()" placeholder="search">
+    </div>
+    <div class="search searchMobile" >
+      <span class="material-icons md-light  menu-mobile" (click)="openFilterMenu()">search</span>
+      <div class="searchMobileOp" [ngClass]="{'searchMobileOpActive':searchMobileIs}">
+
+        <label for="filtertxt">Filter</label>
+        <input type="text" name="filtertxt" [(ngModel)]="searchInput" (input)="filterFeaturesByName()" placeholder="search">
+      </div>
     </div>
   </div>
 </header>

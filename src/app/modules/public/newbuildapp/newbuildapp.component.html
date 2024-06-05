@@ -79,8 +79,8 @@
 
           <div class="previewCard">
 
-            <h2 class="textOptions" *ngIf="basecardExist">You've selected this base</h2>
-            <h2 class="textOptions" *ngIf="!basecardExist">Select a base</h2>
+            <h2 class="textOptions mainH2" *ngIf="basecardExist">You've selected this base</h2>
+            <h2 class="textOptions mainH2"  *ngIf="!basecardExist">Select a base</h2>
             <div class="contentCard">
               <div class="btnDeleteCard" *ngIf="basecardExist" (click)="deleteSelectionCard()">
                 <mat-icon>cancel</mat-icon>
@@ -102,7 +102,7 @@
           </mat-form-field>
 
           <div >
-            <h2 class="textOptions">Select features <span class="textOptional">Optional</span></h2>
+            <h2 class="textOptions ">Select features <span class="textOptional">Optional</span></h2>
             
               <div class="featuresSelected">
                   <h3 *ngIf="selectedFeatures.length > 0">You have selected</h3>
@@ -144,7 +144,7 @@
           
           <fieldset>
             <legend>Documentation</legend>
-            <div *ngFor="let doc of documentationOptions">
+            <div class="budgetForm" *ngFor="let doc of documentationOptions">
                 <input type="checkbox" id="{{doc}}" [value]="doc" (change)="onCheckboxChange($event, 'documentation')"> 
                 <label for="{{doc}}">{{doc}}</label>
             </div>
@@ -154,7 +154,7 @@
             <legend>Operating Systems</legend>
          
           
-          <div *ngFor="let os of operatingSystems">
+          <div class="budgetForm" *ngFor="let os of operatingSystems">
             <input type="checkbox" [value]="os" (change)="onCheckboxChange($event, 'operatingSystems')" id="{{os}}"> 
               <label for="{{os}}">{{os}}</label>
            
@@ -164,7 +164,7 @@
           <fieldset>
             <legend>Platforms</legend>
             
-            <div *ngFor="let platform of platforms">
+            <div class="budgetForm" *ngFor="let platform of platforms">
               <input type="checkbox" [value]="platform"  (change)="onCheckboxChange($event, 'platforms')" id="{{platform}}"> 
               <label for="{{platform}}">{{platform}}</label>
             </div>

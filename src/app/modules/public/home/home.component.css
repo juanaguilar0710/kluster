@@ -136,3 +136,36 @@ header >.introduction> button:hover{
     
     
 }
+
+@media screen and (max-width:560px) {
+    header{
+        padding: 2rem;
+        padding-top: 6rem;
+        margin-bottom: 3rem;
+    }
+ 
+    header >.introduction> h2, h1  {
+        font-size: 1.3rem;
+    }
+    header>.introduction> h1, h2 , p{
+        padding: 1rem 2rem;
+    }
+    header>.introduction>div>p{
+        font-size: 1rem;
+    }
+    .introduction{
+        width: 90%;
+    }
+    .btnNewBase{
+        font-size: 1rem;
+        border-radius: 5px 0px 5px 5px !important;
+        padding: 0.6rem 1rem !important;
+    }
+ .btnContinue{
+        background-color: var(--button-primary-color);
+        color: var(--brand-white-color);
+    }
+    
+
+   
+}

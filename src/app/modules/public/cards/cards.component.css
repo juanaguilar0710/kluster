@@ -64,3 +64,24 @@ app-basecard{
     }
     
 }
+
+@media screen and (max-width:560px) {
+    section{
+        width: 100%;
+        padding: 0px;
+        margin: 0;
+        padding-right: 1rem;
+        box-sizing: border-box;
+    }
+    .filterBySearch input{
+        height: 18px;
+        margin: 5px;
+        font-size: 0.8rem;
+    }
+    .selectCategories select{
+        
+        height: 30px;
+        font-size: 0.9rem;
+        padding: 5px ;
+    }
+}

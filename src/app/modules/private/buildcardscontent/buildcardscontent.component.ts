@@ -38,8 +38,10 @@ export class BuildcardscontentComponent implements OnInit {
   }
 
   deleteBuild(buildId: number): void {
-    this.buildcardService.deleteBuildcard(buildId);
-    this.toggleOptions(buildId);
+    this.buildcardService.deleteBuildcard(buildId).subscribe(() => {
+      this.builds = this.builds.filter(build => build.id !== buildId);
+      delete this.optionsVisibility[buildId];
+    });
   }
 
   updateBuildName(buildId: number): void {

@@ -34,7 +34,7 @@ export class NewbuildappComponent implements OnInit {
   basecardExist:boolean =false;
 
   operatingSystems: string[] = ['iOS', 'Android', 'Windows', 'macOS', 'Linux'];
-  platforms: string[] = ['Cellular', 'Desktop', 'Tablet'];
+  platforms: string[] = ['Celular', 'Desktop', 'Tablet'];
   documentationOptions: string[] = ['Documentación del código', 'Informe de testing', 'Código base de la aplicación', 'Métricas','Diseños', 'MockUps'];
   features: Feature[] = [];
   selectedFeatures: Feature[] = [];
@@ -74,7 +74,7 @@ export class NewbuildappComponent implements OnInit {
 
     this.secondFormGroup = this._formBuilder.group({
       customBaseCtrl: ['',],
-      nameBuildCtrl:['',[Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      nameBuildCtrl:['',[Validators.required, Validators.pattern('^[a-zA-Z0-9ñÑ ]+$')]],
       selectedFeaturesCtrl: this._formBuilder.array([])
     });
     this.thirdFormGroup = this._formBuilder.group({
@@ -120,7 +120,6 @@ export class NewbuildappComponent implements OnInit {
         last_update: new Date(),
         customer:this.customerInfo
       }
-      console.log(this.customerInfo)
       this.customerService.createNewCustomer(this.customerInfo);
       // this.createBuildcard();
     } else {
@@ -133,6 +132,8 @@ export class NewbuildappComponent implements OnInit {
     
     this.newBuildCard.status=1
     this.buildcardService.createNewBuild(this.newBuildCard)
+    this.basecardService.setBaseCardId(null)
+    this.featureService.resetFeaturesSelected()
     this.messageStepFour=true
     
   }
@@ -154,7 +155,6 @@ export class NewbuildappComponent implements OnInit {
         });
       } else {
         this.basecardExist = false;
-        console.error('No basecard ID set');
       }
     }, error => {
       console.error('Error fetching basecard ID:', error);

@@ -165,6 +165,25 @@
 @media screen and (max-width:560px)  {
     .modal{
         flex-direction: column;
-
+        overflow: auto;
+        width: 90%;
+        padding: 2rem;
+        position: relative;
+    }
+    .modal .rightSection{
+        width: 100%;
+        margin-top: 1rem;
+        position: initial;
+    }
+    .previewMobile{
+        height: 55vh !important;
+        background-image: url(../../../assets/images/appTest.svg) !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        background-color: transparent !important;
+    }
+    .closeBtn{
+        right: 20px;
+        top: 20px;
     }
 }
