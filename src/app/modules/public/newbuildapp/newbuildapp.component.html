@@ -88,7 +88,7 @@
               <div class="btnAdd" *ngIf="!basecardExist" (click)="seeBaseList()">
                 <span class="material-icons md-48">add</span>
               </div>
-              <app-basecard *ngIf="basecardExist" [data]="basecardSelected" [canAdd]="false"></app-basecard>
+              <app-basecardselected *ngIf="basecardExist" [data]="basecardSelected"></app-basecardselected>
             </div>
 
           </div>

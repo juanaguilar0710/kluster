@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';;
 import { CountryCodeSelectComponent } from './country-code-select/country-code-select.component';
+import { BasecardselectedComponent } from './basecardselected/basecardselected.component';
 
 
 
@@ -32,6 +33,7 @@ import { CountryCodeSelectComponent } from './country-code-select/country-code-s
     FeaturesListComponent,
     FeatureCardComponent,
     CountryCodeSelectComponent,
+    BasecardselectedComponent,
 
     
   ],
@@ -55,7 +57,8 @@ import { CountryCodeSelectComponent } from './country-code-select/country-code-s
     BasecardlistComponent,
     FeaturesListComponent,
     CustomBackgroundColorDirective,
-    CountryCodeSelectComponent
+    CountryCodeSelectComponent,
+    BasecardselectedComponent
   ]
 })
 export class SharedModule { }

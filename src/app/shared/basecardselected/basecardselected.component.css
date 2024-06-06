@@ -52,25 +52,7 @@
     width: 50px ;
     height: 50px ;
 }
-.card > header > .btnAdd{
-    height: 3rem;
-    width: 3rem;
-    border-radius: 5px;
-    background: var(--auxiliar-bg-color);
-    font-size: 46px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 80;
-    position: absolute;
-    right: 20px;
-}
-.card > header > .btnAdd > span{
-    background: transparent;
-    font-size: 36px;
-   
-}
+
 /* styles of footer card */
 footer{
     border-top: 1px solid var(--border-color);
@@ -103,23 +85,7 @@ footer>div >p{
 }
 
 
-.basecardIsSelected{
-    border: 1px solid var(--brand-yellow-color) !important;
-    transform: scale(.9);
-}
-.isSelectedContent{
-    opacity: 0.5;
-}
-.btnDeleteCard{
-    position: absolute;
-    top: 0px;
-    right: 25px;
-    width: fit-content;
-    z-index: 200;
-}
-.buttonHidden{
-    display: none;
-}
+
 
 @media screen and (max-width:860px) {
     .card{
@@ -130,6 +96,6 @@ footer>div >p{
 }
 @media screen and (max-width:560px) {
     .card{
-        margin: 10px auto;
+        margin: 0px auto;
     }
 }

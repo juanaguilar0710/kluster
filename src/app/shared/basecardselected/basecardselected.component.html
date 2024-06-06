@@ -1,0 +1,27 @@
+<div class="card" (click)="openModal()">
+    <header>
+        <mat-icon>card_travel</mat-icon>
+
+    </header>
+    <div >
+        <h3>Build an app like</h3>
+        <h2>{{data.title}}</h2>
+
+        <div class="featuresList">
+            <ul>
+                <li *ngFor="let item of data.features | slice:0:3">{{item.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="featureNum">
+            <h3>Feature</h3>
+            <p>56</p>
+        </div>
+    
+        <div class="costDiv">
+            <h3>per plataform</h3> 
+            <p>{{data.cost | currency}}</p>
+        </div>
+    </footer>
+</div>

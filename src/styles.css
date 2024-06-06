@@ -112,6 +112,9 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
   width: max-content !important;
 }
 
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background-color: var(--brand-yellow-color) !important;
+}
 @media screen and (max-width:600px) {
   .mat-horizontal-content-container{
       overflow: visible !important;

@@ -1,5 +1,8 @@
-<div class="card" (click)="openModal()">
-    <header>
+<div class="card" (click)="openModal()" [ngClass]="{'basecardIsSelected':basecardIsSelected}">
+    <div class="btnDeleteCard" *ngIf="basecardIsSelected" (click)="removeThisBasecard(); $event.stopPropagation()">
+        <mat-icon>cancel</mat-icon>
+      </div>
+    <header [ngClass]="{'isSelectedContent':basecardIsSelected}">
         <!-- <img src="" alt=""> -->
         <mat-icon>card_travel</mat-icon>
         <div class="btnAdd" *ngIf="canAdd" (click)="useCard(); $event.stopPropagation()">
@@ -7,7 +10,7 @@
           </div>
 
     </header>
-    <div>
+    <div [ngClass]="{'isSelectedContent':basecardIsSelected}">
         <h3>Build an app like</h3>
         <h2>{{data.title}}</h2>
 
@@ -17,7 +20,7 @@
             </ul>
         </div>
     </div>
-    <footer>
+    <footer [ngClass]="{'isSelectedContent':basecardIsSelected}">
         <div class="featureNum">
             <h3>Feature</h3>
             <p>56</p>

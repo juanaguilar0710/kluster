@@ -125,3 +125,58 @@
     
     }
 }
+@media screen and (max-width:560px)  {
+    .modal{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    /* styles for Info in modal right part */
+    .modal>.rightSection{
+        width: 100%;
+        padding: 1rem !important ;
+        position: initial;
+        overflow: auto;
+        padding-bottom: 0 !important;
+    }
+    
+    /* Filter sections styles */
+    .leftSection{
+        padding: 1rem !important ;
+        width: 100%;
+    }
+    .selectCategories > label{
+        font-size: initial !important ;
+    }
+    .selectCategories > select{
+        font-size: initial !important ;
+        padding: 5px !important ;
+    }
+    .cards .title{
+        display: flex;
+        flex-direction: column; 
+    }
+    .cards{
+        display: flex;
+        gap: 10px !important;
+        padding-bottom: 1rem;
+    }
+    .cards .title h2{
+        font-size: 1.4rem;
+    }
+    .closeBtn{
+        right: 5px;
+        top: 5px;
+    }
+    .filterBySearch span{
+        font-size: 1.5rem;
+    }
+    .filterBySearch input{
+        height: 20px;
+        margin: 0;
+    }
+    
+    
+   
+}

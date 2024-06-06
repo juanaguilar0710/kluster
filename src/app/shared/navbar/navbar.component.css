@@ -128,6 +128,7 @@ li a:active{
     }
     .menuMobileListActive{
         display: flex;
+        padding-bottom: 1rem;
     }
     .btnNavMobile{
         display: flex;
@@ -143,6 +144,27 @@ li a:active{
         border-radius: 5px;
         cursor: pointer;
     }
-
+    .btnNavMobile:active{
+        background-color: var(--brand-yellow-color);
+        transform: scale(.9);
+    }
+    .btnNavMobile >a {
+        width: 100%;
+        background: red;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: transparent;
+        color: var(--primary-text-color);
+    }
+    .btnNavMobile >a >span{
+        color: var(--brand-yellow-color);
+        font-size: 2rem;
+    }
  
 }

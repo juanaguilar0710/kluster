@@ -88,6 +88,13 @@ header>.top{
         margin-left: 0px;
         padding-top: 120px;
     }
+    .top{
+        padding: 0px 1rem;
+        align-items: center;
+    }
+    .top > h2{
+        margin: 0;
+    }
     .menu-mobile{
         display: flex;
         cursor: pointer;
