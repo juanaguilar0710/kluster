@@ -19,6 +19,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';;
 import { CountryCodeSelectComponent } from './country-code-select/country-code-select.component';
 import { BasecardselectedComponent } from './basecardselected/basecardselected.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -47,7 +48,8 @@ import { BasecardselectedComponent } from './basecardselected/basecardselected.c
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     NavbarComponent,

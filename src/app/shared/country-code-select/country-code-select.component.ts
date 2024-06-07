@@ -39,6 +39,7 @@ export class CountryCodeSelectComponent implements OnInit, ControlValueAccessor 
   private _disabled = false;
   private _value: string = '';
 
+
   countryControl = new FormControl();
   filteredCountries!: Observable<Country[]>;
   countries: Country[] = [];
@@ -46,6 +47,8 @@ export class CountryCodeSelectComponent implements OnInit, ControlValueAccessor 
   id = `country-select-${CountryCodeSelectComponent.nextId++}`;
   focused = false;
   touched = false;
+  hasError = false;
+  isLoading = true;
 
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
@@ -59,6 +62,11 @@ export class CountryCodeSelectComponent implements OnInit, ControlValueAccessor 
         startWith(''),
         map(value => this._filterCountries(value))
       );
+      this.isLoading = false;
+    }, error => {
+      console.error(error);
+      this.hasError = true;
+      this.isLoading = false; 
     });
 
     this.countryControl.valueChanges.subscribe(value => {

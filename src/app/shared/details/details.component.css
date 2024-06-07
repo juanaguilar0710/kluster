@@ -140,7 +140,7 @@
     color: var(--primary-text-color);
     font-weight: bolder;
     letter-spacing: 1px;
-    background-color: var(--button-primary-color);
+    background-color: var(--brand-yellow-color);
     cursor: pointer;
     transition: all 1s ease;
 }
@@ -176,7 +176,7 @@
         position: initial;
     }
     .previewMobile{
-        height: 55vh !important;
+        height: 35vh !important;
         background-image: url(../../../assets/images/appTest.svg) !important;
         background-repeat: no-repeat !important;
         background-size: contain !important;

@@ -106,7 +106,7 @@
             
               <div class="featuresSelected">
                   <h3 *ngIf="selectedFeatures.length > 0">You have selected</h3>
-                  <h3 *ngIf="selectedFeatures.length <=0">You haven't selected any features</h3>
+                  <h3 *ngIf="selectedFeatures.length <=0" class="h3Message">You haven't selected any features</h3>
                   <div class="featuresSelectedList">
                     <div class="tagFeatureSelected" *ngFor="let feature of selectedFeatures">
                       <small>{{feature.name}}</small>

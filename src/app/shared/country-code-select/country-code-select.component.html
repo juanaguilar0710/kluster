@@ -1,4 +1,15 @@
-<mat-form-field class="selectMatFormField">
+<div *ngIf="isLoading" class="loader">
+  <mat-spinner></mat-spinner>
+
+</div>
+
+<div *ngIf="!isLoading">
+  <div *ngIf="hasError" class="error-message">
+    No se pudo obtener la lista de países. Por favor, intente nuevamente más tarde.
+  </div>
+</div>
+
+<mat-form-field class="selectMatFormField" *ngIf="true">
   <input matInput [formControl]="countryControl" [matAutocomplete]="auto" placeholder="Select a country">
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let country of filteredCountries | async" [value]="country.dialCode">

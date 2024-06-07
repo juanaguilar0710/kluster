@@ -36,6 +36,7 @@ header>.introduction> h1, h2 , p{
 header>.introduction>div>p{
     font-size: 22px;
     margin-top: 1rem;
+    max-width: 120%;
 }
 
 header >.introduction> button, .btnContinue{
@@ -168,4 +169,23 @@ header >.introduction> button:hover{
     
 
    
+}
+@media screen and (max-width:430px) {
+    header{
+        padding-top: 8rem;
+        margin-bottom: 0rem;
+    }
+ 
+    header >.introduction> h2, h1  {
+        font-size: 1.3rem !important;
+    }
+    header>.introduction> h1, h2 , p{
+        padding: 0.5rem 1rem !important;
+    }
+    header>.introduction>div>p{
+        font-size: 0.7rem;
+    }
+    .introduction{
+        width: 90%;
+    }
 }

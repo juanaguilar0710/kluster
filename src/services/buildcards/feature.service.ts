@@ -86,6 +86,7 @@ export class FeatureService {
   }
 
   resetFeaturesSelected():void{
-      this.features=[]
+    this.featuresUsingList = [];
+    this.selectedFeaturesSubject.next([]);
   }
 }

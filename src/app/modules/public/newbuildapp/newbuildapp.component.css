@@ -349,6 +349,10 @@ font-weight: bold;
     font-weight: lighter;
     color: var(--primary-text-color);
 }
+.featuresSelected .h3Message{
+
+    color: var(--second-text-color);
+    }
 
 .featuresSelectedList > .tagFeatureSelected{
     display: flex;
@@ -485,6 +489,7 @@ fieldset div input[type="checkbox"]{
     align-content: center;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .infoPhone .matFormPhone{
     width: 50%;
@@ -549,7 +554,6 @@ fieldset div input[type="checkbox"]{
     }
     .formStepOne, .formStepTwo, .formStepThree{
         width: 100%;
-        min-width: 330px;
         box-sizing: border-box;
     }
     .formStepTwo{
@@ -675,4 +679,7 @@ fieldset div input[type="checkbox"]{
     .detailsDelivery{
         padding: 0rem 0.5rem;
     }
+}
+@media screen and (max-width:400px){
+    
 }

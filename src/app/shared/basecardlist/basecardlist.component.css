@@ -153,6 +153,18 @@
         font-size: initial !important ;
         padding: 5px !important ;
     }
+    .btnContinue{
+        position: absolute;
+        width: 80%;
+        bottom: 11px;
+        padding: 1rem 5rem !important;
+        left: 36px;
+        background-color: var(--brand-yellow-color);
+        color: var(--primary-text-color);
+        z-index: 250;
+        box-shadow: 1px 1px 10px var(--shadow-color);
+    }
+
     .cards .title{
         display: flex;
         flex-direction: column; 

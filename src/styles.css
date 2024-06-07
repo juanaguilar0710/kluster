@@ -115,9 +115,50 @@ h2,h3,button, input,option,select,mat-form-field,mat-label, label,mat-error,stro
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
   background-color: var(--brand-yellow-color) !important;
 }
+.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] svg{
+  width: 20px !important;
+  height: 20px !important;
+}
+.mat-spinner.mat-spinner.mat-progress-spinner.mat-primary.mat-progress-spinner-indeterminate-animation{
+  width: 20px !important;
+    height: 20px !important;
+    overflow: hidden !important;
+
+}
+@media screen and (max-width:900px) {
+  .mat-step-header, .mat-step-header:hover{
+    padding: 3px !important;
+  }
+  .mat-step-text-label{
+    font-size: 10px !important;
+  }
+  .mat-horizontal-stepper-header .mat-step-icon{
+    margin-right: 2px !important;
+  }
+  
+}
 @media screen and (max-width:600px) {
   .mat-horizontal-content-container{
       overflow: visible !important;
       padding: 0px;
+  }
+}
+@media screen and (max-width:560px) {
+  .mat-step-header, .mat-step-header:hover{
+    padding: 0 !important;
+    
+  }
+  .mat-step-text-label{
+    font-size: 8px !important;
+  }
+  .mat-horizontal-stepper-header .mat-step-icon{
+    margin-right: 2px !important;
+  }
+  .mat-step-icon-content, .mat-step-icon .mat-icon span{
+    font-size: 10px !important;
+  }
+  .mat-horizontal-stepper-header .mat-step-icon{
+    width: 18px !important;
+    height: 18px !important;
   }
 }
