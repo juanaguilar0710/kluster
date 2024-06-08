@@ -8,31 +8,46 @@ import { ModalService } from 'src/services/modal.service';
   templateUrl: './basecard.component.html',
   styleUrls: ['./basecard.component.css'],
 })
-export class BasecardComponent implements OnInit {
-  @Input() data!: Basecard;
-  @Input() canAdd: boolean = true;
 
-  basecardIsSelected:boolean =true
+/**
+ * The BasecardComponent is responsible for displaying individual basecards 
+ * within the application interface and managing user interactions related 
+ * to these cards. It provides functionalities for selecting, deselecting, 
+ * and interacting with basecards, such as opening modals with detailed information 
+ * about a basecard.
+ */
+export class BasecardComponent implements OnInit {
+  @Input() data!: Basecard;  // Input property to receive the basecard data
+  @Input() canAdd: boolean = true;  // Input property to control if the basecard can be added
+
+  basecardIsSelected: boolean = true;  // State to track if the basecard is currently selected
 
   constructor(
-    private modalService: ModalService,
-    private basecardService: BasecardService
+    private modalService: ModalService,  // Service to manage modals
+    private basecardService: BasecardService  // Service to manage basecards
   ) {}
 
   ngOnInit(): void {
-    this.checkIsSelected()
+    this.checkIsSelected();  // Check if the basecard is selected when the component initializes
   }
-
+/**
+   * Opens the modal and sets the data for the modal.
+   */
   openModal(): void {
     this.modalService.$modal.emit(true);
     this.modalService.setDataModal(this.data);
   }
-
+/**
+   * Sets the current basecard as the selected basecard.
+   */
   useCard(): void {
     this.basecardService.setBaseCardId(this.data.id);
     this.checkIsSelected()
   }
 
+  /**
+   * Checks if the current basecard is selected by subscribing to the baseCardId$ observable.
+   */
   checkIsSelected():void{
     this.basecardService.baseCardId$.subscribe(basecardId => {
       if (basecardId !== null) {
@@ -53,6 +68,9 @@ export class BasecardComponent implements OnInit {
       console.error('Error fetching basecard ID:', error);
     });
   }
+  /**
+   * Removes the current basecard from being selected.
+   */
   removeThisBasecard(){
     this.basecardService.setBaseCardId(null);
     this.basecardIsSelected =false;

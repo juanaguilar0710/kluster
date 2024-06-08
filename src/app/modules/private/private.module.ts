@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PrivateRoutingModule } from './private-rounting.module';
-import { UsersettingsComponent } from './usersettings/usersettings.component';
 import { BuildcardsComponent } from './buildcards/buildcards.component';
 import { PaymentComponent } from './payment/payment.component';
 
@@ -16,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    UsersettingsComponent,
     BuildcardsComponent,
     PaymentComponent,
     BuildcardscontentComponent

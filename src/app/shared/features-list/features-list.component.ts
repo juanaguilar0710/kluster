@@ -10,6 +10,14 @@ import { ModalService } from 'src/services/modal.service';
   templateUrl: './features-list.component.html',
   styleUrls: ['./features-list.component.css']
 })
+/**
+ * 
+ * This component manages the list of features, 
+ * allowing users to filter features by category, 
+ * search by name or description, and display 
+ * success or error messages. It retrieves feature 
+ * data from a service and displays it in the UI
+ */
 export class FeaturesListComponent implements OnInit {
 
   featureData!: Feature[];
@@ -27,20 +35,29 @@ export class FeaturesListComponent implements OnInit {
   constructor(private featureService: FeatureService, private modalService: ModalService, private basecardService:BasecardService) { }
 
   ngOnInit(): void {
+    // Retrieves all features and categories
     this.getAllFeatures();
     this.categories= this.getUniqueCategories(this.featureData)
 
+      // Retrieves all base cards
     this.basecardService.getAllBaseCards().subscribe((res)=>{
       this.allBases=res
     }, error =>{
       console.error(error)
     })
   }
-
+/**
+   * Closes the modal.
+   * Emits event indicating feature removal
+   */
   closeModal(): void {
     this.modalService.$featureListModal.emit(false);
   }
 
+  /**
+   * Filters features by category.
+   * @param event The event triggering the filter.
+   */
   filterFeaturesByCategory(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.selectedCategory = target.value;
@@ -59,20 +76,35 @@ export class FeaturesListComponent implements OnInit {
     }
   }
 
+  /**
+   * Retrieves unique categories from features.
+   * @param features The list of features.
+   * @returns An array of unique categories.
+   */
   getUniqueCategories(features: Feature[]): string[] {
     const categories = features.map(feature => feature.category);
     return [...new Set(categories)];
   }
 
+  /**
+   * Resets feature data.
+   */
   resetData(): void {
     this.getAllFeatures();
   }
 
+  /**
+   * Retrieves all features.
+   */
   getAllFeatures(): void {
     this.featureService.getAllFeatures().subscribe((res) => {
       this.featureData = res;
     });
   }
+
+  /**
+   * Filters features by name or description.
+   */
 
   filterFeaturesByNameOrDescription(): void {
     if (this.searchInput.trim() !== '') {
@@ -85,6 +117,11 @@ export class FeaturesListComponent implements OnInit {
   }
   
 
+  /**
+   * Displays success or error message.
+   * @param status The status of the message.
+   * @param property The property to display the message for.
+   */
   displayMessage(status:boolean, property:string):void{
     
     if(property=='add'){

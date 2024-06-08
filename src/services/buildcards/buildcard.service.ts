@@ -7,6 +7,10 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * BuildcardService is responsible for managing the CRUD operations related to buildcards.
+ */
 export class BuildcardService {
 
   private buildsSubject: BehaviorSubject<Buildcard[]> = new BehaviorSubject<Buildcard[]>([]);
@@ -18,6 +22,9 @@ export class BuildcardService {
     this.loadNextId();
   }
 
+  /**private method is responsible for loading buildcards from local storage when 
+   * the service initializes. 
+   * If buildcards exist, it emits them through the buildsSubject BehaviorSubject. */
   private loadBuildcards(): void {
     const buildStorage = environment.storage.getItem('buildcards');
     if (buildStorage) {
@@ -26,13 +33,23 @@ export class BuildcardService {
       this.buildsSubject.next([]);
     }
   }
-
+/**
+ * 
+ * @param builds This private method is used to save 
+ * buildcards to local storage after making changes to them.
+ */
   private saveBuildcardInStorage(builds: Buildcard[]): void {
     if (environment.storage) {
       environment.storage.setItem('buildcards', JSON.stringify(builds));
     }
   }
 
+  /**
+   * @param newBuild Allows creating a new buildcard. 
+   * It generates a new ID for the buildcard, updates 
+   * the buildsSubject BehaviorSubject with the new buildcard, 
+   * and saves the buildcard to local storage.
+   */
   createNewBuild(newBuild: Buildcard): void {
     const currentBuilds = this.buildsSubject.value;
     if (newBuild) {
@@ -44,6 +61,7 @@ export class BuildcardService {
     }
   }
 
+  // Updates an existing buildcard. It finds the buildcard by its ID, updates it with the new data, and updates the BehaviorSubject and local storage.
   updateBuildcard(updatedBuild: Buildcard): void {
     const currentBuilds = this.buildsSubject.value;
     const index = currentBuilds.findIndex(build => build.id === updatedBuild.id);
@@ -53,6 +71,7 @@ export class BuildcardService {
       this.saveBuildcardInStorage(currentBuilds);
     }
   }
+  // Updates the name of an existing buildcard. It finds the buildcard by its ID, updates the name, and updates the BehaviorSubject and local storage.
   updateBuildName(id: number, newName: string): void {
     const currentBuilds = this.buildsSubject.value;
     const index = currentBuilds.findIndex(build => build.id === id);
@@ -63,6 +82,7 @@ export class BuildcardService {
     }
   }
 
+  // Deletes a buildcard by its ID. It filters the buildcards to exclude the buildcard with the provided ID, updates the BehaviorSubject and local storage.
   deleteBuildcard(id: number): Observable<void> {
     const updatedBuilds = this.buildsSubject.value.filter(build => build.id !== id);
     this.buildsSubject.next(updatedBuilds);
@@ -70,6 +90,7 @@ export class BuildcardService {
     return of();
   }
 
+// Filters buildcards by their status. It uses RxJS to map and filter buildcards based on the provided status and handles any errors that may occur.
   filterByStatus(status: number): Observable<Buildcard[]> {
     return this.builds$.pipe(
       map(builds => {
@@ -85,7 +106,7 @@ export class BuildcardService {
       })
     );
   }
-
+// Filters buildcards by their name. It uses RxJS to map and filter buildcards based on the provided name and handles any errors that may occur.
   filterByName(name: string): Observable<Buildcard[]> {
     return this.builds$.pipe(map(builds =>{
       return builds.filter((build => 
@@ -93,7 +114,7 @@ export class BuildcardService {
       ))
     })) 
   }
-
+// Gets all stored buildcards. It uses RxJS to handle any errors that may occur when fetching buildcards
   getBuildcards(): Observable<Buildcard[]> {
     return this.builds$.pipe(
       catchError(error => {
@@ -102,11 +123,12 @@ export class BuildcardService {
       })
     );
   }
+  // Loads the next ID for creating new buildcards from local storage when the service initializes.
   private loadNextId(): void {
     const savedNextId = environment.storage.getItem('nextId');
     this.nextId = savedNextId ? JSON.parse(savedNextId) : 1;
   }
-
+ // Saves the next ID for creating new buildcards to local storage after updating it.
   private saveNextId(): void {
     if (environment.storage) {
       environment.storage.setItem('nextId', JSON.stringify(this.nextId));

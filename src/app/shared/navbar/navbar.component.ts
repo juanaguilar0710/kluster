@@ -8,6 +8,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
+/**
+ * component manages the navigation bar, allowing users navigate to the home page, and toggle the menu
+ */
 export class NavbarComponent implements OnInit {
   
   isAuthorized: boolean = false;
@@ -21,20 +24,17 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    if (this.authSubscription) {
-      this.authSubscription.unsubscribe();
-    }
-  }
-
-  openLogin() {
-    this.modalService.$loginModal.emit(true);
-  }
-
+/**
+ * Navigates to the home page.
+ */
   goToHome() {
     this.router.navigate(['']);
   }
 
+  /**
+   * Toggles the menu.
+   * for the mobile sizes..
+   */
   openMenu(){
       this.menuIs = !this.menuIs;
   }

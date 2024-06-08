@@ -19,9 +19,20 @@ export class BuildcardsComponent implements OnInit {
   
   constructor(private buildcardService: BuildcardService) { }
 
+
+   /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   * Initializes the component by setting the default filter to 'All' status.
+   */
   ngOnInit(): void {
     this.filterByStatus(-1); // Default to 'All' status
   }
+
+
+   /**
+   * Filters build cards based on their status.
+   * @param status The status to filter by. A value of -1 indicates 'All' statuses.
+   */
 
   filterByStatus(status: number): void {
     this.filteredBuilds$ = this.buildcardService.filterByStatus(status).pipe(
@@ -32,7 +43,7 @@ export class BuildcardsComponent implements OnInit {
     );
   }
 
-  /* onTabChange(event: MatTabChangeEvent): void {
+ /* onTabChange(event: MatTabChangeEvent): void {
     const tabIndex = event.index;
     switch (tabIndex) {
       case 1: // Draft
@@ -54,7 +65,14 @@ export class BuildcardsComponent implements OnInit {
         this.filterByStatus(-1);
         break;
     }
-  } */
+  }
+ */
+
+  /**
+   * Handles tab change events to filter build cards by their respective status.
+   * @param event The tab change event containing the index of the selected tab.
+   */
+
   onTabChange(event: MatTabChangeEvent): void {
     const tabIndex = event.index;
     switch (tabIndex) {
@@ -70,6 +88,11 @@ export class BuildcardsComponent implements OnInit {
     }
   }
 
+
+  /**
+   * Filters build cards by their name based on the search input.
+   * If the search input is empty, it defaults to filtering by 'All' status.
+   */
   filterFeaturesByName(): void {
     if (this.searchInput.trim() !== '') {
 
@@ -82,6 +105,10 @@ export class BuildcardsComponent implements OnInit {
       this.filterByStatus(-1)
     }
   }
+
+  /**
+   * Toggles the visibility of the search filter menu for mobile view.
+   */
   openFilterMenu(){
       this.searchMobileIs=!this.searchMobileIs;
   }

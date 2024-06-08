@@ -16,12 +16,21 @@ export class BuildcardscontentComponent implements OnInit {
 
   constructor(private buildcardService: BuildcardService) { }
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   * Initializes the component by setting the options visibility for each build.
+   */
   ngOnInit(): void {
     this.builds.forEach(build => {
       this.optionsVisibility[build.id] = false;
     });
   }
 
+  /**
+   * Converts the status ID to a corresponding status string.
+   * @param id The status ID.
+   * @returns The corresponding status string.
+   */
   toStringStatus(id: number): string {
     switch (id) {
       case 0: return 'Draft';
@@ -33,10 +42,18 @@ export class BuildcardscontentComponent implements OnInit {
     }
   }
 
+  /**
+   * Toggles the visibility of options for a specific build.
+   * @param buildId The ID of the build.
+   */
   toggleOptions(buildId: number): void {
     this.optionsVisibility[buildId] = !this.optionsVisibility[buildId];
   }
 
+  /**
+   * Deletes a build and updates the component state accordingly.
+   * @param buildId The ID of the build to delete.
+   */
   deleteBuild(buildId: number): void {
     this.buildcardService.deleteBuildcard(buildId).subscribe(() => {
       this.builds = this.builds.filter(build => build.id !== buildId);
@@ -44,6 +61,10 @@ export class BuildcardscontentComponent implements OnInit {
     });
   }
 
+  /**
+   * Updates the name of a build.
+   * @param buildId The ID of the build to update.
+   */
   updateBuildName(buildId: number): void {
     if (this.newName.trim() === '') {
       return;
@@ -52,15 +73,28 @@ export class BuildcardscontentComponent implements OnInit {
     this.editingNameId = null;
   }
 
+  /**
+   * Sets the build ID for editing the name.
+   * @param buildId The ID of the build to edit.
+   */
   editName(buildId: number): void {
     this.editingNameId = buildId;
     this.toggleOptions(buildId);
   }
 
+  /**
+   * Checks if a specific build is currently being edited.
+   * @param buildId The ID of the build.
+   * @returns True if the build is being edited, false otherwise.
+   */
   isEditingName(buildId: number): boolean {
     return this.editingNameId === buildId;
   }
 
+
+  /**
+   * Closes the modal for editing a build name.
+   */
   closeModal(): void {
     this.editingNameId = null;
   }

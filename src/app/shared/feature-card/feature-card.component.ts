@@ -19,29 +19,43 @@ export class FeatureCardComponent implements OnInit {
   constructor(private modalService:ModalService, private featureService:FeatureService) { }
   
   ngOnInit(): void {
+    // Subscribes to changes in selected features
     this.featureService.selectedFeatures$.subscribe((features: Feature[]) => {
       this.featuresSelected = features;
-      this.featureIsSelected = this.validateIsSelected();
+      this.featureIsSelected = this.validateIsSelected();// Checks if the current feature is selected
     });
   }
 
+  /**
+   * Opens the modal for feature list selection.
+   */
   openModal(){
     this.modalService.$featureListModal.emit(false)
   }
 
+  /**
+   * Adds the selected feature to the list of features.
+   * @param feature The feature to add.
+   */
   addFeature(feature:Feature): void {
-    
+    // Emits event indicating feature addition
       this.featureService.addFeatureToList(feature);
       this.added.emit(true)
     
   }
 
-
+/**
+   * Checks if the feature is selected.
+   * @returns True if the feature is selected, otherwise false.
+   */
   validateIsSelected(): boolean {
     return this.featuresSelected.some(feature => feature.id === this.data.id);
   }
-
+/**
+   * Removes the current feature from the list of features.
+   */
   removeThisFeature(){
+     // Emits event indicating feature removal
     this.featureService.removeFeatureFromList(this.data);
     this.removed.emit(true);
   }

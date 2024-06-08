@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CardsComponent } from './cards/cards.component';
 import { NewbuildappComponent } from './newbuildapp/newbuildapp.component';
+import { PolicyComponent } from './policity/policy.component';
+import { TermsComponent } from './terms/terms.component';
 
 /* material */
 import { MatInputModule } from '@angular/material/input';
@@ -14,8 +16,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { PolicyComponent } from './policity/policy.component';
-import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [

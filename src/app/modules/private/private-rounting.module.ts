@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersettingsComponent } from './usersettings/usersettings.component';
 import { BuildcardsComponent } from './buildcards/buildcards.component';
 import { PaymentComponent } from './payment/payment.component';
 
+/**
+ * Defines the routes for the private module.
+ */
 const routes: Routes = [
-  { path: 'user', 
-    redirectTo: 'user', 
-    component: UsersettingsComponent,
-    pathMatch: 'full',
-  },
+  /**
+   * Route for the dashboard component.
+   * When the URL is '/dashboard', BuildcardsComponent is loaded.
+   */
   { path: 'dashboard',  
     component: BuildcardsComponent
   } ,
@@ -19,7 +20,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)], //Configures the routing module with the routes defined for this module. forChild is used for feature modules in an Angular application
+  exports: [RouterModule] // Exports RouterModule so that the route configurations defined are available in other modules that import this module.
 })
+/**
+ * PrivateRoutingModule is responsible for managing the specific routes
+ * of the private module in the application.
+ */
 export class PrivateRoutingModule { }
